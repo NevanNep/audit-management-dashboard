@@ -1,6 +1,6 @@
 import type { ClauseCode, IsoCode } from '../types/evidence';
 
-export const CLAUSE_SHORT_LABELS: Record<ClauseCode, string> = {
+export const CLAUSE_LABELS: Record<ClauseCode, string> = {
   '4.1': 'Understanding the organization and its context',
   '4.2': 'Understanding the needs and expectations of interested parties',
   '4.3': 'Determining the scope of the XXX management system',
@@ -106,5 +106,5 @@ const CLAUSE_DESCRIPTIONS: Partial<Record<IsoCode, Partial<Record<ClauseCode, st
 };
 
 export function getClauseDescription(iso: IsoCode, clause: ClauseCode): string {
-  return CLAUSE_DESCRIPTIONS[iso]?.[clause] ?? CLAUSE_SHORT_LABELS[clause];
+  return CLAUSE_DESCRIPTIONS[iso]?.[clause] ?? CLAUSE_LABELS[clause];
 }
