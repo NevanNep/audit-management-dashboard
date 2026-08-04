@@ -22,6 +22,7 @@ interface CardData {
   filterValue: IsoFilterValue;
   code: string;
   label: string;
+  standard?: string;
   isAll: boolean;
   total: number;
   overdueCount: number;
@@ -31,11 +32,12 @@ interface CardData {
 export function IsoStandardCards({ documentsForCards, selectedIso, onSelectIso }: IsoStandardCardsProps) {
   const cards = useMemo<CardData[]>(() => {
     const definitions = [
-      { filterValue: ALL_ISO as IsoFilterValue, code: 'All ISO', label: 'All standards', isAll: true },
+      { filterValue: ALL_ISO as IsoFilterValue, code: 'All ISO', label: 'All standards', standard: undefined, isAll: true },
       ...ISO_STANDARDS.map((std) => ({
         filterValue: std.code as IsoFilterValue,
         code: std.code,
         label: std.shortName,
+        standard: std.standard,
         isAll: false,
       })),
     ];
@@ -78,8 +80,19 @@ export function IsoStandardCards({ documentsForCards, selectedIso, onSelectIso }
                   : 'border-slate-200 bg-white hover:border-slate-300'
               }`}
             >
-              <div className={`mb-0.5 text-[15px] font-bold ${isSelected ? 'text-accent' : 'text-slate-900'}`}>
-                {card.code}
+              <div className="mb-0.5 flex items-center gap-1.5">
+                <span className={`text-[15px] font-bold ${isSelected ? 'text-accent' : 'text-slate-900'}`}>
+                  {card.code}
+                </span>
+                {card.standard && (
+                  <span
+                    className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold ${
+                      isSelected ? 'bg-accent/15 text-accent' : 'bg-slate-100 text-slate-500'
+                    }`}
+                  >
+                    {card.standard}
+                  </span>
+                )}
               </div>
               <div className="mb-2.5 text-[11px] text-slate-500">{card.label}</div>
               <div className="mb-2 text-[22px] font-bold text-slate-900">
