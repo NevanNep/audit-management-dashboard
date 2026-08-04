@@ -3,6 +3,7 @@ import { EmptyState } from './EmptyState';
 import { ClauseTag } from '../ui/ClauseTag';
 import { ComplianceResultBadge, EvidenceStatusBadge } from '../ui/StatusBadge';
 import { formatDueDate, isOverdue } from '../../utils/evidenceFormatting';
+import { getStandardName } from '../../data/isoStandards';
 import type { EvidenceDocument, SortKey, SortState } from '../../types/evidence';
 
 interface DocumentsTableProps {
@@ -21,7 +22,7 @@ interface ColumnDef {
 
 const COLUMNS: ColumnDef[] = [
   { key: 'name', label: 'Document', widthClass: 'w-[22%]' },
-  { key: 'iso', label: 'ISO', widthClass: 'w-[9%]' },
+  { key: 'iso', label: 'Standards', widthClass: 'w-[9%]' },
   { key: 'clauses', label: 'Clause', widthClass: 'w-[16%]' },
   { key: 'location', label: 'Location', widthClass: 'w-[10%]' },
   { key: 'evidenceStatus', label: 'Evidence status', widthClass: 'w-[13%]' },
@@ -100,7 +101,9 @@ function DocumentRow({ doc }: { doc: EvidenceDocument }) {
       <td className="truncate border-b border-slate-100 px-3 py-3.5 pl-5 text-[13.5px] font-medium text-slate-800">
         {doc.name}
       </td>
-      <td className="border-b border-slate-100 px-3 py-3.5 font-mono text-xs text-slate-600">{doc.iso}</td>
+      <td className="border-b border-slate-100 px-3 py-3.5 font-mono text-xs text-slate-600" title={doc.iso}>
+        {getStandardName(doc.iso)}
+      </td>
       <td className="border-b border-slate-100 px-3 py-3.5">
         <div className="flex flex-wrap gap-1">
           {doc.clauses.map((clause) => (
