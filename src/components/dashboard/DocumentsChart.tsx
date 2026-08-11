@@ -7,11 +7,10 @@ interface DocumentsChartProps {
 }
 
 const EVIDENCE_STATUS_ORDER: EvidenceStatus[] = [
-  'Requested',
-  'Uploaded',
-  'Under review',
   'Accepted',
-  'Need revision',
+  'Pending Review',
+  'Rejected',
+  'Missing',
 ];
 
 export function DocumentsChart({ documents }: DocumentsChartProps) {
