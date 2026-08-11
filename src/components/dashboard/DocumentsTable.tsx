@@ -21,12 +21,12 @@ interface ColumnDef {
 }
 
 const COLUMNS: ColumnDef[] = [
-  { key: 'name', label: 'Document', widthClass: 'w-[22%]' },
-  { key: 'iso', label: 'Standards', widthClass: 'w-[9%]' },
-  { key: 'clauses', label: 'Clause', widthClass: 'w-[16%]' },
-  { key: 'location', label: 'Location', widthClass: 'w-[10%]' },
-  { key: 'evidenceStatus', label: 'Evidence status', widthClass: 'w-[13%]' },
-  { key: 'complianceResult', label: 'Compliance result', widthClass: 'w-[13%]' },
+  { key: 'name', label: 'Document', widthClass: 'w-[17%]' },
+  { key: 'iso', label: 'Standards', widthClass: 'w-[8%]' },
+  { key: 'clauses', label: 'Clause', widthClass: 'w-[17%]' },
+  { key: 'location', label: 'Location', widthClass: 'w-[9%]' },
+  { key: 'evidenceStatus', label: 'Evidence status', widthClass: 'w-[14%]' },
+  { key: 'complianceResult', label: 'Compliance result', widthClass: 'w-[16%]' },
   { key: 'dueDate', label: 'Due date', widthClass: 'w-[10%]' },
 ];
 
@@ -48,7 +48,7 @@ export function DocumentsTable({ documents, totalCount, sortState, onSort, onRes
         <EmptyState onReset={onResetFilters} />
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[860px] table-fixed border-collapse">
+          <table className="w-full min-w-[1040px] table-fixed border-collapse">
             <thead>
               <tr>
                 {COLUMNS.map((column) => (
@@ -98,24 +98,35 @@ function DocumentRow({ doc }: { doc: EvidenceDocument }) {
 
   return (
     <tr className={overdue ? 'bg-amber-50/60' : 'hover:bg-slate-50'}>
-      <td className="truncate border-b border-slate-100 px-3 py-3.5 pl-5 text-[13.5px] font-medium text-slate-800">
+      <td
+        className="truncate overflow-hidden border-b border-slate-100 px-3 py-3.5 pl-5 text-[13.5px] font-medium text-slate-800"
+        title={doc.name}
+      >
         {doc.name}
       </td>
-      <td className="border-b border-slate-100 px-3 py-3.5 font-mono text-xs text-slate-600" title={doc.iso}>
+      <td
+        className="overflow-hidden truncate border-b border-slate-100 px-3 py-3.5 font-mono text-xs text-slate-600"
+        title={doc.iso}
+      >
         {getStandardName(doc.iso)}
       </td>
-      <td className="border-b border-slate-100 px-3 py-3.5">
-        <div className="flex flex-wrap gap-1">
+      <td className="overflow-hidden border-b border-slate-100 px-3 py-3.5">
+        <div className="flex min-w-0 flex-wrap gap-1">
           {doc.clauses.map((clause) => (
             <ClauseTag key={clause} iso={doc.iso} clause={clause} />
           ))}
         </div>
       </td>
-      <td className="border-b border-slate-100 px-3 py-3.5 text-[13px] text-slate-600">{doc.location}</td>
-      <td className="border-b border-slate-100 px-3 py-3.5">
+      <td
+        className="overflow-hidden truncate border-b border-slate-100 px-3 py-3.5 text-[13px] text-slate-600"
+        title={doc.location}
+      >
+        {doc.location}
+      </td>
+      <td className="overflow-hidden border-b border-slate-100 px-3 py-3.5">
         <EvidenceStatusBadge status={doc.evidenceStatus} />
       </td>
-      <td className="border-b border-slate-100 px-3 py-3.5">
+      <td className="overflow-hidden border-b border-slate-100 px-3 py-3.5">
         <ComplianceResultBadge result={doc.complianceResult} />
       </td>
       <td className="whitespace-nowrap border-b border-slate-100 px-3 py-3.5 text-[13px] text-slate-600">
