@@ -25,6 +25,7 @@ interface HeaderDefinition {
 }
 
 const REQUIRED_HEADERS: HeaderDefinition[] = [
+  { header: 'Document ID', field: 'documentId' },
   { header: 'Document', field: 'document' },
   { header: 'Standards', field: 'standards' },
   { header: 'Clause', field: 'clause' },
@@ -64,6 +65,7 @@ export class LocalExcelEvidenceSource implements EvidenceSource {
         return;
       }
 
+      const documentId = this.cellToText(row.getCell(headerMap.documentId));
       const standards = this.validateEnum(
         this.cellToText(row.getCell(headerMap.standards)),
         STANDARDS_VALUES,
@@ -93,6 +95,7 @@ export class LocalExcelEvidenceSource implements EvidenceSource {
       );
 
       evidences.push({
+        documentId,
         document: documentText,
         standards,
         clause,

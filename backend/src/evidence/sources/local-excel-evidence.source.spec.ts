@@ -6,6 +6,7 @@ import { Workbook, Worksheet } from 'exceljs';
 import { LocalExcelEvidenceSource } from './local-excel-evidence.source';
 
 const HEADERS = [
+  'Document ID',
   'Document',
   'Standards',
   'Clause',
@@ -47,6 +48,7 @@ describe('LocalExcelEvidenceSource', () => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       addHeaderRow(sheet);
       sheet.addRow([
+        'DOC-0001',
         'Firewall Configuration Review',
         'ISMS',
         '8.1 Operational planning and control',
@@ -63,6 +65,7 @@ describe('LocalExcelEvidenceSource', () => {
 
     expect(result).toEqual([
       {
+        documentId: 'DOC-0001',
         document: 'Firewall Configuration Review',
         standards: 'ISMS',
         clause: '8.1 Operational planning and control',
@@ -81,6 +84,7 @@ describe('LocalExcelEvidenceSource', () => {
       addHeaderRow(sheet);
       sheet.addRow([]);
       sheet.addRow([
+        'DOC-0002',
         'Access Control Policy',
         'ITSMS',
         '9.1 Monitoring',
@@ -117,6 +121,7 @@ describe('LocalExcelEvidenceSource', () => {
     const filePath = await writeWorkbook('missing-header.xlsx', (workbook) => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       sheet.addRow([
+        'Document ID',
         'Document',
         'Standards',
         'Clause',
@@ -142,6 +147,7 @@ describe('LocalExcelEvidenceSource', () => {
       addHeaderRow(sheet);
       sheet.addRow([]);
       sheet.addRow([
+        'DOC-0003',
         'Incident Response Plan',
         'ISMS',
         '5.2 Policy',
@@ -167,6 +173,7 @@ describe('LocalExcelEvidenceSource', () => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       addHeaderRow(sheet);
       const row = sheet.addRow([
+        'DOC-0004',
         'Risk Assessment Register',
         'PIMS',
         '6.1 Actions',
@@ -176,7 +183,7 @@ describe('LocalExcelEvidenceSource', () => {
         new Date(Date.UTC(2026, 4, 20)),
         'https://example.sharepoint.com/rar.pdf',
       ]);
-      row.getCell(7).numFmt = 'yyyy-mm-dd';
+      row.getCell(8).numFmt = 'yyyy-mm-dd';
     });
 
     const source = new LocalExcelEvidenceSource(filePath);

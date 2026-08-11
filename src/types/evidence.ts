@@ -26,6 +26,7 @@ export type LocationName = string;
 
 export interface EvidenceDocument {
   id: string;
+  documentId: string;
   name: string;
   iso: IsoCode;
   location: LocationName;
@@ -55,6 +56,7 @@ export interface EvidenceFilterState {
 }
 
 export type SortKey =
+  | 'documentId'
   | 'name'
   | 'iso'
   | 'clauses'

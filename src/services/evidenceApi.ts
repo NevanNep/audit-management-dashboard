@@ -1,4 +1,5 @@
 export interface ApiEvidence {
+  documentId: string;
   document: string;
   standards: string;
   clause: string;

@@ -1,4 +1,5 @@
 export interface Evidence {
+  documentId: string;
   document: string;
   standards: string;
   clause: string;

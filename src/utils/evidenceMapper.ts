@@ -17,6 +17,7 @@ function parseClauseCode(clause: string): ClauseCode {
 export function mapEvidenceToDocument(evidence: ApiEvidence, index: number): EvidenceDocument {
   return {
     id: `EVID-${String(index + 1).padStart(4, '0')}`,
+    documentId: evidence.documentId,
     name: evidence.document,
     iso: getIsoCodeByStandard(evidence.standards) ?? (evidence.standards as EvidenceDocument['iso']),
     location: evidence.location,

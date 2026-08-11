@@ -22,9 +22,10 @@ interface ColumnDef {
 }
 
 const COLUMNS: ColumnDef[] = [
-  { key: 'name', label: 'Document', widthClass: 'w-[17%]' },
+  { key: 'documentId', label: 'Document ID', widthClass: 'w-[9%]' },
+  { key: 'name', label: 'Document', widthClass: 'w-[14%]' },
   { key: 'iso', label: 'Standards', widthClass: 'w-[8%]' },
-  { key: 'clauses', label: 'Clause', widthClass: 'w-[17%]' },
+  { key: 'clauses', label: 'Clause', widthClass: 'w-[15%]' },
   { key: 'location', label: 'Location', widthClass: 'w-[9%]' },
   { key: 'evidenceStatus', label: 'Evidence status', widthClass: 'w-[14%]' },
   { key: 'complianceResult', label: 'Compliance result', widthClass: 'w-[16%]' },
@@ -141,6 +142,12 @@ function DocumentRow({ doc, isExpanded, onToggle }: DocumentRowProps) {
             <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
           )}
         </button>
+      </td>
+      <td
+        className={`border-b border-slate-100 px-3 py-3.5 align-top font-mono text-[13px] text-slate-600 ${wrapClass}`}
+        title={isExpanded ? undefined : doc.documentId}
+      >
+        {doc.documentId}
       </td>
       <td
         className={`border-b border-slate-100 px-3 py-3.5 align-top text-[13.5px] font-medium text-slate-800 ${wrapClass}`}

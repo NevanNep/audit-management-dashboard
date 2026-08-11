@@ -12,6 +12,7 @@ describe('EvidenceService', () => {
 
   const sampleEvidence: Evidence[] = [
     {
+      documentId: 'DOC-0001',
       document: 'Firewall Configuration Review',
       standards: 'ISMS',
       clause: '8.1 Operational planning and control',
