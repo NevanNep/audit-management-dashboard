@@ -1,11 +1,10 @@
 import type { ComplianceResult, EvidenceStatus } from '../types/evidence';
 
 export const EVIDENCE_STATUS_STYLES: Record<EvidenceStatus, { pill: string; dot: string }> = {
-  Requested: { pill: 'bg-slate-100 text-slate-600', dot: 'bg-slate-400' },
-  Uploaded: { pill: 'bg-blue-50 text-blue-700', dot: 'bg-blue-500' },
-  'Under review': { pill: 'bg-amber-50 text-amber-700', dot: 'bg-amber-500' },
   Accepted: { pill: 'bg-emerald-50 text-emerald-700', dot: 'bg-emerald-500' },
-  'Need revision': { pill: 'bg-rose-50 text-rose-700', dot: 'bg-rose-500' },
+  'Pending Review': { pill: 'bg-amber-50 text-amber-700', dot: 'bg-amber-500' },
+  Rejected: { pill: 'bg-rose-50 text-rose-700', dot: 'bg-rose-500' },
+  Missing: { pill: 'bg-slate-100 text-slate-600', dot: 'bg-slate-400' },
 };
 
 export const COMPLIANCE_RESULT_STYLES: Record<ComplianceResult, { border: string; text: string; icon: string }> = {

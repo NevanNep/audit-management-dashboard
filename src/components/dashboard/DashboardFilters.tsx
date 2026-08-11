@@ -1,5 +1,5 @@
 import { Search } from 'lucide-react';
-import { COMPLIANCE_RESULT_OPTIONS, EVIDENCE_STATUS_OPTIONS, LOCATION_OPTIONS } from '../../data/filterOptions';
+import { COMPLIANCE_RESULT_OPTIONS, EVIDENCE_STATUS_OPTIONS } from '../../data/filterOptions';
 import type {
   ComplianceResultFilterValue,
   EvidenceStatusFilterValue,
@@ -11,6 +11,7 @@ interface DashboardFiltersProps {
   onSearchChange: (value: string) => void;
   location: LocationFilterValue;
   onLocationChange: (value: LocationFilterValue) => void;
+  locationOptions: LocationFilterValue[];
   evidenceStatus: EvidenceStatusFilterValue;
   onEvidenceStatusChange: (value: EvidenceStatusFilterValue) => void;
   complianceResult: ComplianceResultFilterValue;
@@ -26,6 +27,7 @@ export function DashboardFilters({
   onSearchChange,
   location,
   onLocationChange,
+  locationOptions,
   evidenceStatus,
   onEvidenceStatusChange,
   complianceResult,
@@ -62,7 +64,7 @@ export function DashboardFilters({
           onChange={(event) => onLocationChange(event.target.value as LocationFilterValue)}
           className={selectClass}
         >
-          {LOCATION_OPTIONS.map((option) => (
+          {locationOptions.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>
