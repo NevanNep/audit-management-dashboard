@@ -1,9 +1,8 @@
 import { InternalServerErrorException } from '@nestjs/common';
-import { mkdtempSync, rmSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
 import { Workbook, Worksheet } from 'exceljs';
-import { LocalExcelEvidenceSource } from './local-excel-evidence.source';
+import { UrlExcelEvidenceSource } from './url-excel-evidence.source';
+
+const WORKBOOK_URL = 'https://example.com/evidence.xlsx';
 
 const HEADERS = [
   'Document ID',
@@ -17,26 +16,36 @@ const HEADERS = [
   'Document URL',
 ];
 
-describe('LocalExcelEvidenceSource', () => {
-  let tempDir: string;
+describe('UrlExcelEvidenceSource', () => {
+  let fetchSpy: jest.SpiedFunction<typeof fetch>;
 
   beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), 'evidence-source-'));
+    fetchSpy = jest.spyOn(global, 'fetch');
   });
 
   afterEach(() => {
-    rmSync(tempDir, { recursive: true, force: true });
+    fetchSpy.mockRestore();
   });
 
-  async function writeWorkbook(
-    fileName: string,
+  async function buildWorkbookBuffer(
     build: (workbook: Workbook) => Worksheet | void,
-  ): Promise<string> {
+  ): Promise<Buffer> {
     const workbook = new Workbook();
     build(workbook);
-    const filePath = join(tempDir, fileName);
-    await workbook.xlsx.writeFile(filePath);
-    return filePath;
+    const arrayBuffer = await workbook.xlsx.writeBuffer();
+    return Buffer.from(arrayBuffer);
+  }
+
+  function mockFetchResponse(options: {
+    ok: boolean;
+    status?: number;
+    body?: Buffer;
+  }): void {
+    fetchSpy.mockResolvedValue({
+      ok: options.ok,
+      status: options.status ?? 200,
+      arrayBuffer: () => Promise.resolve(options.body),
+    } as unknown as Response);
   }
 
   function addHeaderRow(worksheet: Worksheet): void {
@@ -44,7 +53,7 @@ describe('LocalExcelEvidenceSource', () => {
   }
 
   it('maps a valid Excel row into an Evidence object', async () => {
-    const filePath = await writeWorkbook('valid.xlsx', (workbook) => {
+    const buffer = await buildWorkbookBuffer((workbook) => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       addHeaderRow(sheet);
       sheet.addRow([
@@ -59,10 +68,12 @@ describe('LocalExcelEvidenceSource', () => {
         'https://example.sharepoint.com/document.pdf',
       ]);
     });
+    mockFetchResponse({ ok: true, body: buffer });
 
-    const source = new LocalExcelEvidenceSource(filePath);
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
     const result = await source.findAll();
 
+    expect(fetchSpy).toHaveBeenCalledWith(WORKBOOK_URL);
     expect(result).toEqual([
       {
         documentId: 'DOC-0001',
@@ -79,7 +90,7 @@ describe('LocalExcelEvidenceSource', () => {
   });
 
   it('skips an empty row', async () => {
-    const filePath = await writeWorkbook('empty-row.xlsx', (workbook) => {
+    const buffer = await buildWorkbookBuffer((workbook) => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       addHeaderRow(sheet);
       sheet.addRow([]);
@@ -95,8 +106,9 @@ describe('LocalExcelEvidenceSource', () => {
         'https://example.sharepoint.com/acp.pdf',
       ]);
     });
+    mockFetchResponse({ ok: true, body: buffer });
 
-    const source = new LocalExcelEvidenceSource(filePath);
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
     const result = await source.findAll();
 
     expect(result).toHaveLength(1);
@@ -104,11 +116,12 @@ describe('LocalExcelEvidenceSource', () => {
   });
 
   it('detects a missing worksheet', async () => {
-    const filePath = await writeWorkbook('no-worksheet.xlsx', (workbook) => {
+    const buffer = await buildWorkbookBuffer((workbook) => {
       workbook.addWorksheet('Other_Sheet');
     });
+    mockFetchResponse({ ok: true, body: buffer });
 
-    const source = new LocalExcelEvidenceSource(filePath);
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
 
     await expect(source.findAll()).rejects.toThrow(
       new InternalServerErrorException(
@@ -118,7 +131,7 @@ describe('LocalExcelEvidenceSource', () => {
   });
 
   it('detects a missing required header', async () => {
-    const filePath = await writeWorkbook('missing-header.xlsx', (workbook) => {
+    const buffer = await buildWorkbookBuffer((workbook) => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       sheet.addRow([
         'Document ID',
@@ -131,8 +144,9 @@ describe('LocalExcelEvidenceSource', () => {
         'Due date',
       ]);
     });
+    mockFetchResponse({ ok: true, body: buffer });
 
-    const source = new LocalExcelEvidenceSource(filePath);
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
 
     await expect(source.findAll()).rejects.toThrow(
       new InternalServerErrorException(
@@ -142,7 +156,7 @@ describe('LocalExcelEvidenceSource', () => {
   });
 
   it('detects an invalid Evidence status', async () => {
-    const filePath = await writeWorkbook('invalid-status.xlsx', (workbook) => {
+    const buffer = await buildWorkbookBuffer((workbook) => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       addHeaderRow(sheet);
       sheet.addRow([]);
@@ -158,8 +172,9 @@ describe('LocalExcelEvidenceSource', () => {
         'https://example.sharepoint.com/irp.pdf',
       ]);
     });
+    mockFetchResponse({ ok: true, body: buffer });
 
-    const source = new LocalExcelEvidenceSource(filePath);
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
 
     await expect(source.findAll()).rejects.toThrow(
       new InternalServerErrorException(
@@ -169,7 +184,7 @@ describe('LocalExcelEvidenceSource', () => {
   });
 
   it('converts a valid Excel Date into YYYY-MM-DD', async () => {
-    const filePath = await writeWorkbook('date-cell.xlsx', (workbook) => {
+    const buffer = await buildWorkbookBuffer((workbook) => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       addHeaderRow(sheet);
       const row = sheet.addRow([
@@ -185,20 +200,46 @@ describe('LocalExcelEvidenceSource', () => {
       ]);
       row.getCell(8).numFmt = 'yyyy-mm-dd';
     });
+    mockFetchResponse({ ok: true, body: buffer });
 
-    const source = new LocalExcelEvidenceSource(filePath);
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
     const result = await source.findAll();
 
     expect(result[0].dueDate).toBe('2026-05-20');
   });
 
-  it('throws a clear error when the workbook file does not exist', async () => {
-    const source = new LocalExcelEvidenceSource(
-      join(tempDir, 'does-not-exist.xlsx'),
-    );
+  it('throws a clear error when no workbook URL is configured', async () => {
+    const source = new UrlExcelEvidenceSource(undefined);
 
     await expect(source.findAll()).rejects.toThrow(
-      new InternalServerErrorException('Excel evidence file was not found.'),
+      new InternalServerErrorException(
+        'EVIDENCE_WORKBOOK_URL is not configured.',
+      ),
+    );
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it('throws a clear error when the download fails', async () => {
+    mockFetchResponse({ ok: false, status: 404 });
+
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
+
+    await expect(source.findAll()).rejects.toThrow(
+      new InternalServerErrorException(
+        'Excel evidence file could not be downloaded (status 404).',
+      ),
+    );
+  });
+
+  it('throws a clear error when the fetch itself fails', async () => {
+    fetchSpy.mockRejectedValue(new Error('network error'));
+
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
+
+    await expect(source.findAll()).rejects.toThrow(
+      new InternalServerErrorException(
+        'Excel evidence file could not be downloaded.',
+      ),
     );
   });
 });

@@ -1,6 +1,4 @@
 import { InternalServerErrorException } from '@nestjs/common';
-import { existsSync } from 'node:fs';
-import { join } from 'node:path';
 import { Cell, Workbook, Worksheet } from 'exceljs';
 import {
   COMPLIANCE_RESULT_VALUES,
@@ -10,10 +8,6 @@ import {
 } from '../evidence.types';
 import { EvidenceSource } from './evidence-source.interface';
 
-const DEFAULT_WORKBOOK_PATH = join(
-  'data',
-  'audit_dashboard_excel_simulation_revised.xlsx',
-);
 const WORKSHEET_NAME = 'Evidence_Data';
 const HEADER_ROW_NUMBER = 1;
 
@@ -42,12 +36,10 @@ const EXCEL_EPOCH_UTC_MS = Date.UTC(1899, 11, 30);
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
-export class LocalExcelEvidenceSource implements EvidenceSource {
+export class UrlExcelEvidenceSource implements EvidenceSource {
   constructor(
-    private readonly workbookPath: string = join(
-      process.cwd(),
-      DEFAULT_WORKBOOK_PATH,
-    ),
+    private readonly workbookUrl: string | undefined = process.env
+      .EVIDENCE_WORKBOOK_URL,
   ) {}
 
   async findAll(): Promise<Evidence[]> {
@@ -111,15 +103,33 @@ export class LocalExcelEvidenceSource implements EvidenceSource {
   }
 
   private async loadWorksheet(): Promise<Worksheet> {
-    if (!existsSync(this.workbookPath)) {
+    if (!this.workbookUrl) {
       throw new InternalServerErrorException(
-        'Excel evidence file was not found.',
+        'EVIDENCE_WORKBOOK_URL is not configured.',
+      );
+    }
+
+    let response: Response;
+    try {
+      response = await fetch(this.workbookUrl);
+    } catch {
+      throw new InternalServerErrorException(
+        'Excel evidence file could not be downloaded.',
+      );
+    }
+
+    if (!response.ok) {
+      throw new InternalServerErrorException(
+        `Excel evidence file could not be downloaded (status ${response.status}).`,
       );
     }
 
     const workbook = new Workbook();
     try {
-      await workbook.xlsx.readFile(this.workbookPath);
+      // exceljs's ambient Buffer type conflicts with @types/node's generic
+      // Buffer, so the downloaded bytes are passed through as `any`.
+      const buffer: any = Buffer.from(await response.arrayBuffer());
+      await workbook.xlsx.load(buffer);
     } catch {
       throw new InternalServerErrorException(
         'Excel evidence file could not be read.',
