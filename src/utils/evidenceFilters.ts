@@ -26,6 +26,8 @@ export function filterDocuments(
   filters: EvidenceFilterState,
 ): EvidenceDocument[] {
   return docs.filter(
-    (doc) => matchesNonIsoFilters(doc, filters) && (filters.iso === ALL_ISO || doc.iso === filters.iso),
+    (doc) =>
+      matchesNonIsoFilters(doc, filters) &&
+      (filters.iso === ALL_ISO || doc.standards.some((standard) => standard.iso === filters.iso)),
   );
 }

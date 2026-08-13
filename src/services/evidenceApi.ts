@@ -1,12 +1,15 @@
+export interface ApiEvidenceStandard {
+  standard: string;
+  clauses: string[];
+}
+
 export interface ApiEvidence {
-  documentId: string;
-  document: string;
-  standards: string;
-  clause: string;
+  evidenceId: string;
+  documentEvidence: string;
+  standards: ApiEvidenceStandard[];
   location: string;
   evidenceStatus: string;
   complianceResult: string;
-  dueDate: string;
   documentUrl: string;
 }
 

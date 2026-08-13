@@ -27,7 +27,7 @@ const INITIAL_FILTERS: EvidenceFilterState = {
   complianceResult: ALL_COMPLIANCE_RESULTS,
 };
 
-const INITIAL_SORT: SortState = { key: 'dueDate', direction: 'asc' };
+const INITIAL_SORT: SortState = { key: 'documentId', direction: 'asc' };
 
 function App() {
   const [documents, setDocuments] = useState<EvidenceDocument[]>([]);
