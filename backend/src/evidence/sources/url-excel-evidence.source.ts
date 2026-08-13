@@ -21,6 +21,7 @@ type ExcelColumn =
   | 'location'
   | 'evidenceStatus'
   | 'complianceResult'
+  | 'dueDate'
   | 'documentUrl';
 
 interface HeaderDefinition {
@@ -36,6 +37,7 @@ const REQUIRED_HEADERS: HeaderDefinition[] = [
   { header: 'Location', column: 'location' },
   { header: 'Evidence Status', column: 'evidenceStatus' },
   { header: 'Compliance Result', column: 'complianceResult' },
+  { header: 'Due Date', column: 'dueDate' },
   { header: 'Document URL', column: 'documentUrl' },
 ];
 
@@ -127,6 +129,7 @@ export class UrlExcelEvidenceSource implements EvidenceSource {
         'Compliance Result',
         rowNumber,
       );
+      const dueDate = cellText('dueDate') || undefined;
       const documentUrl = this.getDocumentUrl(
         row.getCell(headerMap.documentUrl),
       );
@@ -138,6 +141,7 @@ export class UrlExcelEvidenceSource implements EvidenceSource {
         location,
         evidenceStatus,
         complianceResult,
+        dueDate,
         documentUrl,
       });
     });

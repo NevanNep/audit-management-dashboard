@@ -22,6 +22,7 @@ export interface Evidence {
   location: string;
   evidenceStatus: string;
   complianceResult: string;
+  dueDate?: string;
   documentUrl: string;
 }
 

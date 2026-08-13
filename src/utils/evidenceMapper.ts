@@ -30,6 +30,7 @@ export function mapEvidenceToDocument(evidence: ApiEvidence): EvidenceDocument {
     location: evidence.location,
     evidenceStatus: evidence.evidenceStatus as EvidenceDocument['evidenceStatus'],
     complianceResult: evidence.complianceResult as EvidenceDocument['complianceResult'],
+    dueDate: evidence.dueDate || undefined,
     documentUrl: evidence.documentUrl || undefined,
   };
 }

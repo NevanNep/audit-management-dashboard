@@ -10,6 +10,7 @@ export interface ApiEvidence {
   location: string;
   evidenceStatus: string;
   complianceResult: string;
+  dueDate?: string;
   documentUrl: string;
 }
 
