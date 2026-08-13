@@ -12,6 +12,7 @@ const HEADERS = [
   'Location',
   'Evidence Status',
   'Compliance Result',
+  'Due Date',
   'Document URL',
 ];
 
@@ -59,6 +60,7 @@ describe('UrlExcelEvidenceSource', () => {
     location?: string;
     evidenceStatus?: string;
     complianceResult?: string;
+    dueDate?: string;
     documentUrl?: string;
   }): (string | undefined)[] {
     return [
@@ -69,6 +71,7 @@ describe('UrlExcelEvidenceSource', () => {
       overrides.location ?? 'United States',
       overrides.evidenceStatus ?? 'Accepted',
       overrides.complianceResult ?? 'Compliant',
+      overrides.dueDate,
       overrides.documentUrl ?? 'https://example.sharepoint.com/document.pdf',
     ];
   }
@@ -100,6 +103,7 @@ describe('UrlExcelEvidenceSource', () => {
           location: 'United States',
           evidenceStatus: 'Accepted',
           complianceResult: 'Compliant',
+          dueDate: '2026-05-20',
           documentUrl: 'https://example.sharepoint.com/document.pdf',
         }),
       );
@@ -118,9 +122,31 @@ describe('UrlExcelEvidenceSource', () => {
         location: 'United States',
         evidenceStatus: 'Accepted',
         complianceResult: 'Compliant',
+        dueDate: '2026-05-20',
         documentUrl: 'https://example.sharepoint.com/document.pdf',
       },
     ]);
+  });
+
+  it('treats a blank Due Date as undefined', async () => {
+    const result = await runFindAllWithRow(buildRow({ dueDate: undefined }));
+
+    expect(result[0].dueDate).toBeUndefined();
+  });
+
+  it('reads a Due Date stored as a native Excel date', async () => {
+    const buffer = await buildWorkbookBuffer((workbook) => {
+      const sheet = workbook.addWorksheet('Evidence_Data');
+      addHeaderRow(sheet);
+      const row = sheet.addRow(buildRow({ dueDate: undefined }));
+      row.getCell(8).value = new Date(Date.UTC(2026, 4, 20));
+    });
+    mockFetchResponse({ ok: true, body: buffer });
+
+    const source = new UrlExcelEvidenceSource(WORKBOOK_URL);
+    const result = await source.findAll();
+
+    expect(result[0].dueDate).toBe('2026-05-20');
   });
 
   it('parses a single standard with multiple clauses', async () => {
@@ -265,7 +291,7 @@ describe('UrlExcelEvidenceSource', () => {
       const sheet = workbook.addWorksheet('Evidence_Data');
       addHeaderRow(sheet);
       const row = sheet.addRow(buildRow({ documentUrl: undefined }));
-      row.getCell(8).value = {
+      row.getCell(9).value = {
         text: 'document.pdf',
         hyperlink: 'https://example.sharepoint.com/document.pdf',
       };
@@ -344,6 +370,7 @@ describe('UrlExcelEvidenceSource', () => {
         'Location',
         'Evidence Status',
         'Compliance Result',
+        'Due Date',
       ]);
     });
     mockFetchResponse({ ok: true, body: buffer });
