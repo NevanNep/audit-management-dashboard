@@ -3,6 +3,7 @@ import { DashboardHeader } from './components/dashboard/DashboardHeader';
 import { DashboardFilters } from './components/dashboard/DashboardFilters';
 import { IsoStandardCards } from './components/dashboard/IsoStandardCards';
 import { DocumentsChart } from './components/dashboard/DocumentsChart';
+import { ComplianceResultChart } from './components/dashboard/ComplianceResultChart';
 import { DocumentsTable } from './components/dashboard/DocumentsTable';
 import { fetchEvidence } from './services/evidenceApi';
 import { mapEvidenceToDocument } from './utils/evidenceMapper';
@@ -139,7 +140,10 @@ function App() {
               selectedClause={filters.clause}
             />
 
-            <DocumentsChart documents={filteredDocuments} />
+            <div className="mb-6 flex flex-wrap gap-6">
+              <DocumentsChart documents={filteredDocuments} />
+              <ComplianceResultChart documents={filteredDocuments} />
+            </div>
 
             <DocumentsTable
               documents={sortedDocuments}
