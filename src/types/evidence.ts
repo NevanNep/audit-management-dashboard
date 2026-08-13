@@ -45,15 +45,18 @@ export const ALL_LOCATIONS = 'All locations';
 export const ALL_EVIDENCE_STATUSES = 'All evidence statuses';
 export const ALL_COMPLIANCE_RESULTS = 'All compliance results';
 export const ALL_ISO = 'All ISO';
+export const ALL_CLAUSES = 'All clauses';
 
 export type LocationFilterValue = typeof ALL_LOCATIONS | LocationName;
 export type EvidenceStatusFilterValue = typeof ALL_EVIDENCE_STATUSES | EvidenceStatus;
 export type ComplianceResultFilterValue = typeof ALL_COMPLIANCE_RESULTS | ComplianceResult;
 export type IsoFilterValue = typeof ALL_ISO | IsoCode;
+export type ClauseFilterValue = typeof ALL_CLAUSES | ClauseCode;
 
 export interface EvidenceFilterState {
   search: string;
   iso: IsoFilterValue;
+  clause: ClauseFilterValue;
   location: LocationFilterValue;
   evidenceStatus: EvidenceStatusFilterValue;
   complianceResult: ComplianceResultFilterValue;

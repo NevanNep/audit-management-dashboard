@@ -2,12 +2,20 @@ import { useMemo } from 'react';
 import { complianceIconColor } from '../../utils/statusColors';
 import { ISO_STANDARDS } from '../../data/isoStandards';
 import { isOverdue } from '../../utils/evidenceFormatting';
-import { ALL_ISO, type ComplianceResult, type EvidenceDocument, type IsoFilterValue } from '../../types/evidence';
+import {
+  ALL_CLAUSES,
+  ALL_ISO,
+  type ClauseFilterValue,
+  type ComplianceResult,
+  type EvidenceDocument,
+  type IsoFilterValue,
+} from '../../types/evidence';
 
 interface IsoStandardCardsProps {
   documentsForCards: EvidenceDocument[];
   selectedIso: IsoFilterValue;
   onSelectIso: (iso: IsoFilterValue) => void;
+  selectedClause: ClauseFilterValue;
 }
 
 const COMPLIANCE_ORDER: ComplianceResult[] = [
@@ -29,7 +37,12 @@ interface CardData {
   segments: { result: ComplianceResult; widthPercent: number }[];
 }
 
-export function IsoStandardCards({ documentsForCards, selectedIso, onSelectIso }: IsoStandardCardsProps) {
+export function IsoStandardCards({
+  documentsForCards,
+  selectedIso,
+  onSelectIso,
+  selectedClause,
+}: IsoStandardCardsProps) {
   const cards = useMemo<CardData[]>(() => {
     const definitions = [
       { filterValue: ALL_ISO as IsoFilterValue, code: 'All ISO', label: 'All standards', standard: undefined, isAll: true },
@@ -43,9 +56,13 @@ export function IsoStandardCards({ documentsForCards, selectedIso, onSelectIso }
     ];
 
     return definitions.map((def) => {
-      const docsHere = def.isAll
-        ? documentsForCards
-        : documentsForCards.filter((doc) => doc.standards.some((standard) => standard.iso === def.filterValue));
+      const docsHere = documentsForCards.filter((doc) =>
+        doc.standards.some(
+          (standard) =>
+            (def.isAll || standard.iso === def.filterValue) &&
+            (selectedClause === ALL_CLAUSES || standard.clauses.includes(selectedClause)),
+        ),
+      );
       const total = docsHere.length;
       const overdueCount = docsHere.filter((doc) => isOverdue(doc.dueDate)).length;
       const segMax = Math.max(1, total);
@@ -56,7 +73,7 @@ export function IsoStandardCards({ documentsForCards, selectedIso, onSelectIso }
 
       return { ...def, total, overdueCount, segments };
     });
-  }, [documentsForCards]);
+  }, [documentsForCards, selectedClause]);
 
   return (
     <div className="mb-6">

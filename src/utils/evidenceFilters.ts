@@ -1,4 +1,5 @@
 import {
+  ALL_CLAUSES,
   ALL_COMPLIANCE_RESULTS,
   ALL_EVIDENCE_STATUSES,
   ALL_ISO,
@@ -28,6 +29,10 @@ export function filterDocuments(
   return docs.filter(
     (doc) =>
       matchesNonIsoFilters(doc, filters) &&
-      (filters.iso === ALL_ISO || doc.standards.some((standard) => standard.iso === filters.iso)),
+      doc.standards.some(
+        (standard) =>
+          (filters.iso === ALL_ISO || standard.iso === filters.iso) &&
+          (filters.clause === ALL_CLAUSES || standard.clauses.includes(filters.clause)),
+      ),
   );
 }
