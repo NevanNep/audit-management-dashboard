@@ -1,40 +1,54 @@
 import { InternalServerErrorException } from '@nestjs/common';
 import { Cell, Workbook, Worksheet } from 'exceljs';
 import {
+  Evidence,
+  EvidenceStandard,
   COMPLIANCE_RESULT_VALUES,
   EVIDENCE_STATUS_VALUES,
-  Evidence,
   STANDARDS_VALUES,
 } from '../evidence.types';
 import { EvidenceSource } from './evidence-source.interface';
 
 const WORKSHEET_NAME = 'Evidence_Data';
 const HEADER_ROW_NUMBER = 1;
+const LINE_BREAK_PATTERN = /\r\n|\n/;
 
-type EvidenceField = keyof Evidence;
+type ExcelColumn =
+  | 'evidenceId'
+  | 'documentEvidence'
+  | 'standard'
+  | 'clause'
+  | 'location'
+  | 'evidenceStatus'
+  | 'complianceResult'
+  | 'documentUrl';
 
 interface HeaderDefinition {
   header: string;
-  field: EvidenceField;
+  column: ExcelColumn;
 }
 
 const REQUIRED_HEADERS: HeaderDefinition[] = [
-  { header: 'Document ID', field: 'documentId' },
-  { header: 'Document', field: 'document' },
-  { header: 'Standards', field: 'standards' },
-  { header: 'Clause', field: 'clause' },
-  { header: 'Location', field: 'location' },
-  { header: 'Evidence status', field: 'evidenceStatus' },
-  { header: 'Compliance result', field: 'complianceResult' },
-  { header: 'Due date', field: 'dueDate' },
-  { header: 'Document URL', field: 'documentUrl' },
+  { header: 'Evidence ID', column: 'evidenceId' },
+  { header: 'Document/Evidence', column: 'documentEvidence' },
+  { header: 'Standard', column: 'standard' },
+  { header: 'Clause', column: 'clause' },
+  { header: 'Location', column: 'location' },
+  { header: 'Evidence Status', column: 'evidenceStatus' },
+  { header: 'Compliance Result', column: 'complianceResult' },
+  { header: 'Document URL', column: 'documentUrl' },
 ];
 
-type HeaderColumnMap = Record<EvidenceField, number>;
+type HeaderColumnMap = Record<ExcelColumn, number>;
 
-const EXCEL_EPOCH_UTC_MS = Date.UTC(1899, 11, 30);
-const MS_PER_DAY = 24 * 60 * 60 * 1000;
-const ISO_DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const EXCEL_COLUMNS: ExcelColumn[] = REQUIRED_HEADERS.map((h) => h.column);
+
+const formatUtcDate = (date: Date): string => {
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
 
 export class UrlExcelEvidenceSource implements EvidenceSource {
   constructor(
@@ -46,40 +60,71 @@ export class UrlExcelEvidenceSource implements EvidenceSource {
     const worksheet = await this.loadWorksheet();
     const headerMap = this.buildHeaderMap(worksheet);
     const evidences: Evidence[] = [];
+    const seenEvidenceIds = new Set<string>();
 
     worksheet.eachRow((row, rowNumber) => {
       if (rowNumber === HEADER_ROW_NUMBER) {
         return;
       }
 
-      const documentText = this.cellToText(row.getCell(headerMap.document));
-      if (!documentText) {
+      const cellText = (column: ExcelColumn): string =>
+        this.cellToText(row.getCell(headerMap[column]));
+
+      const isEmptyRow = EXCEL_COLUMNS.every(
+        (column) => cellText(column).length === 0,
+      );
+      if (isEmptyRow) {
         return;
       }
 
-      const documentId = this.cellToText(row.getCell(headerMap.documentId));
-      const standards = this.validateEnum(
-        this.cellToText(row.getCell(headerMap.standards)),
-        STANDARDS_VALUES,
-        'Standards',
+      const evidenceId = this.requireText(
+        cellText('evidenceId'),
+        'Evidence ID',
         rowNumber,
       );
-      const clause = this.cellToText(row.getCell(headerMap.clause));
-      const location = this.cellToText(row.getCell(headerMap.location));
+
+      if (seenEvidenceIds.has(evidenceId)) {
+        throw new InternalServerErrorException(
+          `Duplicate Evidence ID '${evidenceId}' at Excel row ${rowNumber}.`,
+        );
+      }
+      seenEvidenceIds.add(evidenceId);
+
+      const documentEvidence = this.requireText(
+        cellText('documentEvidence'),
+        'Document/Evidence',
+        rowNumber,
+      );
+      const standardText = this.requireText(
+        cellText('standard'),
+        'Standard',
+        rowNumber,
+      );
+      const clauseText = this.requireText(
+        cellText('clause'),
+        'Clause',
+        rowNumber,
+      );
+      const standards = this.parseStandards(
+        standardText,
+        clauseText,
+        rowNumber,
+      );
+      const location = this.requireText(
+        cellText('location'),
+        'Location',
+        rowNumber,
+      );
       const evidenceStatus = this.validateEnum(
-        this.cellToText(row.getCell(headerMap.evidenceStatus)),
+        cellText('evidenceStatus'),
         EVIDENCE_STATUS_VALUES,
-        'Evidence status',
+        'Evidence Status',
         rowNumber,
       );
       const complianceResult = this.validateEnum(
-        this.cellToText(row.getCell(headerMap.complianceResult)),
+        cellText('complianceResult'),
         COMPLIANCE_RESULT_VALUES,
-        'Compliance result',
-        rowNumber,
-      );
-      const dueDate = this.parseDueDate(
-        row.getCell(headerMap.dueDate),
+        'Compliance Result',
         rowNumber,
       );
       const documentUrl = this.getDocumentUrl(
@@ -87,14 +132,12 @@ export class UrlExcelEvidenceSource implements EvidenceSource {
       );
 
       evidences.push({
-        documentId,
-        document: documentText,
+        evidenceId,
+        documentEvidence,
         standards,
-        clause,
         location,
         evidenceStatus,
         complianceResult,
-        dueDate,
         documentUrl,
       });
     });
@@ -158,65 +201,82 @@ export class UrlExcelEvidenceSource implements EvidenceSource {
     });
 
     const headerMap = {} as HeaderColumnMap;
-    for (const { header, field } of REQUIRED_HEADERS) {
+    for (const { header, column } of REQUIRED_HEADERS) {
       const colNumber = normalizedHeaders.get(header.toLowerCase());
       if (colNumber === undefined) {
         throw new InternalServerErrorException(
           `Required Excel header '${header}' was not found.`,
         );
       }
-      headerMap[field] = colNumber;
+      headerMap[column] = colNumber;
     }
 
     return headerMap;
   }
 
-  private validateEnum(
+  private requireText(
     value: string,
-    allowedValues: readonly string[],
     headerLabel: string,
     rowNumber: number,
   ): string {
-    if (!allowedValues.includes(value)) {
+    if (!value) {
       throw new InternalServerErrorException(
-        `Invalid ${headerLabel} '${value}' at Excel row ${rowNumber}.`,
+        `${headerLabel} is required at Excel row ${rowNumber}.`,
       );
     }
     return value;
   }
 
-  private parseDueDate(cell: Cell, rowNumber: number): string {
-    const value = cell.value;
+  private parseStandards(
+    standardText: string,
+    clauseText: string,
+    rowNumber: number,
+  ): EvidenceStandard[] {
+    const standardLines = this.splitNonEmptyLines(standardText);
+    const clauseLines = this.splitNonEmptyLines(clauseText);
 
-    if (value instanceof Date) {
-      return this.formatUtcDate(value);
+    if (standardLines.length !== clauseLines.length) {
+      throw new InternalServerErrorException(
+        `Standard/Clause mapping mismatch at Excel row ${rowNumber}`,
+      );
     }
 
-    if (typeof value === 'number' && Number.isFinite(value)) {
-      return this.formatUtcDate(this.excelSerialToDate(value));
-    }
+    return standardLines.map((standardValue, index) => {
+      const standard = this.validateEnum(
+        standardValue,
+        STANDARDS_VALUES,
+        'Standard',
+        rowNumber,
+      );
 
-    if (typeof value === 'string') {
-      const trimmed = value.trim();
-      if (ISO_DATE_PATTERN.test(trimmed)) {
-        return trimmed;
-      }
-    }
+      const clauses = clauseLines[index]
+        .split(',')
+        .map((clause) => clause.trim())
+        .filter((clause) => clause.length > 0);
 
-    throw new InternalServerErrorException(
-      `Invalid Due date at Excel row ${rowNumber}.`,
-    );
+      return { standard, clauses };
+    });
   }
 
-  private formatUtcDate(date: Date): string {
-    const year = date.getUTCFullYear();
-    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(date.getUTCDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+  private splitNonEmptyLines(text: string): string[] {
+    return text
+      .split(LINE_BREAK_PATTERN)
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0);
   }
 
-  private excelSerialToDate(serial: number): Date {
-    return new Date(EXCEL_EPOCH_UTC_MS + Math.round(serial * MS_PER_DAY));
+  private validateEnum<T extends string>(
+    value: string,
+    allowedValues: readonly T[],
+    headerLabel: string,
+    rowNumber: number,
+  ): T {
+    if (!allowedValues.includes(value as T)) {
+      throw new InternalServerErrorException(
+        `Invalid ${headerLabel} '${value}' at Excel row ${rowNumber}.`,
+      );
+    }
+    return value as T;
   }
 
   private getDocumentUrl(cell: Cell): string {
@@ -240,7 +300,7 @@ export class UrlExcelEvidenceSource implements EvidenceSource {
       return String(value).trim();
     }
     if (value instanceof Date) {
-      return this.formatUtcDate(value);
+      return formatUtcDate(value);
     }
     if (typeof value === 'object') {
       if ('richText' in value && Array.isArray(value.richText)) {
@@ -258,7 +318,7 @@ export class UrlExcelEvidenceSource implements EvidenceSource {
           return '';
         }
         if (result instanceof Date) {
-          return this.formatUtcDate(result);
+          return formatUtcDate(result);
         }
         if (typeof result === 'object') {
           return result.error;
