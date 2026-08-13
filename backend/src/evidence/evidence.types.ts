@@ -1,24 +1,29 @@
+export const STANDARDS_VALUES = [
+  'ISMS',
+  'PIMS',
+  'ITSMS',
+  'BCMS',
+  'OHSMS',
+  'ABMS',
+  'EnMS',
+] as const;
+
+export type Standard = (typeof STANDARDS_VALUES)[number];
+
+export interface EvidenceStandard {
+  standard: Standard;
+  clauses: string[];
+}
+
 export interface Evidence {
-  documentId: string;
-  document: string;
-  standards: string;
-  clause: string;
+  evidenceId: string;
+  documentEvidence: string;
+  standards: EvidenceStandard[];
   location: string;
   evidenceStatus: string;
   complianceResult: string;
-  dueDate: string;
   documentUrl: string;
 }
-
-export const STANDARDS_VALUES = [
-  'ISMS',
-  'ITSMS',
-  'PIMS',
-  'BCMS',
-  'ABMS',
-  'OHSMS',
-  'ENMS',
-] as const;
 
 export const EVIDENCE_STATUS_VALUES = [
   'Accepted',
