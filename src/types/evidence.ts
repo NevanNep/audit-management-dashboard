@@ -24,16 +24,20 @@ export type ClauseCode = '4.1' | '4.2' | '4.3' | '4.4' | '5.1' | '5.2' | '5.3' |
 
 export type LocationName = string;
 
+export interface EvidenceDocumentStandard {
+  iso: IsoCode;
+  clauses: ClauseCode[];
+}
+
 export interface EvidenceDocument {
   id: string;
   documentId: string;
   name: string;
-  iso: IsoCode;
+  standards: EvidenceDocumentStandard[];
   location: LocationName;
   evidenceStatus: EvidenceStatus;
   complianceResult: ComplianceResult;
-  dueDate: string;
-  clauses: ClauseCode[];
+  dueDate?: string;
   documentUrl?: string;
 }
 

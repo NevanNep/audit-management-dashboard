@@ -13,7 +13,7 @@ export const ISO_STANDARDS: IsoStandardMeta[] = [
   { code: 'ISO 22301', shortName: 'Business Continuity', standard: 'BCMS' },
   { code: 'ISO 45001', shortName: 'Occupational H&S', standard: 'OHSMS' },
   { code: 'ISO 37001', shortName: 'Anti-Bribery', standard: 'ABMS' },
-  { code: 'ISO 50001', shortName: 'Energy Management', standard: 'ENMS' },
+  { code: 'ISO 50001', shortName: 'Energy Management', standard: 'EnMS' },
 ];
 
 const STANDARD_BY_ISO: Record<IsoCode, string> = Object.fromEntries(

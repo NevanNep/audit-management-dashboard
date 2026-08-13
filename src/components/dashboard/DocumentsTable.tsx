@@ -156,15 +156,32 @@ function DocumentRow({ doc, isExpanded, onToggle }: DocumentRowProps) {
         {doc.name}
       </td>
       <td
-        className={`border-b border-slate-100 px-3 py-3.5 align-top font-mono text-xs text-slate-600 ${wrapClass}`}
-        title={isExpanded ? undefined : doc.iso}
+        className={`border-b border-slate-100 px-3 py-3.5 align-top ${wrapClass}`}
+        title={isExpanded ? undefined : doc.standards.map((standard) => standard.iso).join(', ')}
       >
-        {getStandardName(doc.iso)}
+        <div className="flex min-w-0 flex-wrap gap-1">
+          {doc.standards.map((standard) => (
+            <span
+              key={standard.iso}
+              title={standard.iso}
+              className="inline-block rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-slate-600"
+            >
+              {getStandardName(standard.iso)}
+            </span>
+          ))}
+        </div>
       </td>
       <td className="overflow-hidden border-b border-slate-100 px-3 py-3.5 align-top">
-        <div className="flex min-w-0 flex-wrap gap-1">
-          {doc.clauses.map((clause) => (
-            <ClauseTag key={clause} iso={doc.iso} clause={clause} expanded={isExpanded} />
+        <div className="flex min-w-0 flex-col gap-1.5">
+          {doc.standards.map((standard) => (
+            <div key={standard.iso} className="flex min-w-0 flex-wrap items-center gap-1">
+              <span className="font-mono text-[10px] font-semibold text-slate-400">
+                {getStandardName(standard.iso)}
+              </span>
+              {standard.clauses.map((clause) => (
+                <ClauseTag key={`${standard.iso}-${clause}`} iso={standard.iso} clause={clause} expanded={isExpanded} />
+              ))}
+            </div>
           ))}
         </div>
       </td>

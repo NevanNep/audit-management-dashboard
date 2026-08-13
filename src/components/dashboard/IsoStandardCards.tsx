@@ -45,7 +45,7 @@ export function IsoStandardCards({ documentsForCards, selectedIso, onSelectIso }
     return definitions.map((def) => {
       const docsHere = def.isAll
         ? documentsForCards
-        : documentsForCards.filter((doc) => doc.iso === def.filterValue);
+        : documentsForCards.filter((doc) => doc.standards.some((standard) => standard.iso === def.filterValue));
       const total = docsHere.length;
       const overdueCount = docsHere.filter((doc) => isOverdue(doc.dueDate)).length;
       const segMax = Math.max(1, total);

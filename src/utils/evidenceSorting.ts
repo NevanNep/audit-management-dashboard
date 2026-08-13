@@ -3,11 +3,26 @@ import type { EvidenceDocument, SortDirection, SortKey } from '../types/evidence
 function sortValue(doc: EvidenceDocument, key: SortKey): string | number {
   switch (key) {
     case 'dueDate':
-      return new Date(doc.dueDate).getTime();
-    case 'clauses':
-      return Math.min(...doc.clauses.map((clause) => parseFloat(clause)));
-    default:
+      return doc.dueDate ? new Date(doc.dueDate).getTime() : Number.POSITIVE_INFINITY;
+    case 'iso':
+      return doc.standards
+        .map((standard) => standard.iso)
+        .sort()
+        .join(', ');
+    case 'clauses': {
+      const allClauses = doc.standards.flatMap((standard) => standard.clauses);
+      return allClauses.length
+        ? Math.min(...allClauses.map((clause) => parseFloat(clause)))
+        : Number.POSITIVE_INFINITY;
+    }
+    case 'documentId':
+    case 'name':
+    case 'location':
+    case 'evidenceStatus':
+    case 'complianceResult':
       return doc[key];
+    default:
+      return '';
   }
 }
 
