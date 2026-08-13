@@ -9,10 +9,12 @@ import { mapEvidenceToDocument } from './utils/evidenceMapper';
 import { filterDocuments, matchesNonIsoFilters } from './utils/evidenceFilters';
 import { sortDocuments } from './utils/evidenceSorting';
 import {
+  ALL_CLAUSES,
   ALL_COMPLIANCE_RESULTS,
   ALL_EVIDENCE_STATUSES,
   ALL_ISO,
   ALL_LOCATIONS,
+  type ClauseFilterValue,
   type EvidenceDocument,
   type EvidenceFilterState,
   type SortKey,
@@ -22,6 +24,7 @@ import {
 const INITIAL_FILTERS: EvidenceFilterState = {
   search: '',
   iso: ALL_ISO,
+  clause: ALL_CLAUSES,
   location: ALL_LOCATIONS,
   evidenceStatus: ALL_EVIDENCE_STATUSES,
   complianceResult: ALL_COMPLIANCE_RESULTS,
@@ -62,6 +65,15 @@ function App() {
     () => [ALL_LOCATIONS, ...Array.from(new Set(documents.map((doc) => doc.location))).sort()],
     [documents],
   );
+
+  const clauseOptions = useMemo<ClauseFilterValue[]>(() => {
+    const relevantClauses = documents.flatMap((doc) =>
+      doc.standards
+        .filter((standard) => filters.iso === ALL_ISO || standard.iso === filters.iso)
+        .flatMap((standard) => standard.clauses),
+    );
+    return [ALL_CLAUSES, ...Array.from(new Set(relevantClauses)).sort()];
+  }, [documents, filters.iso]);
 
   const documentsForCards = useMemo(
     () => documents.filter((doc) => matchesNonIsoFilters(doc, filters)),
@@ -107,6 +119,9 @@ function App() {
             <DashboardFilters
               search={filters.search}
               onSearchChange={(search) => setFilters((f) => ({ ...f, search }))}
+              clause={filters.clause}
+              onClauseChange={(clause) => setFilters((f) => ({ ...f, clause }))}
+              clauseOptions={clauseOptions}
               location={filters.location}
               onLocationChange={(location) => setFilters((f) => ({ ...f, location }))}
               locationOptions={locationOptions}
@@ -120,7 +135,8 @@ function App() {
             <IsoStandardCards
               documentsForCards={documentsForCards}
               selectedIso={filters.iso}
-              onSelectIso={(iso) => setFilters((f) => ({ ...f, iso }))}
+              onSelectIso={(iso) => setFilters((f) => ({ ...f, iso, clause: ALL_CLAUSES }))}
+              selectedClause={filters.clause}
             />
 
             <DocumentsChart documents={filteredDocuments} />

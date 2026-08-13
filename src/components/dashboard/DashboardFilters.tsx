@@ -1,6 +1,8 @@
 import { Search } from 'lucide-react';
+import { CLAUSE_LABELS } from '../../data/clauses';
 import { COMPLIANCE_RESULT_OPTIONS, EVIDENCE_STATUS_OPTIONS } from '../../data/filterOptions';
 import type {
+  ClauseFilterValue,
   ComplianceResultFilterValue,
   EvidenceStatusFilterValue,
   LocationFilterValue,
@@ -9,6 +11,9 @@ import type {
 interface DashboardFiltersProps {
   search: string;
   onSearchChange: (value: string) => void;
+  clause: ClauseFilterValue;
+  onClauseChange: (value: ClauseFilterValue) => void;
+  clauseOptions: ClauseFilterValue[];
   location: LocationFilterValue;
   onLocationChange: (value: LocationFilterValue) => void;
   locationOptions: LocationFilterValue[];
@@ -25,6 +30,9 @@ const selectClass =
 export function DashboardFilters({
   search,
   onSearchChange,
+  clause,
+  onClauseChange,
+  clauseOptions,
   location,
   onLocationChange,
   locationOptions,
@@ -52,6 +60,24 @@ export function DashboardFilters({
           onChange={(event) => onSearchChange(event.target.value)}
           className="w-full rounded-md border border-slate-300 bg-slate-50 py-2 pl-8 pr-3 text-[13.5px] text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1"
         />
+      </div>
+
+      <div>
+        <label htmlFor="clause-filter" className="sr-only">
+          Clause/Control
+        </label>
+        <select
+          id="clause-filter"
+          value={clause}
+          onChange={(event) => onClauseChange(event.target.value as ClauseFilterValue)}
+          className={selectClass}
+        >
+          {clauseOptions.map((option) => (
+            <option key={option} value={option}>
+              {option in CLAUSE_LABELS ? `${option} — ${CLAUSE_LABELS[option as keyof typeof CLAUSE_LABELS]}` : option}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>
