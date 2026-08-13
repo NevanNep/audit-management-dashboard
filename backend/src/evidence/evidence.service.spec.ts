@@ -12,14 +12,15 @@ describe('EvidenceService', () => {
 
   const sampleEvidence: Evidence[] = [
     {
-      documentId: 'DOC-0001',
-      document: 'Firewall Configuration Review',
-      standards: 'ISMS',
-      clause: '8.1 Operational planning and control',
+      evidenceId: 'EVD-001',
+      documentEvidence: 'Firewall Configuration Review',
+      standards: [
+        { standard: 'ISMS', clauses: ['8.1'] },
+        { standard: 'PIMS', clauses: ['8.1'] },
+      ],
       location: 'United States',
       evidenceStatus: 'Accepted',
       complianceResult: 'Compliant',
-      dueDate: '2026-05-20',
       documentUrl: 'https://example.sharepoint.com/document.pdf',
     },
   ];
