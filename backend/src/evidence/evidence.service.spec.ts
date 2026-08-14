@@ -23,6 +23,15 @@ describe('EvidenceService', () => {
       complianceResult: 'Compliant',
       documentUrl: 'https://example.sharepoint.com/document.pdf',
     },
+    {
+      evidenceId: 'EVD-002',
+      documentEvidence: 'Access Control Policy',
+      standards: [{ standard: 'ISMS', clauses: ['5.1'] }],
+      location: 'Germany',
+      evidenceStatus: 'Pending Review',
+      complianceResult: 'Not assessed',
+      documentUrl: '',
+    },
   ];
 
   beforeEach(async () => {
@@ -44,5 +53,40 @@ describe('EvidenceService', () => {
     // eslint-disable-next-line @typescript-eslint/unbound-method -- jest.Mocked property reference, not a call
     expect(evidenceSource.findAll).toHaveBeenCalledTimes(1);
     expect(result).toEqual(sampleEvidence);
+  });
+
+  it('caches the source result across calls within the TTL', async () => {
+    await service.findAll();
+    await service.findPage({
+      page: 1,
+      pageSize: 10,
+      sortKey: 'documentId',
+      sortDirection: 'asc',
+    });
+    await service.getStats({});
+
+    // eslint-disable-next-line @typescript-eslint/unbound-method -- jest.Mocked property reference, not a call
+    expect(evidenceSource.findAll).toHaveBeenCalledTimes(1);
+  });
+
+  it('returns a paginated, filtered page of evidence', async () => {
+    const result = await service.findPage({
+      page: 1,
+      pageSize: 10,
+      location: 'Germany',
+      sortKey: 'documentId',
+      sortDirection: 'asc',
+    });
+
+    expect(result.total).toBe(1);
+    expect(result.items).toHaveLength(1);
+    expect(result.items[0].evidenceId).toBe('EVD-002');
+  });
+
+  it('returns aggregate stats over the full dataset', async () => {
+    const stats = await service.getStats({});
+
+    expect(stats.overall.total).toBe(2);
+    expect(stats.locationOptions).toEqual(['Germany', 'United States']);
   });
 });

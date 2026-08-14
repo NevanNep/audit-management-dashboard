@@ -1,14 +1,12 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DashboardHeader } from './components/dashboard/DashboardHeader';
 import { DashboardFilters } from './components/dashboard/DashboardFilters';
 import { IsoStandardCards } from './components/dashboard/IsoStandardCards';
 import { DocumentsChart } from './components/dashboard/DocumentsChart';
 import { ComplianceResultChart } from './components/dashboard/ComplianceResultChart';
 import { DocumentsTable } from './components/dashboard/DocumentsTable';
-import { fetchEvidence } from './services/evidenceApi';
+import { fetchEvidencePage, fetchEvidenceStats, type EvidenceStatsResponse } from './services/evidenceApi';
 import { mapEvidenceToDocument } from './utils/evidenceMapper';
-import { filterDocuments, matchesNonIsoFilters } from './utils/evidenceFilters';
-import { sortDocuments } from './utils/evidenceSorting';
 import {
   ALL_CLAUSES,
   ALL_COMPLIANCE_RESULTS,
@@ -18,6 +16,7 @@ import {
   type ClauseFilterValue,
   type EvidenceDocument,
   type EvidenceFilterState,
+  type LocationFilterValue,
   type SortKey,
   type SortState,
 } from './types/evidence';
@@ -32,75 +31,88 @@ const INITIAL_FILTERS: EvidenceFilterState = {
 };
 
 const INITIAL_SORT: SortState = { key: 'documentId', direction: 'asc' };
+const PAGE_SIZE = 10;
+
+const EMPTY_STATS: EvidenceStatsResponse = {
+  locationOptions: [],
+  clauseOptions: [],
+  overall: { total: 0, overdueCount: 0, segments: [] },
+  byStandard: [],
+  evidenceStatusCounts: [],
+  complianceResultCounts: [],
+};
 
 function App() {
   const [documents, setDocuments] = useState<EvidenceDocument[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [total, setTotal] = useState(0);
+  const [stats, setStats] = useState<EvidenceStatsResponse>(EMPTY_STATS);
   const [filters, setFilters] = useState<EvidenceFilterState>(INITIAL_FILTERS);
+  const [page, setPage] = useState(1);
   const [sortState, setSortState] = useState<SortState>(INITIAL_SORT);
+  const [error, setError] = useState<string | null>(null);
+  const [loadedRequestKey, setLoadedRequestKey] = useState<string | null>(null);
+
+  const requestKey = JSON.stringify([filters, page, sortState]);
+  const isLoading = loadedRequestKey !== requestKey;
 
   useEffect(() => {
     let cancelled = false;
 
-    fetchEvidence()
-      .then((records) => {
+    fetchEvidencePage(filters, page, PAGE_SIZE, sortState.key, sortState.direction)
+      .then((res) => {
         if (cancelled) return;
-        setDocuments(records.map(mapEvidenceToDocument));
+        setDocuments(res.items.map(mapEvidenceToDocument));
+        setTotal(res.total);
         setError(null);
+        setLoadedRequestKey(requestKey);
       })
       .catch((err: unknown) => {
         if (cancelled) return;
         setError(err instanceof Error ? err.message : 'Failed to load evidence.');
-      })
-      .finally(() => {
-        if (!cancelled) setIsLoading(false);
+        setLoadedRequestKey(requestKey);
       });
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [filters, page, sortState, requestKey]);
 
-  const locationOptions = useMemo(
-    () => [ALL_LOCATIONS, ...Array.from(new Set(documents.map((doc) => doc.location))).sort()],
-    [documents],
-  );
+  useEffect(() => {
+    let cancelled = false;
 
-  const clauseOptions = useMemo<ClauseFilterValue[]>(() => {
-    const relevantClauses = documents.flatMap((doc) =>
-      doc.standards
-        .filter((standard) => filters.iso === ALL_ISO || standard.iso === filters.iso)
-        .flatMap((standard) => standard.clauses),
-    );
-    return [ALL_CLAUSES, ...Array.from(new Set(relevantClauses)).sort()];
-  }, [documents, filters.iso]);
+    fetchEvidenceStats(filters)
+      .then((res) => {
+        if (!cancelled) setStats(res);
+      })
+      .catch((err: unknown) => {
+        if (!cancelled) setError(err instanceof Error ? err.message : 'Failed to load evidence stats.');
+      });
 
-  const documentsForCards = useMemo(
-    () => documents.filter((doc) => matchesNonIsoFilters(doc, filters)),
-    [documents, filters],
-  );
+    return () => {
+      cancelled = true;
+    };
+  }, [filters]);
 
-  const filteredDocuments = useMemo(
-    () => filterDocuments(documents, filters),
-    [documents, filters],
-  );
-
-  const sortedDocuments = useMemo(
-    () => sortDocuments(filteredDocuments, sortState.key, sortState.direction),
-    [filteredDocuments, sortState],
-  );
+  function updateFilters(patch: Partial<EvidenceFilterState>) {
+    setFilters((f) => ({ ...f, ...patch }));
+    setPage(1);
+  }
 
   function handleSort(key: SortKey) {
     setSortState((current) => ({
       key,
       direction: current.key === key && current.direction === 'asc' ? 'desc' : 'asc',
     }));
+    setPage(1);
   }
 
   function handleReset() {
     setFilters(INITIAL_FILTERS);
+    setPage(1);
   }
+
+  const locationOptions: LocationFilterValue[] = [ALL_LOCATIONS, ...stats.locationOptions];
+  const clauseOptions = [ALL_CLAUSES, ...stats.clauseOptions] as ClauseFilterValue[];
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -119,37 +131,40 @@ function App() {
           <>
             <DashboardFilters
               search={filters.search}
-              onSearchChange={(search) => setFilters((f) => ({ ...f, search }))}
+              onSearchChange={(search) => updateFilters({ search })}
               clause={filters.clause}
-              onClauseChange={(clause) => setFilters((f) => ({ ...f, clause }))}
+              onClauseChange={(clause) => updateFilters({ clause })}
               clauseOptions={clauseOptions}
               location={filters.location}
-              onLocationChange={(location) => setFilters((f) => ({ ...f, location }))}
+              onLocationChange={(location) => updateFilters({ location })}
               locationOptions={locationOptions}
               evidenceStatus={filters.evidenceStatus}
-              onEvidenceStatusChange={(evidenceStatus) => setFilters((f) => ({ ...f, evidenceStatus }))}
+              onEvidenceStatusChange={(evidenceStatus) => updateFilters({ evidenceStatus })}
               complianceResult={filters.complianceResult}
-              onComplianceResultChange={(complianceResult) => setFilters((f) => ({ ...f, complianceResult }))}
+              onComplianceResultChange={(complianceResult) => updateFilters({ complianceResult })}
               onReset={handleReset}
             />
 
             <IsoStandardCards
-              documentsForCards={documentsForCards}
+              overall={stats.overall}
+              byStandard={stats.byStandard}
               selectedIso={filters.iso}
-              onSelectIso={(iso) => setFilters((f) => ({ ...f, iso, clause: ALL_CLAUSES }))}
-              selectedClause={filters.clause}
+              onSelectIso={(iso) => updateFilters({ iso, clause: ALL_CLAUSES })}
             />
 
             <div className="mb-6 flex flex-wrap gap-6">
-              <DocumentsChart documents={filteredDocuments} />
-              <ComplianceResultChart documents={filteredDocuments} />
+              <DocumentsChart counts={stats.evidenceStatusCounts} />
+              <ComplianceResultChart counts={stats.complianceResultCounts} />
             </div>
 
             <DocumentsTable
-              documents={sortedDocuments}
-              totalCount={filteredDocuments.length}
+              documents={documents}
+              totalCount={total}
+              page={page}
+              pageSize={PAGE_SIZE}
               sortState={sortState}
               onSort={handleSort}
+              onPageChange={setPage}
               onResetFilters={handleReset}
             />
 

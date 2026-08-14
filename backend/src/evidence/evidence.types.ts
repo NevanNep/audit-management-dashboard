@@ -33,9 +33,13 @@ export const EVIDENCE_STATUS_VALUES = [
   'Missing',
 ] as const;
 
+export type EvidenceStatusValue = (typeof EVIDENCE_STATUS_VALUES)[number];
+
 export const COMPLIANCE_RESULT_VALUES = [
   'Compliant',
   'Partially compliant',
   'Non-compliant',
   'Not assessed',
 ] as const;
+
+export type ComplianceResultValue = (typeof COMPLIANCE_RESULT_VALUES)[number];

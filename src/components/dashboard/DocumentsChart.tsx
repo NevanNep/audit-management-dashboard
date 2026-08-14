@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 import { evidenceDotColor } from '../../utils/statusColors';
-import type { EvidenceDocument, EvidenceStatus } from '../../types/evidence';
+import type { CountStat } from '../../services/evidenceApi';
+import type { EvidenceStatus } from '../../types/evidence';
 
 interface DocumentsChartProps {
-  documents: EvidenceDocument[];
+  counts: CountStat[];
 }
 
 const EVIDENCE_STATUS_ORDER: EvidenceStatus[] = [
@@ -13,15 +14,16 @@ const EVIDENCE_STATUS_ORDER: EvidenceStatus[] = [
   'Missing',
 ];
 
-export function DocumentsChart({ documents }: DocumentsChartProps) {
+export function DocumentsChart({ counts }: DocumentsChartProps) {
   const rows = useMemo(() => {
-    const counts = EVIDENCE_STATUS_ORDER.map((status) => ({
+    const countByStatus = new Map(counts.map((stat) => [stat.value, stat.count]));
+    const rows = EVIDENCE_STATUS_ORDER.map((status) => ({
       status,
-      count: documents.filter((doc) => doc.evidenceStatus === status).length,
+      count: countByStatus.get(status) ?? 0,
     })).filter((row) => row.count > 0);
-    const max = Math.max(1, ...counts.map((row) => row.count));
-    return counts.map((row) => ({ ...row, widthPercent: (row.count / max) * 100 }));
-  }, [documents]);
+    const max = Math.max(1, ...rows.map((row) => row.count));
+    return rows.map((row) => ({ ...row, widthPercent: (row.count / max) * 100 }));
+  }, [counts]);
 
   return (
     <div className="min-w-[320px] flex-1 basis-[320px] rounded-[10px] border border-slate-200 bg-white p-5 shadow-sm">
