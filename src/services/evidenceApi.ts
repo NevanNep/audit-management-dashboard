@@ -78,6 +78,7 @@ function buildFilterParams(filters: EvidenceFilterState): URLSearchParams {
   if (filters.complianceResult !== ALL_COMPLIANCE_RESULTS) {
     params.set('complianceResult', filters.complianceResult);
   }
+  if (filters.overdueOnly) params.set('overdue', 'true');
   return params;
 }
 

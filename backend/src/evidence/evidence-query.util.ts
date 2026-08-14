@@ -38,6 +38,7 @@ export interface EvidenceFilterParams {
   location?: string;
   evidenceStatus?: EvidenceStatusValue;
   complianceResult?: ComplianceResultValue;
+  overdueOnly?: boolean;
 }
 
 export interface EvidenceQuery extends EvidenceFilterParams {
@@ -97,7 +98,8 @@ function matchesCommonFilters(
     (!filters.evidenceStatus ||
       evidence.evidenceStatus === filters.evidenceStatus) &&
     (!filters.complianceResult ||
-      evidence.complianceResult === filters.complianceResult)
+      evidence.complianceResult === filters.complianceResult) &&
+    (!filters.overdueOnly || isOverdue(evidence.dueDate))
   );
 }
 

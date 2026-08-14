@@ -30,6 +30,7 @@ export interface RawEvidenceQuery {
   location?: string;
   evidenceStatus?: string;
   complianceResult?: string;
+  overdue?: string;
   sortKey?: string;
   sortDirection?: string;
 }
@@ -76,6 +77,7 @@ export function parseFilterParams(raw: RawEvidenceQuery): EvidenceFilterParams {
       COMPLIANCE_RESULT_VALUES,
       'complianceResult',
     ),
+    overdueOnly: raw.overdue === 'true' || undefined,
   };
 }
 

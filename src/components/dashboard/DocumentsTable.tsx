@@ -5,7 +5,8 @@ import { ClauseTag } from '../ui/ClauseTag';
 import { ComplianceResultBadge, EvidenceStatusBadge } from '../ui/StatusBadge';
 import { formatDueDate, isOverdue } from '../../utils/evidenceFormatting';
 import { getStandardName } from '../../data/isoStandards';
-import type { EvidenceDocument, SortKey, SortState } from '../../types/evidence';
+import { ALL_ISO } from '../../types/evidence';
+import type { EvidenceDocument, IsoFilterValue, SortKey, SortState } from '../../types/evidence';
 
 interface DocumentsTableProps {
   documents: EvidenceDocument[];
@@ -16,6 +17,7 @@ interface DocumentsTableProps {
   onSort: (key: SortKey) => void;
   onPageChange: (page: number) => void;
   onResetFilters: () => void;
+  activeIso: IsoFilterValue;
 }
 
 interface ColumnDef {
@@ -49,6 +51,7 @@ export function DocumentsTable({
   onSort,
   onPageChange,
   onResetFilters,
+  activeIso,
 }: DocumentsTableProps) {
   const isEmpty = documents.length === 0;
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
@@ -121,6 +124,7 @@ export function DocumentsTable({
                   doc={doc}
                   isExpanded={expandedIds.has(doc.id)}
                   onToggle={toggleRow}
+                  activeIso={activeIso}
                 />
               ))}
             </tbody>
@@ -166,9 +170,10 @@ interface DocumentRowProps {
   doc: EvidenceDocument;
   isExpanded: boolean;
   onToggle: (id: string) => void;
+  activeIso: IsoFilterValue;
 }
 
-function DocumentRow({ doc, isExpanded, onToggle }: DocumentRowProps) {
+function DocumentRow({ doc, isExpanded, onToggle, activeIso }: DocumentRowProps) {
   const overdue = isOverdue(doc.dueDate);
   const wrapClass = isExpanded ? 'whitespace-normal break-words' : 'truncate overflow-hidden whitespace-nowrap';
 
@@ -206,29 +211,41 @@ function DocumentRow({ doc, isExpanded, onToggle }: DocumentRowProps) {
         title={isExpanded ? undefined : doc.standards.map((standard) => standard.iso).join(', ')}
       >
         <div className="flex min-w-0 flex-wrap gap-1">
-          {doc.standards.map((standard) => (
-            <span
-              key={standard.iso}
-              title={standard.iso}
-              className="inline-block rounded-md bg-slate-100 px-1.5 py-0.5 font-mono text-[11px] font-semibold text-slate-600"
-            >
-              {getStandardName(standard.iso)}
-            </span>
-          ))}
+          {doc.standards.map((standard) => {
+            const isActive = activeIso !== ALL_ISO && standard.iso === activeIso;
+            return (
+              <span
+                key={standard.iso}
+                title={standard.iso}
+                className={`inline-block rounded-md px-1.5 py-0.5 font-mono text-[11px] font-semibold ${
+                  isActive
+                    ? 'bg-accent text-white ring-2 ring-accent-tint'
+                    : 'bg-slate-100 text-slate-600'
+                }`}
+              >
+                {getStandardName(standard.iso)}
+              </span>
+            );
+          })}
         </div>
       </td>
       <td className="overflow-hidden border-b border-slate-100 px-3 py-3.5 align-top">
         <div className="flex min-w-0 flex-col gap-1.5">
-          {doc.standards.map((standard) => (
+          {doc.standards.map((standard) => {
+            const isActive = activeIso !== ALL_ISO && standard.iso === activeIso;
+            return (
             <div key={standard.iso} className="flex min-w-0 flex-wrap items-center gap-1">
-              <span className="font-mono text-[10px] font-semibold text-slate-400">
+              <span
+                className={`font-mono text-[10px] font-semibold ${isActive ? 'text-accent' : 'text-slate-400'}`}
+              >
                 {getStandardName(standard.iso)}
               </span>
               {standard.clauses.map((clause) => (
                 <ClauseTag key={`${standard.iso}-${clause}`} iso={standard.iso} clause={clause} expanded={isExpanded} />
               ))}
             </div>
-          ))}
+            );
+          })}
         </div>
       </td>
       <td
