@@ -60,6 +60,7 @@ export interface EvidenceFilterState {
   location: LocationFilterValue;
   evidenceStatus: EvidenceStatusFilterValue;
   complianceResult: ComplianceResultFilterValue;
+  overdueOnly: boolean;
 }
 
 export type SortKey =

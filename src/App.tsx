@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { DashboardHeader } from './components/dashboard/DashboardHeader';
 import { DashboardFilters } from './components/dashboard/DashboardFilters';
+import { AllStandardsCard } from './components/dashboard/AllStandardsCard';
 import { IsoStandardCards } from './components/dashboard/IsoStandardCards';
 import { DocumentsChart } from './components/dashboard/DocumentsChart';
 import { ComplianceResultChart } from './components/dashboard/ComplianceResultChart';
@@ -28,6 +29,7 @@ const INITIAL_FILTERS: EvidenceFilterState = {
   location: ALL_LOCATIONS,
   evidenceStatus: ALL_EVIDENCE_STATUSES,
   complianceResult: ALL_COMPLIANCE_RESULTS,
+  overdueOnly: false,
 };
 
 const INITIAL_SORT: SortState = { key: 'documentId', direction: 'asc' };
@@ -129,6 +131,23 @@ function App() {
           </div>
         ) : (
           <>
+            <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
+              <AllStandardsCard
+                overall={stats.overall}
+                evidenceStatusCounts={stats.evidenceStatusCounts}
+                isSelected={filters.iso === ALL_ISO}
+                onSelect={() => updateFilters({ iso: ALL_ISO, clause: ALL_CLAUSES })}
+              />
+              <DocumentsChart counts={stats.evidenceStatusCounts} />
+              <ComplianceResultChart counts={stats.complianceResultCounts} />
+            </div>
+
+            <IsoStandardCards
+              byStandard={stats.byStandard}
+              selectedIso={filters.iso}
+              onSelectIso={(iso) => updateFilters({ iso, clause: ALL_CLAUSES })}
+            />
+
             <DashboardFilters
               search={filters.search}
               onSearchChange={(search) => updateFilters({ search })}
@@ -142,20 +161,10 @@ function App() {
               onEvidenceStatusChange={(evidenceStatus) => updateFilters({ evidenceStatus })}
               complianceResult={filters.complianceResult}
               onComplianceResultChange={(complianceResult) => updateFilters({ complianceResult })}
+              overdueOnly={filters.overdueOnly}
+              onOverdueOnlyChange={(overdueOnly) => updateFilters({ overdueOnly })}
               onReset={handleReset}
             />
-
-            <IsoStandardCards
-              overall={stats.overall}
-              byStandard={stats.byStandard}
-              selectedIso={filters.iso}
-              onSelectIso={(iso) => updateFilters({ iso, clause: ALL_CLAUSES })}
-            />
-
-            <div className="mb-6 flex flex-wrap gap-6">
-              <DocumentsChart counts={stats.evidenceStatusCounts} />
-              <ComplianceResultChart counts={stats.complianceResultCounts} />
-            </div>
 
             <DocumentsTable
               documents={documents}
@@ -166,6 +175,7 @@ function App() {
               onSort={handleSort}
               onPageChange={setPage}
               onResetFilters={handleReset}
+              activeIso={filters.iso}
             />
 
             <p className="text-xs text-slate-500">
