@@ -1,21 +1,18 @@
 import { useMemo } from 'react';
 import { complianceIconColor } from '../../utils/statusColors';
 import { ISO_STANDARDS } from '../../data/isoStandards';
-import { isOverdue } from '../../utils/evidenceFormatting';
+import type { CardStats, StandardCardStats } from '../../services/evidenceApi';
 import {
-  ALL_CLAUSES,
   ALL_ISO,
-  type ClauseFilterValue,
   type ComplianceResult,
-  type EvidenceDocument,
   type IsoFilterValue,
 } from '../../types/evidence';
 
 interface IsoStandardCardsProps {
-  documentsForCards: EvidenceDocument[];
+  overall: CardStats;
+  byStandard: StandardCardStats[];
   selectedIso: IsoFilterValue;
   onSelectIso: (iso: IsoFilterValue) => void;
-  selectedClause: ClauseFilterValue;
 }
 
 const COMPLIANCE_ORDER: ComplianceResult[] = [
@@ -37,43 +34,50 @@ interface CardData {
   segments: { result: ComplianceResult; widthPercent: number }[];
 }
 
-export function IsoStandardCards({
-  documentsForCards,
-  selectedIso,
-  onSelectIso,
-  selectedClause,
-}: IsoStandardCardsProps) {
+function toSegments(stats: CardStats): { result: ComplianceResult; widthPercent: number }[] {
+  const segmentCounts = new Map(stats.segments.map((segment) => [segment.result, segment.count]));
+  const segMax = Math.max(1, stats.total);
+  return COMPLIANCE_ORDER.map((result) => ({
+    result,
+    widthPercent: ((segmentCounts.get(result) ?? 0) / segMax) * 100,
+  })).filter((segment) => segment.widthPercent > 0);
+}
+
+export function IsoStandardCards({ overall, byStandard, selectedIso, onSelectIso }: IsoStandardCardsProps) {
   const cards = useMemo<CardData[]>(() => {
+    const statsByStandard = new Map(byStandard.map((entry) => [entry.standard, entry]));
+    const emptyStats: CardStats = { total: 0, overdueCount: 0, segments: [] };
+
     const definitions = [
-      { filterValue: ALL_ISO as IsoFilterValue, code: 'All ISO', label: 'All standards', standard: undefined, isAll: true },
+      {
+        filterValue: ALL_ISO as IsoFilterValue,
+        code: 'All ISO',
+        label: 'All standards',
+        standard: undefined,
+        isAll: true,
+        stats: overall,
+      },
       ...ISO_STANDARDS.map((std) => ({
         filterValue: std.code as IsoFilterValue,
         code: std.code,
         label: std.shortName,
         standard: std.standard,
         isAll: false,
+        stats: statsByStandard.get(std.standard) ?? emptyStats,
       })),
     ];
 
-    return definitions.map((def) => {
-      const docsHere = documentsForCards.filter((doc) =>
-        doc.standards.some(
-          (standard) =>
-            (def.isAll || standard.iso === def.filterValue) &&
-            (selectedClause === ALL_CLAUSES || standard.clauses.includes(selectedClause)),
-        ),
-      );
-      const total = docsHere.length;
-      const overdueCount = docsHere.filter((doc) => isOverdue(doc.dueDate)).length;
-      const segMax = Math.max(1, total);
-      const segments = COMPLIANCE_ORDER.map((result) => ({
-        result,
-        widthPercent: (docsHere.filter((doc) => doc.complianceResult === result).length / segMax) * 100,
-      })).filter((seg) => seg.widthPercent > 0);
-
-      return { ...def, total, overdueCount, segments };
-    });
-  }, [documentsForCards, selectedClause]);
+    return definitions.map((def) => ({
+      filterValue: def.filterValue,
+      code: def.code,
+      label: def.label,
+      standard: def.standard,
+      isAll: def.isAll,
+      total: def.stats.total,
+      overdueCount: def.stats.overdueCount,
+      segments: toSegments(def.stats),
+    }));
+  }, [overall, byStandard]);
 
   return (
     <div className="mb-6">

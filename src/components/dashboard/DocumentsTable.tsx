@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowDown, ArrowUp, ChevronDown, ChevronRight, ExternalLink } from 'lucide-react';
+import { ArrowDown, ArrowUp, ChevronDown, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { EmptyState } from './EmptyState';
 import { ClauseTag } from '../ui/ClauseTag';
 import { ComplianceResultBadge, EvidenceStatusBadge } from '../ui/StatusBadge';
@@ -10,8 +10,11 @@ import type { EvidenceDocument, SortKey, SortState } from '../../types/evidence'
 interface DocumentsTableProps {
   documents: EvidenceDocument[];
   totalCount: number;
+  page: number;
+  pageSize: number;
   sortState: SortState;
   onSort: (key: SortKey) => void;
+  onPageChange: (page: number) => void;
   onResetFilters: () => void;
 }
 
@@ -37,9 +40,21 @@ function ariaSortFor(sortState: SortState, key: SortKey): 'ascending' | 'descend
   return sortState.direction === 'asc' ? 'ascending' : 'descending';
 }
 
-export function DocumentsTable({ documents, totalCount, sortState, onSort, onResetFilters }: DocumentsTableProps) {
+export function DocumentsTable({
+  documents,
+  totalCount,
+  page,
+  pageSize,
+  sortState,
+  onSort,
+  onPageChange,
+  onResetFilters,
+}: DocumentsTableProps) {
   const isEmpty = documents.length === 0;
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
+  const totalPages = Math.max(1, Math.ceil(totalCount / pageSize));
+  const rangeStart = totalCount === 0 ? 0 : (page - 1) * pageSize + 1;
+  const rangeEnd = Math.min(page * pageSize, totalCount);
 
   const toggleRow = (id: string) => {
     setExpandedIds((prev) => {
@@ -110,6 +125,37 @@ export function DocumentsTable({ documents, totalCount, sortState, onSort, onRes
               ))}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {!isEmpty && (
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-3">
+          <div className="text-[12.5px] text-slate-500">
+            Showing {rangeStart}–{rangeEnd} of {totalCount}
+          </div>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => onPageChange(page - 1)}
+              disabled={page <= 1}
+              className="inline-flex items-center gap-1 rounded-md border border-slate-300 px-2.5 py-1.5 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1"
+            >
+              <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
+              Previous
+            </button>
+            <span className="text-[12.5px] text-slate-600">
+              Page {page} of {totalPages}
+            </span>
+            <button
+              type="button"
+              onClick={() => onPageChange(page + 1)}
+              disabled={page >= totalPages}
+              className="inline-flex items-center gap-1 rounded-md border border-slate-300 px-2.5 py-1.5 text-[12.5px] font-semibold text-slate-600 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1"
+            >
+              Next
+              <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </button>
+          </div>
         </div>
       )}
     </div>

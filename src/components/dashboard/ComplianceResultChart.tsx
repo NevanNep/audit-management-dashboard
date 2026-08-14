@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 import { complianceIconColor } from '../../utils/statusColors';
-import type { ComplianceResult, EvidenceDocument } from '../../types/evidence';
+import type { CountStat } from '../../services/evidenceApi';
+import type { ComplianceResult } from '../../types/evidence';
 
 interface ComplianceResultChartProps {
-  documents: EvidenceDocument[];
+  counts: CountStat[];
 }
 
 const COMPLIANCE_RESULT_ORDER: ComplianceResult[] = [
@@ -14,15 +15,16 @@ const COMPLIANCE_RESULT_ORDER: ComplianceResult[] = [
   'Not assessed',
 ];
 
-export function ComplianceResultChart({ documents }: ComplianceResultChartProps) {
+export function ComplianceResultChart({ counts }: ComplianceResultChartProps) {
   const rows = useMemo(() => {
-    const counts = COMPLIANCE_RESULT_ORDER.map((result) => ({
+    const countByResult = new Map(counts.map((stat) => [stat.value, stat.count]));
+    const rows = COMPLIANCE_RESULT_ORDER.map((result) => ({
       result,
-      count: documents.filter((doc) => doc.complianceResult === result).length,
+      count: countByResult.get(result) ?? 0,
     })).filter((row) => row.count > 0);
-    const max = Math.max(1, ...counts.map((row) => row.count));
-    return counts.map((row) => ({ ...row, widthPercent: (row.count / max) * 100 }));
-  }, [documents]);
+    const max = Math.max(1, ...rows.map((row) => row.count));
+    return rows.map((row) => ({ ...row, widthPercent: (row.count / max) * 100 }));
+  }, [counts]);
 
   return (
     <div className="min-w-[320px] flex-1 basis-[320px] rounded-[10px] border border-slate-200 bg-white p-5 shadow-sm">
