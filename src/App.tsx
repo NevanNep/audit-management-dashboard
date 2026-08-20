@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, LayoutGrid } from 'lucide-react';
 import { DashboardHeader } from './components/dashboard/DashboardHeader';
-import { DashboardFilters } from './components/dashboard/DashboardFilters';
 import { AllStandardsCard } from './components/dashboard/AllStandardsCard';
 import { IsoStandardCards } from './components/dashboard/IsoStandardCards';
-import { DocumentsChart } from './components/dashboard/DocumentsChart';
-import { ComplianceResultChart } from './components/dashboard/ComplianceResultChart';
+import { ChartsPanel } from './components/dashboard/ChartsPanel';
 import { DocumentsTable } from './components/dashboard/DocumentsTable';
 import { fetchEvidencePage, fetchEvidenceStats, type EvidenceStatsResponse } from './services/evidenceApi';
 import { mapEvidenceToDocument } from './utils/evidenceMapper';
+import { ISO_STANDARDS } from './data/isoStandards';
 import {
   ALL_CLAUSES,
   ALL_COMPLIANCE_RESULTS,
@@ -17,6 +17,7 @@ import {
   type ClauseFilterValue,
   type EvidenceDocument,
   type EvidenceFilterState,
+  type IsoCode,
   type LocationFilterValue,
   type SortKey,
   type SortState,
@@ -53,6 +54,7 @@ function App() {
   const [sortState, setSortState] = useState<SortState>(INITIAL_SORT);
   const [error, setError] = useState<string | null>(null);
   const [loadedRequestKey, setLoadedRequestKey] = useState<string | null>(null);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => window.innerWidth < 1366);
 
   const requestKey = JSON.stringify([filters, page, sortState]);
   const isLoading = loadedRequestKey !== requestKey;
@@ -113,78 +115,150 @@ function App() {
     setPage(1);
   }
 
+  function selectIso(iso: EvidenceFilterState['iso']) {
+    updateFilters({ iso, clause: ALL_CLAUSES });
+    setSidebarCollapsed(false);
+  }
+
   const locationOptions: LocationFilterValue[] = [ALL_LOCATIONS, ...stats.locationOptions];
   const clauseOptions = [ALL_CLAUSES, ...stats.clauseOptions] as ClauseFilterValue[];
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="mx-auto max-w-[1440px] px-6 py-8 sm:px-8 md:px-12 md:py-10">
-        <DashboardHeader />
-
-        {error ? (
-          <div className="mb-5 rounded-[10px] border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">
-            Couldn't load evidence from the server: {error}
-          </div>
-        ) : isLoading ? (
-          <div className="mb-5 rounded-[10px] border border-slate-200 bg-white p-8 text-center text-sm text-slate-500 shadow-sm">
-            Loading evidence...
+    <div className="flex min-h-screen bg-slate-50">
+      {/* ── Left sidebar: flows with the page (browser-scrolling it moves the sidebar too), but its
+             own content is capped to one viewport tall with its own scroll — scrolling while hovered
+             over it moves only the panel, and overscroll-contain stops that from spilling into the
+             page scroll once it hits the top/bottom. ── */}
+      <aside
+        className={`relative flex shrink-0 self-start flex-col border-r border-slate-200 bg-white transition-[width] duration-200 ${
+          sidebarCollapsed ? 'w-12' : 'w-[272px]'
+        }`}
+      >
+        {sidebarCollapsed ? (
+          <div className="flex max-h-screen flex-col items-center gap-3 overflow-y-auto overscroll-contain py-4">
+            <button
+              type="button"
+              onClick={() => setSidebarCollapsed(false)}
+              title="Expand sidebar"
+              className="flex h-8 w-8 items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 focus:outline-none"
+            >
+              <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </button>
+            <div className="mx-auto h-px w-6 bg-slate-200" />
+            <button
+              type="button"
+              onClick={() => selectIso(ALL_ISO)}
+              title={`All standards — ${stats.overall.total} docs`}
+              className={`flex h-8 w-8 items-center justify-center rounded-md transition-colors focus:outline-none ${
+                filters.iso === ALL_ISO ? 'bg-accent text-white' : 'text-slate-500 hover:bg-slate-100'
+              }`}
+            >
+              <LayoutGrid className="h-3.5 w-3.5" aria-hidden="true" />
+            </button>
+            <div className="mx-auto h-px w-6 bg-slate-200" />
+            {ISO_STANDARDS.map((std) => {
+              const stdStats = stats.byStandard.find((entry) => entry.standard === std.standard);
+              const isActive = filters.iso === std.code;
+              const hasRisk = stdStats?.segments.some(
+                (segment) => segment.result === 'Non-compliant' || segment.result === 'Partially compliant',
+              );
+              return (
+                <button
+                  key={std.code}
+                  type="button"
+                  onClick={() => selectIso(std.code as IsoCode)}
+                  title={`${std.standard} (${std.code}) — ${stdStats?.total ?? 0} docs`}
+                  className={`relative flex h-8 w-8 items-center justify-center rounded-md text-[10px] font-bold transition-colors focus:outline-none ${
+                    isActive ? 'bg-accent text-white' : 'text-slate-500 hover:bg-slate-100'
+                  }`}
+                >
+                  {std.standard.slice(0, 2)}
+                  {hasRisk && !isActive && (
+                    <span aria-hidden="true" className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-amber-400" />
+                  )}
+                </button>
+              );
+            })}
           </div>
         ) : (
           <>
-            <div className="mb-4 grid grid-cols-1 gap-4 lg:grid-cols-3">
+            <button
+              type="button"
+              onClick={() => setSidebarCollapsed(true)}
+              title="Collapse sidebar"
+              className="absolute right-2 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 focus:outline-none"
+            >
+              <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
+            </button>
+            <div className="flex max-h-screen flex-col gap-3 overflow-y-auto overscroll-contain px-4 py-5 pr-10">
               <AllStandardsCard
                 overall={stats.overall}
                 evidenceStatusCounts={stats.evidenceStatusCounts}
                 isSelected={filters.iso === ALL_ISO}
-                onSelect={() => updateFilters({ iso: ALL_ISO, clause: ALL_CLAUSES })}
+                onSelect={() => selectIso(ALL_ISO)}
               />
-              <DocumentsChart counts={stats.evidenceStatusCounts} />
-              <ComplianceResultChart counts={stats.complianceResultCounts} />
+              <ChartsPanel
+                evidenceStatusCounts={stats.evidenceStatusCounts}
+                complianceResultCounts={stats.complianceResultCounts}
+                stacked
+              />
+              <IsoStandardCards byStandard={stats.byStandard} selectedIso={filters.iso} onSelectIso={selectIso} compact />
             </div>
-
-            <IsoStandardCards
-              byStandard={stats.byStandard}
-              selectedIso={filters.iso}
-              onSelectIso={(iso) => updateFilters({ iso, clause: ALL_CLAUSES })}
-            />
-
-            <DashboardFilters
-              search={filters.search}
-              onSearchChange={(search) => updateFilters({ search })}
-              clause={filters.clause}
-              onClauseChange={(clause) => updateFilters({ clause })}
-              clauseOptions={clauseOptions}
-              location={filters.location}
-              onLocationChange={(location) => updateFilters({ location })}
-              locationOptions={locationOptions}
-              evidenceStatus={filters.evidenceStatus}
-              onEvidenceStatusChange={(evidenceStatus) => updateFilters({ evidenceStatus })}
-              complianceResult={filters.complianceResult}
-              onComplianceResultChange={(complianceResult) => updateFilters({ complianceResult })}
-              overdueOnly={filters.overdueOnly}
-              onOverdueOnlyChange={(overdueOnly) => updateFilters({ overdueOnly })}
-              onReset={handleReset}
-            />
-
-            <DocumentsTable
-              documents={documents}
-              totalCount={total}
-              page={page}
-              pageSize={PAGE_SIZE}
-              sortState={sortState}
-              onSort={handleSort}
-              onPageChange={setPage}
-              onResetFilters={handleReset}
-              activeIso={filters.iso}
-            />
-
-            <p className="text-xs text-slate-500">
-              Read-only index — documents live in SharePoint. Rows past their due date are tinted regardless of
-              evidence status.
-            </p>
           </>
         )}
-      </div>
+      </aside>
+
+      {/* ── Main pane (flows normally; the browser scrolls the whole page) ── */}
+      <main className="flex min-w-0 flex-1 flex-col">
+        <div className="flex items-center border-b border-slate-200 bg-white px-6 py-3.5">
+          <DashboardHeader />
+        </div>
+
+        <div className="flex-1 px-6 py-4">
+          {error ? (
+            <div className="rounded-[10px] border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">
+              Couldn't load evidence from the server: {error}
+            </div>
+          ) : isLoading ? (
+            <div className="rounded-[10px] border border-slate-200 bg-white p-8 text-center text-sm text-slate-500 shadow-sm">
+              Loading evidence...
+            </div>
+          ) : (
+            <>
+              <DocumentsTable
+                documents={documents}
+                totalCount={total}
+                page={page}
+                pageSize={PAGE_SIZE}
+                sortState={sortState}
+                onSort={handleSort}
+                onPageChange={setPage}
+                onResetFilters={handleReset}
+                activeIso={filters.iso}
+                search={filters.search}
+                onSearchChange={(search) => updateFilters({ search })}
+                iso={filters.iso}
+                onIsoChange={selectIso}
+                clause={filters.clause}
+                onClauseChange={(clause) => updateFilters({ clause })}
+                clauseOptions={clauseOptions}
+                location={filters.location}
+                onLocationChange={(location) => updateFilters({ location })}
+                locationOptions={locationOptions}
+                evidenceStatus={filters.evidenceStatus}
+                onEvidenceStatusChange={(evidenceStatus) => updateFilters({ evidenceStatus })}
+                complianceResult={filters.complianceResult}
+                onComplianceResultChange={(complianceResult) => updateFilters({ complianceResult })}
+                overdueOnly={filters.overdueOnly}
+                onOverdueOnlyChange={(overdueOnly) => updateFilters({ overdueOnly })}
+              />
+              <p className="mt-2 text-xs text-slate-400">
+                Read-only index — documents live in SharePoint. Rows past their due date are tinted.
+              </p>
+            </>
+          )}
+        </div>
+      </main>
     </div>
   );
 }
