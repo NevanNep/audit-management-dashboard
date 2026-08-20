@@ -548,7 +548,10 @@ function ClausesCell({ standards, expanded }: { standards: EvidenceDocument['sta
   return (
     <div className={expanded ? 'flex flex-wrap items-baseline gap-x-1 gap-y-1' : 'flex items-baseline gap-x-1 overflow-hidden'}>
       {visible.map((entry, i) => (
-        <span key={`${entry.iso}-${entry.clause}-${i}`} className="inline-flex shrink-0 items-baseline gap-1 whitespace-nowrap">
+        <span
+          key={`${entry.iso}-${entry.clause}-${i}`}
+          className={`inline-flex items-baseline gap-1 ${expanded ? 'max-w-full flex-wrap whitespace-normal break-words' : 'shrink-0 whitespace-nowrap'}`}
+        >
           {entry.abbrev && <span className="font-mono text-[10.5px] font-medium text-slate-400">{entry.abbrev}</span>}
           <ClauseTag iso={entry.iso} clause={entry.clause} expanded={expanded} />
           {i < visible.length - 1 && <span className="text-slate-300">,</span>}
