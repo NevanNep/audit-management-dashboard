@@ -1,17 +1,15 @@
-import { CLAUSE_LABELS } from '../data/clauses';
+import { ALL_KNOWN_CLAUSE_CODES } from '../data/clauses';
 import { getIsoCodeByStandard } from '../data/isoStandards';
 import type { ApiEvidence } from '../services/evidenceApi';
 import type { ClauseCode, EvidenceDocument, EvidenceDocumentStandard } from '../types/evidence';
 
-const KNOWN_CLAUSE_CODES = (Object.keys(CLAUSE_LABELS) as ClauseCode[]).sort(
-  (a, b) => b.length - a.length,
-);
+const KNOWN_CLAUSE_CODES = [...ALL_KNOWN_CLAUSE_CODES].sort((a, b) => b.length - a.length);
 
 function parseClauseCode(clause: string): ClauseCode {
   const match = KNOWN_CLAUSE_CODES.find(
     (code) => clause === code || clause.startsWith(`${code} `),
   );
-  return (match ?? clause) as ClauseCode;
+  return match ?? clause;
 }
 
 function mapStandard(entry: ApiEvidence['standards'][number]): EvidenceDocumentStandard {

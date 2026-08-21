@@ -1,110 +1,50 @@
+import clauseMaster from './iso/clause-master.json';
+import clauseCrosswalk from './iso/clause-crosswalk.json';
 import type { ClauseCode, IsoCode } from '../types/evidence';
+import { getStandardName } from './isoStandards';
 
-export const CLAUSE_LABELS: Record<ClauseCode, string> = {
-  '4.1': 'Understanding the organization and its context',
-  '4.2': 'Understanding the needs and expectations of interested parties',
-  '4.3': 'Determining the scope of the XXX management system',
-  '4.4': 'XXX management system',
-  '5.1': 'Leadership and commitment',
-  '5.2': 'Policy',
-  '5.3': 'Organizational roles, responsibilities and authorities',
-  '6.1': 'Actions to address risks and opportunities',
-  '6.2': 'XXX Objectives and planning to achieve them',
-  '6.3': 'Planning of changes',
-  '7.1': 'Resources',
-  '7.2': 'Competence',
-  '7.3': 'Awareness',
-  '7.4': 'Communication',
-  '7.5': 'Documented information',
-  '7.5.1': 'General',
-  '7.5.2': 'Creating and updating',
-  '7.5.3': 'Control of documented information',
-  '8.1': 'Operational planning and control',
-  '9.1': 'Monitoring, measurement, analysis and evaluation',
-  '9.2': 'Internal audit',
-  '9.2.1': 'General',
-  '9.2.2': 'Internal audit programme',
-  '9.3': 'Management review',
-  '9.3.1':'General',
-  '9.3.2':'Management review inputs',
-  '9.3.3':'Management review results',
-  '10.1': 'Continoual improvement',
-  '10.2': 'Nonconformity and corrective action',
-};
+interface ClauseMasterRow {
+  standard: string;
+  clauseCode: string;
+  clauseTitle: string | null;
+}
 
-const CLAUSE_DESCRIPTIONS: Partial<Record<IsoCode, Partial<Record<ClauseCode, string>>>> = {
-  'ISO 27001': {
-    '4.1': 'Understanding the organization and its context',
-    '5.1': 'Leadership and commitment',
-    '6.1': 'Actions to address information security risks',
-    '7.2': 'Competence',
-    '7.5': 'Documented information',
-    '8.1': 'Operational planning and control',
-    '9.2': 'Internal audit',
-    '10.2': 'Nonconformity and corrective action',
-  },
-  'ISO 27701': {
-    '4.1': 'Understanding the organization (PIMS)',
-    '5.1': 'Leadership and commitment',
-    '6.1': 'Actions to address privacy risks and opportunities',
-    '7.2': 'Competence',
-    '7.5': 'Documented information',
-    '8.1': 'Operational planning and control of PII processing',
-    '9.2': 'Internal audit',
-    '10.2': 'Nonconformity and corrective action',
-  },
-  'ISO 20000': {
-    '4.1': 'Understanding the organization',
-    '5.1': 'Leadership and commitment',
-    '6.1': 'Actions to address risks and opportunities',
-    '7.2': 'Competence',
-    '7.5': 'Documented information',
-    '8.1': 'Operational planning and control of the SMS',
-    '9.2': 'Internal audit',
-    '10.2': 'Nonconformity and corrective action',
-  },
-  'ISO 22301': {
-    '4.1': 'Understanding the organization',
-    '5.1': 'Leadership and commitment',
-    '6.1': 'Actions to address risks and opportunities',
-    '7.2': 'Competence',
-    '7.5': 'Documented information',
-    '8.1': 'Business impact analysis and continuity planning',
-    '9.2': 'Internal audit',
-    '10.2': 'Nonconformity and corrective action',
-  },
-  'ISO 45001': {
-    '4.1': 'Understanding the organization',
-    '5.1': 'Leadership and worker participation',
-    '6.1': 'Actions to address OH&S risks and opportunities',
-    '7.2': 'Competence',
-    '7.5': 'Documented information',
-    '8.1': 'Operational planning and control',
-    '9.2': 'Internal audit',
-    '10.2': 'Incident, nonconformity and corrective action',
-  },
-  'ISO 37001': {
-    '4.1': 'Understanding the organization',
-    '5.1': 'Leadership and commitment',
-    '6.1': 'Actions to address bribery risks and opportunities',
-    '7.2': 'Competence',
-    '7.5': 'Documented information',
-    '8.1': 'Operational planning and control (anti-bribery)',
-    '9.2': 'Internal audit',
-    '10.2': 'Nonconformity and corrective action',
-  },
-  'ISO 50001': {
-    '4.1': 'Understanding the organization',
-    '5.1': 'Leadership and commitment',
-    '6.1': 'Actions to address risks and opportunities (energy)',
-    '7.2': 'Competence',
-    '7.5': 'Documented information',
-    '8.1': 'Operational planning and control',
-    '9.2': 'Internal audit',
-    '10.2': 'Nonconformity and corrective action',
-  },
-};
+interface CrosswalkRow {
+  hlsAnchorClause: string | null;
+  hlsAnchorTitle: string | null;
+}
+
+const MASTER_ROWS = clauseMaster as ClauseMasterRow[];
+const CROSSWALK_ROWS = clauseCrosswalk as CrosswalkRow[];
+
+// standard (e.g. "ISMS") -> clause code (e.g. "6.1.1") -> that standard's own title.
+// Real clause trees diverge per standard (sub-clauses, restructured sections), so
+// this is sourced from extracted ISO data rather than hand-typed.
+const TITLES_BY_STANDARD_AND_CLAUSE: Record<string, Record<string, string>> = {};
+for (const row of MASTER_ROWS) {
+  if (!row.clauseTitle) continue;
+  const byClause = (TITLES_BY_STANDARD_AND_CLAUSE[row.standard] ??= {});
+  byClause[row.clauseCode] = row.clauseTitle;
+}
+
+// Every clause code seen anywhere in the source data, used to recognize/trim
+// clause codes out of loosely formatted Excel cell text (see evidenceMapper.ts).
+export const ALL_KNOWN_CLAUSE_CODES: string[] = Array.from(
+  new Set(MASTER_ROWS.map((row) => row.clauseCode)),
+);
+
+// One neutral, standard-agnostic label per clause code — used where a single
+// standard isn't in scope (e.g. the "all standards" clause filter dropdown).
+// Sourced from the harmonized structure crosswalk, which doesn't cover every
+// sub-clause; codes missing here simply render as their bare code.
+export const CLAUSE_LABELS: Record<string, string> = {};
+for (const row of CROSSWALK_ROWS) {
+  if (row.hlsAnchorClause && row.hlsAnchorTitle && !(row.hlsAnchorClause in CLAUSE_LABELS)) {
+    CLAUSE_LABELS[row.hlsAnchorClause] = row.hlsAnchorTitle;
+  }
+}
 
 export function getClauseDescription(iso: IsoCode, clause: ClauseCode): string {
-  return CLAUSE_DESCRIPTIONS[iso]?.[clause] ?? CLAUSE_LABELS[clause];
+  const standard = getStandardName(iso);
+  return TITLES_BY_STANDARD_AND_CLAUSE[standard]?.[clause] ?? CLAUSE_LABELS[clause] ?? clause;
 }
