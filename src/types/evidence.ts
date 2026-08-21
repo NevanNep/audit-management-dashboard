@@ -20,7 +20,10 @@ export type IsoCode =
   | 'ISO 37001'
   | 'ISO 50001';
 
-export type ClauseCode = '4.1' | '4.2' | '4.3' | '4.4' | '5.1' | '5.2' | '5.3' | '6.1' | '6.2' | '6.3' | '7.1' | '7.2' | '7.3' | '7.4' | '7.5' | '7.5.1' | '7.5.2' | '7.5.3' | '8.1' | '9.1' | '9.2' | '9.2.1' | '9.2.2' | '9.3' | '9.3.1' | '9.3.2' | '9.3.3' | '10.1' | '10.2';
+// Real clause trees vary per standard (sub-clauses, restructured sections),
+// so this is intentionally an open string rather than a fixed union — the
+// known set of codes actually seen in ISO source data lives in data/clauses.ts.
+export type ClauseCode = string;
 
 export type LocationName = string;
 

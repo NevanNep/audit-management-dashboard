@@ -158,7 +158,7 @@ function FilterToolbar({
             .filter((option) => option !== ALL_CLAUSES)
             .map((option) => (
               <option key={option} value={option}>
-                {option in CLAUSE_LABELS ? `${option} — ${CLAUSE_LABELS[option as keyof typeof CLAUSE_LABELS]}` : option}
+                {CLAUSE_LABELS[option] ? `${option} — ${CLAUSE_LABELS[option]}` : option}
               </option>
             ))}
         </select>

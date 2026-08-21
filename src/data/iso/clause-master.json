@@ -1,0 +1,4152 @@
+[
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "4",
+    "clauseTitle": "Context of the organization",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"4\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "4.1",
+    "clauseTitle": "Understanding the organization and its context",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"4.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "4.2",
+    "clauseTitle": "Understanding the needs and expectations of interested parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"4.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "4.3",
+    "clauseTitle": "Determining the scope of the information security management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"4.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "4.4",
+    "clauseTitle": "Information security management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"4.4\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "5",
+    "clauseTitle": "Leadership",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"5\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "5.1",
+    "clauseTitle": "Leadership and commitment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"5.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "5.2",
+    "clauseTitle": "Policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"5.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "5.3",
+    "clauseTitle": "Organizational roles, responsibilities and authorities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"5.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "6",
+    "clauseTitle": "Planning",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"6\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "6.1",
+    "clauseTitle": "Actions to address risks and opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"6.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "6.1.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"6.1.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "6.1.2",
+    "clauseTitle": "Information security risk assessment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"6.1.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "6.1.3",
+    "clauseTitle": "Information security risk treatment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"6.1.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "6.2",
+    "clauseTitle": "Information security objectives and planning to achieve them",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"6.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "6.3",
+    "clauseTitle": "Planning of changes",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"6.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7",
+    "clauseTitle": "Support",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7.1",
+    "clauseTitle": "Resources",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7.2",
+    "clauseTitle": "Competence",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7.3",
+    "clauseTitle": "Awareness",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7.4",
+    "clauseTitle": "Communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7.4\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7.5",
+    "clauseTitle": "Documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7.5\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7.5.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7.5.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7.5.2",
+    "clauseTitle": "Creating and updating",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7.5.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "7.5.3",
+    "clauseTitle": "Control of documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"7.5.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "8",
+    "clauseTitle": "Operation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"8\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "8.1",
+    "clauseTitle": "Operational planning and control",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"8.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "8.2",
+    "clauseTitle": "Information security risk assessment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"8.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "8.3",
+    "clauseTitle": "Information security risk treatment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"8.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9",
+    "clauseTitle": "Performance evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9.1",
+    "clauseTitle": "Monitoring, measurement, analysis and evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9.2",
+    "clauseTitle": "Internal audit",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9.2.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9.2.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9.2.2",
+    "clauseTitle": "Internal audit programme",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9.2.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9.3",
+    "clauseTitle": "Management review",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9.3.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9.3.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9.3.2",
+    "clauseTitle": "Management review inputs",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9.3.2\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "9.3.3",
+    "clauseTitle": "Management review results",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"9.3.3\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "10",
+    "clauseTitle": "Improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"10\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "10.1",
+    "clauseTitle": "Continual improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"10.1\""
+  },
+  {
+    "standard": "ISMS",
+    "standardCode": "ISO/IEC 27001:2022",
+    "version": null,
+    "clauseCode": "10.2",
+    "clauseTitle": "Nonconformity and corrective action",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27001\"].clauses -> id \"10.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5",
+    "clauseTitle": "PIMS-specific requirements related to ISO/IEC 27001",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.2",
+    "clauseTitle": "Context of the organization",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.2.1",
+    "clauseTitle": "Understanding the organization and its context",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.2.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.2.2",
+    "clauseTitle": "Understanding the needs and expectations of interested parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.2.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.2.3",
+    "clauseTitle": "Determining the scope of the PIMS",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.2.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.2.4",
+    "clauseTitle": "Privacy information management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.2.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.3",
+    "clauseTitle": "Leadership",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.3.1",
+    "clauseTitle": "Leadership and commitment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.3.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.3.2",
+    "clauseTitle": "Policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.3.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.3.3",
+    "clauseTitle": "Organizational roles, responsibilities and authorities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.3.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.4",
+    "clauseTitle": "Planning",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.4.1",
+    "clauseTitle": "Actions to address risks and opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.4.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.4.2",
+    "clauseTitle": "Privacy information management objectives and planning to achieve them",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.4.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.5",
+    "clauseTitle": "Support",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.5.1",
+    "clauseTitle": "Resources",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.5.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.5.2",
+    "clauseTitle": "Competence",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.5.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.5.3",
+    "clauseTitle": "Awareness",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.5.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.5.4",
+    "clauseTitle": "Communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.5.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.5.5",
+    "clauseTitle": "Documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.5.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.6",
+    "clauseTitle": "Operation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.6\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.6.1",
+    "clauseTitle": "Operational planning and control",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.6.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.6.2",
+    "clauseTitle": "Privacy risk assessment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.6.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.6.3",
+    "clauseTitle": "Privacy risk treatment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.6.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.7",
+    "clauseTitle": "Performance evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.7\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.7.1",
+    "clauseTitle": "Monitoring, measurement, analysis and evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.7.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.7.2",
+    "clauseTitle": "Internal audit",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.7.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.7.3",
+    "clauseTitle": "Management review",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.7.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.8",
+    "clauseTitle": "Improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.8\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.8.1",
+    "clauseTitle": "Nonconformity and corrective action",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.8.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "5.8.2",
+    "clauseTitle": "Continual improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"5.8.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6",
+    "clauseTitle": "PIMS-specific guidance related to ISO/IEC 27002",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.2",
+    "clauseTitle": "Information security policies",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.2.1.1",
+    "clauseTitle": "Policies for information security (PII extension)",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.2.1.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.3",
+    "clauseTitle": "Organization of information security",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.4",
+    "clauseTitle": "Human resource security",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.5",
+    "clauseTitle": "Asset management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.6",
+    "clauseTitle": "Access control",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.6\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.7",
+    "clauseTitle": "Cryptography",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.7\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.8",
+    "clauseTitle": "Physical and environmental security",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.8\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.9",
+    "clauseTitle": "Operations security",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.9\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.10",
+    "clauseTitle": "Communications security",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.10\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.11",
+    "clauseTitle": "System acquisition, development and maintenance",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.11\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.12",
+    "clauseTitle": "Supplier relationships",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.12\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.13",
+    "clauseTitle": "Information security incident management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.13\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.14",
+    "clauseTitle": "Information security aspects of business continuity",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.14\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "6.15",
+    "clauseTitle": "Compliance",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"6.15\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7",
+    "clauseTitle": "Additional guidance for PII controllers",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2",
+    "clauseTitle": "Conditions for collection and processing",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2.1",
+    "clauseTitle": "Identify and document purpose",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2.2",
+    "clauseTitle": "Identify lawful basis",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2.3",
+    "clauseTitle": "Determine when and how consent is to be obtained",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2.4",
+    "clauseTitle": "Obtain and record consent",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2.5",
+    "clauseTitle": "Privacy impact assessment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2.6",
+    "clauseTitle": "Contracts with PII processors",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2.6\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2.7",
+    "clauseTitle": "Joint PII controller",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2.7\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.2.8",
+    "clauseTitle": "Records related to processing PII",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.2.8\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3",
+    "clauseTitle": "Obligations to PII principals",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.1",
+    "clauseTitle": "Determining and fulfilling obligations to PII principals",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.2",
+    "clauseTitle": "Determining information for PII principals",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.3",
+    "clauseTitle": "Providing information to PII principals",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.4",
+    "clauseTitle": "Providing mechanism to modify or withdraw consent",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.5",
+    "clauseTitle": "Providing mechanism to object to PII processing",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.6",
+    "clauseTitle": "Access, correction and/or erasure",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.6\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.7",
+    "clauseTitle": "PII controllers' obligations to inform third parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.7\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.8",
+    "clauseTitle": "Providing copy of PII processed",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.8\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.9",
+    "clauseTitle": "Handling requests",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.9\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.3.10",
+    "clauseTitle": "Automated decision making",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.3.10\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4",
+    "clauseTitle": "Privacy by design and privacy by default",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.1",
+    "clauseTitle": "Limit collection",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.2",
+    "clauseTitle": "Limit processing",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.3",
+    "clauseTitle": "Accuracy and quality",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.4",
+    "clauseTitle": "PII minimization objectives",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.5",
+    "clauseTitle": "PII de-identification and deletion at the end of processing",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.6",
+    "clauseTitle": "Temporary files",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.6\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.7",
+    "clauseTitle": "Retention",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.7\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.8",
+    "clauseTitle": "Disposal",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.8\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.4.9",
+    "clauseTitle": "PII transmission controls",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.4.9\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.5",
+    "clauseTitle": "PII sharing, transfer and disclosure",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.5.1",
+    "clauseTitle": "Identify basis for PII transfer between jurisdictions",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.5.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.5.2",
+    "clauseTitle": "Countries and international organizations to which PII can be transferred",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.5.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.5.3",
+    "clauseTitle": "Records of PII transfers",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.5.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "7.5.4",
+    "clauseTitle": "Records of PII disclosure to third parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"7.5.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8",
+    "clauseTitle": "Additional guidance for PII processors",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.2",
+    "clauseTitle": "Conditions for collection and processing",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.2.1",
+    "clauseTitle": "Customer agreement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.2.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.2.2",
+    "clauseTitle": "Organization's purposes",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.2.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.2.3",
+    "clauseTitle": "Marketing and advertising use",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.2.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.2.4",
+    "clauseTitle": "Infringing instruction",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.2.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.2.5",
+    "clauseTitle": "Customer obligations",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.2.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.2.6",
+    "clauseTitle": "Records related to processing PII",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.2.6\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.3",
+    "clauseTitle": "Obligations to PII principals",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.3.1",
+    "clauseTitle": "Obligations to PII principals",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.3.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.3.2",
+    "clauseTitle": "Sub-contracted processing",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.3.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.4",
+    "clauseTitle": "Privacy by design and privacy by default",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.4.1",
+    "clauseTitle": "Temporary files",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.4.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.4.2",
+    "clauseTitle": "Return, transfer or disposal of PII",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.4.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.4.3",
+    "clauseTitle": "PII transmission controls",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.4.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5",
+    "clauseTitle": "PII sharing, transfer and disclosure",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5.1",
+    "clauseTitle": "Basis for PII transfer between jurisdictions",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5.1\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5.2",
+    "clauseTitle": "Countries and international organizations to which PII can be transferred",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5.2\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5.3",
+    "clauseTitle": "Records of PII transfers",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5.3\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5.4",
+    "clauseTitle": "Records of PII disclosure to third parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5.4\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5.5",
+    "clauseTitle": "Notification of PII disclosure requests",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5.5\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5.6",
+    "clauseTitle": "Legally binding PII disclosures",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5.6\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5.7",
+    "clauseTitle": "Disclosure of sub-contractors used to process PII",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5.7\""
+  },
+  {
+    "standard": "PIMS",
+    "standardCode": "ISO/IEC 27701:2019",
+    "version": null,
+    "clauseCode": "8.5.8",
+    "clauseTitle": "Change of sub-contractor to process PII",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso27701\"].clauses -> id \"8.5.8\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "4",
+    "clauseTitle": "Context of the organization",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"4\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "4.1",
+    "clauseTitle": "Understanding the organization and its context",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"4.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "4.2",
+    "clauseTitle": "Understanding the needs and expectations of interested parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"4.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "4.3",
+    "clauseTitle": "Determining the scope of the service management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"4.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "4.4",
+    "clauseTitle": "Service management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"4.4\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "5",
+    "clauseTitle": "Leadership",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"5\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "5.1",
+    "clauseTitle": "Leadership and commitment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"5.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "5.2",
+    "clauseTitle": "Policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"5.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "5.2.1",
+    "clauseTitle": "Establishing the service management policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"5.2.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "5.2.2",
+    "clauseTitle": "Communicating the service management policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"5.2.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "5.3",
+    "clauseTitle": "Organizational roles, responsibilities and authorities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"5.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "6",
+    "clauseTitle": "Planning the service management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"6\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "6.1",
+    "clauseTitle": "Actions to address risks and opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"6.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "6.2",
+    "clauseTitle": "Service management objectives and planning to achieve them",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"6.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "6.2.1",
+    "clauseTitle": "Define service management objectives",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"6.2.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "6.2.2",
+    "clauseTitle": "Plan to achieve service management objectives",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"6.2.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "6.3",
+    "clauseTitle": "Plan the service management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"6.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7",
+    "clauseTitle": "Support of the service management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.1",
+    "clauseTitle": "Resources",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.2",
+    "clauseTitle": "Competence",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.3",
+    "clauseTitle": "Awareness",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.4",
+    "clauseTitle": "Communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.4\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.5",
+    "clauseTitle": "Documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.5\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.5.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.5.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.5.2",
+    "clauseTitle": "Creating and updating",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.5.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.5.3",
+    "clauseTitle": "Control of documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.5.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.5.4",
+    "clauseTitle": "Service management system documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.5.4\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "7.6",
+    "clauseTitle": "Knowledge",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"7.6\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8",
+    "clauseTitle": "Operation of the service management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.1",
+    "clauseTitle": "Operational planning and control",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.2",
+    "clauseTitle": "Service portfolio",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.2.1",
+    "clauseTitle": "Service delivery",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.2.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.2.2",
+    "clauseTitle": "Plan services",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.2.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.2.3",
+    "clauseTitle": "Control of parties involved in the service lifecycle",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.2.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.2.4",
+    "clauseTitle": "Service catalogue management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.2.4\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.2.5",
+    "clauseTitle": "Asset management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.2.5\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.2.6",
+    "clauseTitle": "Configuration management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.2.6\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.3",
+    "clauseTitle": "Relationship and agreement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.3.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.3.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.3.2",
+    "clauseTitle": "Business relationship management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.3.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.3.3",
+    "clauseTitle": "Service level management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.3.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.3.4",
+    "clauseTitle": "Supplier management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.3.4\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.4",
+    "clauseTitle": "Supply and demand",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.4\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.4.1",
+    "clauseTitle": "Budgeting and accounting for services",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.4.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.4.2",
+    "clauseTitle": "Demand management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.4.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.4.3",
+    "clauseTitle": "Capacity management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.4.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.5",
+    "clauseTitle": "Service design, build and transition",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.5\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.5.1",
+    "clauseTitle": "Change management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.5.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.5.2",
+    "clauseTitle": "Service design and transition",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.5.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.5.3",
+    "clauseTitle": "Release and deployment management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.5.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.6",
+    "clauseTitle": "Resolution and fulfilment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.6\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.6.1",
+    "clauseTitle": "Incident management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.6.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.6.2",
+    "clauseTitle": "Service request management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.6.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.6.3",
+    "clauseTitle": "Problem management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.6.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.7",
+    "clauseTitle": "Service assurance",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.7\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.7.1",
+    "clauseTitle": "Service availability management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.7.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.7.2",
+    "clauseTitle": "Service continuity management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.7.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "8.7.3",
+    "clauseTitle": "Information security management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"8.7.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "9",
+    "clauseTitle": "Performance evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"9\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "9.1",
+    "clauseTitle": "Monitoring, measurement, analysis and evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"9.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "9.2",
+    "clauseTitle": "Internal audit",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"9.2\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "9.3",
+    "clauseTitle": "Management review",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"9.3\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "9.4",
+    "clauseTitle": "Service reporting",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"9.4\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "10",
+    "clauseTitle": "Improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"10\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "10.1",
+    "clauseTitle": "Nonconformity and corrective action",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"10.1\""
+  },
+  {
+    "standard": "ITSMS",
+    "standardCode": "ISO/IEC 20000-1:2018",
+    "version": null,
+    "clauseCode": "10.2",
+    "clauseTitle": "Continual improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso20000\"].clauses -> id \"10.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4",
+    "clauseTitle": "Context of the organization",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4.1",
+    "clauseTitle": "Understanding the organization and its context",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4.2",
+    "clauseTitle": "Understanding the needs and expectations of interested parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4.2.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4.2.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4.2.2",
+    "clauseTitle": "Legal and regulatory requirements",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4.2.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4.3",
+    "clauseTitle": "Determining the scope of the BCMS",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4.3.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4.3.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4.3.2",
+    "clauseTitle": "Scope of the BCMS",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4.3.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "4.4",
+    "clauseTitle": "Business continuity management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"4.4\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "5",
+    "clauseTitle": "Leadership",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"5\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "5.1",
+    "clauseTitle": "Leadership and commitment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"5.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "5.2",
+    "clauseTitle": "Policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"5.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "5.2.1",
+    "clauseTitle": "Establishing the business continuity policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"5.2.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "5.2.2",
+    "clauseTitle": "Communicating the business continuity policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"5.2.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "5.3",
+    "clauseTitle": "Organizational roles, responsibilities and authorities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"5.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "6",
+    "clauseTitle": "Planning",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"6\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "6.1",
+    "clauseTitle": "Actions to address risks and opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"6.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "6.2",
+    "clauseTitle": "Business continuity objectives and plans to achieve them",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"6.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "6.3",
+    "clauseTitle": "Planning changes to the BCMS",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"6.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7",
+    "clauseTitle": "Support",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7.1",
+    "clauseTitle": "Resources",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7.2",
+    "clauseTitle": "Competence",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7.3",
+    "clauseTitle": "Awareness",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7.4",
+    "clauseTitle": "Communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7.4\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7.5",
+    "clauseTitle": "Documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7.5\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7.5.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7.5.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7.5.2",
+    "clauseTitle": "Creating and updating",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7.5.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "7.5.3",
+    "clauseTitle": "Control of documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"7.5.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8",
+    "clauseTitle": "Operation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.1",
+    "clauseTitle": "Operational planning and control",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.2",
+    "clauseTitle": "Business impact analysis and risk assessment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.2.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.2.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.2.2",
+    "clauseTitle": "Business impact analysis",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.2.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.2.3",
+    "clauseTitle": "Risk assessment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.2.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.3",
+    "clauseTitle": "Business continuity strategies and solutions",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.3.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.3.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.3.2",
+    "clauseTitle": "Identification of strategies and solutions",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.3.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.3.3",
+    "clauseTitle": "Resource requirements",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.3.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.3.4",
+    "clauseTitle": "Selection of strategies and solutions",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.3.4\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.3.5",
+    "clauseTitle": "Implementation of selected solutions",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.3.5\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.4",
+    "clauseTitle": "Business continuity plans and procedures",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.4\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.4.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.4.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.4.2",
+    "clauseTitle": "Structure of response",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.4.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.4.3",
+    "clauseTitle": "Warning and communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.4.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.4.4",
+    "clauseTitle": "Business continuity plans",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.4.4\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.4.5",
+    "clauseTitle": "Recovery",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.4.5\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.5",
+    "clauseTitle": "Exercise programme",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.5\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "8.6",
+    "clauseTitle": "Evaluation of business continuity documentation and capabilities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"8.6\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "9",
+    "clauseTitle": "Performance evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"9\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "9.1",
+    "clauseTitle": "Monitoring, measurement, analysis and evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"9.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "9.2",
+    "clauseTitle": "Internal audit",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"9.2\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "9.3",
+    "clauseTitle": "Management review",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"9.3\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "10",
+    "clauseTitle": "Improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"10\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "10.1",
+    "clauseTitle": "Nonconformity and corrective action",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"10.1\""
+  },
+  {
+    "standard": "BCMS",
+    "standardCode": "ISO 22301:2019",
+    "version": null,
+    "clauseCode": "10.2",
+    "clauseTitle": "Continual improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso22301\"].clauses -> id \"10.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "4",
+    "clauseTitle": "Context of the organization",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"4\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "4.1",
+    "clauseTitle": "Understanding the organization and its context",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"4.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "4.2",
+    "clauseTitle": "Understanding the needs and expectations of workers and other interested parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"4.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "4.3",
+    "clauseTitle": "Determining the scope of the OH&S management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"4.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "4.4",
+    "clauseTitle": "OH&S management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"4.4\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "5",
+    "clauseTitle": "Leadership and worker participation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"5\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "5.1",
+    "clauseTitle": "Leadership and commitment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"5.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "5.2",
+    "clauseTitle": "OH&S policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"5.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "5.3",
+    "clauseTitle": "Organizational roles, responsibilities and authorities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"5.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "5.4",
+    "clauseTitle": "Consultation and participation of workers",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"5.4\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6",
+    "clauseTitle": "Planning",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.1",
+    "clauseTitle": "Actions to address risks and opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.1.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.1.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.1.2",
+    "clauseTitle": "Hazard identification and assessment of risks and opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.1.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.1.2.1",
+    "clauseTitle": "Hazard identification",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.1.2.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.1.2.2",
+    "clauseTitle": "Assessment of OH&S risks and other risks to the OH&S management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.1.2.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.1.2.3",
+    "clauseTitle": "Assessment of OH&S opportunities and other opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.1.2.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.1.3",
+    "clauseTitle": "Determination of legal requirements and other requirements",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.1.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.1.4",
+    "clauseTitle": "Planning action",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.1.4\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.2",
+    "clauseTitle": "OH&S objectives and planning to achieve them",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.2.1",
+    "clauseTitle": "OH&S objectives",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.2.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "6.2.2",
+    "clauseTitle": "Planning to achieve OH&S objectives",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"6.2.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7",
+    "clauseTitle": "Support",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.1",
+    "clauseTitle": "Resources",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.2",
+    "clauseTitle": "Competence",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.3",
+    "clauseTitle": "Awareness",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.4",
+    "clauseTitle": "Communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.4\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.4.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.4.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.4.2",
+    "clauseTitle": "Internal communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.4.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.4.3",
+    "clauseTitle": "External communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.4.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.5",
+    "clauseTitle": "Documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.5\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.5.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.5.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.5.2",
+    "clauseTitle": "Creating and updating",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.5.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "7.5.3",
+    "clauseTitle": "Control of documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"7.5.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8",
+    "clauseTitle": "Operation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.1",
+    "clauseTitle": "Operational planning and control",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.1.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.1.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.1.2",
+    "clauseTitle": "Eliminating hazards and reducing OH&S risks",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.1.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.1.3",
+    "clauseTitle": "Management of change",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.1.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.1.4",
+    "clauseTitle": "Procurement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.1.4\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.1.4.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.1.4.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.1.4.2",
+    "clauseTitle": "Contractors",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.1.4.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.1.4.3",
+    "clauseTitle": "Outsourcing",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.1.4.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "8.2",
+    "clauseTitle": "Emergency preparedness and response",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"8.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "9",
+    "clauseTitle": "Performance evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"9\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "9.1",
+    "clauseTitle": "Monitoring, measurement, analysis and performance evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"9.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "9.1.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"9.1.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "9.1.2",
+    "clauseTitle": "Evaluation of compliance",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"9.1.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "9.2",
+    "clauseTitle": "Internal audit",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"9.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "9.2.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"9.2.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "9.2.2",
+    "clauseTitle": "Internal audit programme",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"9.2.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "9.3",
+    "clauseTitle": "Management review",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"9.3\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "10",
+    "clauseTitle": "Improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"10\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "10.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"10.1\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "10.2",
+    "clauseTitle": "Incident, nonconformity and corrective action",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"10.2\""
+  },
+  {
+    "standard": "OHSMS",
+    "standardCode": "ISO 45001:2018",
+    "version": null,
+    "clauseCode": "10.3",
+    "clauseTitle": "Continual improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso45001\"].clauses -> id \"10.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "4",
+    "clauseTitle": "Context of the organization",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"4\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "4.1",
+    "clauseTitle": "Understanding the organization and its context",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"4.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "4.2",
+    "clauseTitle": "Understanding the needs and expectations of interested parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"4.2\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "4.3",
+    "clauseTitle": "Determining the scope of the anti-bribery management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"4.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "4.4",
+    "clauseTitle": "Anti-bribery management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"4.4\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "4.5",
+    "clauseTitle": "Bribery risk assessment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"4.5\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5",
+    "clauseTitle": "Leadership",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.1",
+    "clauseTitle": "Leadership and commitment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.1.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.1.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.1.2",
+    "clauseTitle": "Governing body",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.1.2\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.1.3",
+    "clauseTitle": "Anti-bribery culture",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.1.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.2",
+    "clauseTitle": "Anti-bribery policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.2\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.3",
+    "clauseTitle": "Organizational roles, responsibilities and authorities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.3.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.3.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.3.2",
+    "clauseTitle": "Top management",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.3.2\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "5.3.3",
+    "clauseTitle": "Anti-bribery function",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"5.3.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "6",
+    "clauseTitle": "Planning",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"6\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "6.1",
+    "clauseTitle": "Actions to address risks and opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"6.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "6.2",
+    "clauseTitle": "Anti-bribery objectives and planning to achieve them",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"6.2\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "6.3",
+    "clauseTitle": "Planning of changes",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"6.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "7",
+    "clauseTitle": "Support",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"7\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "7.1",
+    "clauseTitle": "Resources",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"7.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "7.2",
+    "clauseTitle": "Competence",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"7.2\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "7.3",
+    "clauseTitle": "Awareness and training",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"7.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "7.4",
+    "clauseTitle": "Communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"7.4\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "7.5",
+    "clauseTitle": "Documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"7.5\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8",
+    "clauseTitle": "Operation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.1",
+    "clauseTitle": "Operational planning and control",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.2",
+    "clauseTitle": "Due diligence",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.2\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.3",
+    "clauseTitle": "Financial controls",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.4",
+    "clauseTitle": "Non-financial controls",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.4\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.5",
+    "clauseTitle": "Implementation of anti-bribery controls by controlled organizations and business associates",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.5\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.6",
+    "clauseTitle": "Anti-bribery commitments",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.6\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.7",
+    "clauseTitle": "Conflicts of interest",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.7\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.8",
+    "clauseTitle": "Gifts, hospitality, donations and similar benefits",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.8\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.9",
+    "clauseTitle": "Managing inadequacy of anti-bribery controls",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.9\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.10",
+    "clauseTitle": "Raising concerns",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.10\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "8.11",
+    "clauseTitle": "Investigating and dealing with bribery",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"8.11\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "9",
+    "clauseTitle": "Performance evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"9\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "9.1",
+    "clauseTitle": "Monitoring, measurement, analysis and evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"9.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "9.2",
+    "clauseTitle": "Internal audit",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"9.2\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "9.3",
+    "clauseTitle": "Management review",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"9.3\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "9.4",
+    "clauseTitle": "Review by anti-bribery function",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"9.4\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "9.5",
+    "clauseTitle": "Review by governing body",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"9.5\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "10",
+    "clauseTitle": "Improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"10\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "10.1",
+    "clauseTitle": "Continual improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"10.1\""
+  },
+  {
+    "standard": "ABMS",
+    "standardCode": "ISO 37001:2025",
+    "version": "2025",
+    "clauseCode": "10.2",
+    "clauseTitle": "Nonconformity and corrective action",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso37001\"].clauses -> id \"10.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "4",
+    "clauseTitle": "Context of the organization",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"4\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "4.1",
+    "clauseTitle": "Understanding the organization and its context",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"4.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "4.2",
+    "clauseTitle": "Understanding the needs and expectations of interested parties",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"4.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "4.3",
+    "clauseTitle": "Determining the scope of the energy management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"4.3\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "4.4",
+    "clauseTitle": "Energy management system",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"4.4\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "5",
+    "clauseTitle": "Leadership",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"5\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "5.1",
+    "clauseTitle": "Leadership and commitment",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"5.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "5.2",
+    "clauseTitle": "Energy policy",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"5.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "5.3",
+    "clauseTitle": "Organizational roles, responsibilities and authorities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"5.3\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "6",
+    "clauseTitle": "Planning",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"6\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "6.1",
+    "clauseTitle": "Actions to address risks and opportunities",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"6.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "6.2",
+    "clauseTitle": "Objectives, energy targets and planning to achieve them",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"6.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "6.3",
+    "clauseTitle": "Energy review",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"6.3\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "6.4",
+    "clauseTitle": "Energy performance indicators (EnPIs)",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"6.4\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "6.5",
+    "clauseTitle": "Energy baseline (EnB)",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"6.5\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "6.6",
+    "clauseTitle": "Planning for collection of energy data",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"6.6\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7",
+    "clauseTitle": "Support",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7.1",
+    "clauseTitle": "Resources",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7.2",
+    "clauseTitle": "Competence",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7.3",
+    "clauseTitle": "Awareness",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7.3\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7.4",
+    "clauseTitle": "Communication",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7.4\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7.5",
+    "clauseTitle": "Documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7.5\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7.5.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7.5.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7.5.2",
+    "clauseTitle": "Creating and updating",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7.5.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "7.5.3",
+    "clauseTitle": "Control of documented information",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"7.5.3\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "8",
+    "clauseTitle": "Operation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"8\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "8.1",
+    "clauseTitle": "Operational planning and control",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"8.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "8.2",
+    "clauseTitle": "Design",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"8.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "8.3",
+    "clauseTitle": "Procurement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"8.3\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "9",
+    "clauseTitle": "Performance evaluation",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"9\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "9.1",
+    "clauseTitle": "Monitoring, measurement, analysis and evaluation of energy performance and the EnMS",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"9.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "9.1.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"9.1.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "9.1.2",
+    "clauseTitle": "Evaluation of compliance with legal and other requirements",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"9.1.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "9.2",
+    "clauseTitle": "Internal audit",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"9.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "9.2.1",
+    "clauseTitle": "General",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"9.2.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "9.2.2",
+    "clauseTitle": "Internal audit programme",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"9.2.2\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "9.3",
+    "clauseTitle": "Management review",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"9.3\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "10",
+    "clauseTitle": "Improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"10\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "10.1",
+    "clauseTitle": "Nonconformity and corrective action",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"10.1\""
+  },
+  {
+    "standard": "EnMS",
+    "standardCode": "ISO 50001:2018",
+    "version": null,
+    "clauseCode": "10.2",
+    "clauseTitle": "Continual improvement",
+    "clauseDescription": null,
+    "sourceFile": "data/raw.js",
+    "sourceReference": "RAW_ISO_DATA.standards[id=\"iso50001\"].clauses -> id \"10.2\""
+  }
+]
