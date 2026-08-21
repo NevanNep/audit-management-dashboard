@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowDown,
   ArrowUp,
@@ -61,6 +61,48 @@ interface FilterToolbarProps {
   hasActive: boolean;
 }
 
+// The search input keeps its own local state so typing feels instant; the
+// value is only pushed up to onSearchChange (which drives a network fetch
+// and a full table re-render) after the user pauses, so keystrokes never
+// wait on a round trip.
+const SEARCH_DEBOUNCE_MS = 300;
+
+function SearchInput({ value, onChange }: { value: string; onChange: (value: string) => void }) {
+  const [inputValue, setInputValue] = useState(value);
+
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
+
+  useEffect(() => {
+    if (inputValue === value) return;
+    const timeout = setTimeout(() => onChange(inputValue), SEARCH_DEBOUNCE_MS);
+    return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputValue]);
+
+  return (
+    <div className="relative">
+      <Search className="pointer-events-none absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+      <label htmlFor="documents-search" className="sr-only">
+        Search documents
+      </label>
+      <input
+        id="documents-search"
+        type="search"
+        placeholder="Search documents…"
+        value={inputValue}
+        onChange={(event) => setInputValue(event.target.value)}
+        className={`h-7 w-44 rounded-md border pl-7 pr-2.5 text-[12.5px] transition-colors focus:outline-none focus:ring-1 focus:ring-accent ${
+          inputValue
+            ? 'border-accent bg-accent-tint text-accent-hover placeholder:text-accent-hover/60'
+            : 'border-slate-200 bg-white text-slate-600 placeholder:text-slate-400 hover:border-slate-300'
+        }`}
+      />
+    </div>
+  );
+}
+
 const selectClass = (active: boolean) =>
   `h-7 rounded-md border px-2 text-[12.5px] transition-colors focus:outline-none focus:ring-1 focus:ring-accent ${
     active ? 'border-accent bg-accent-tint font-medium text-accent-hover' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
@@ -89,24 +131,7 @@ function FilterToolbar({
   return (
     <div className="bg-slate-50/70 px-4 py-3">
       <div className="flex flex-wrap items-center gap-1.5">
-        <div className="relative">
-          <Search className="pointer-events-none absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-slate-400" aria-hidden="true" />
-          <label htmlFor="documents-search" className="sr-only">
-            Search documents
-          </label>
-          <input
-            id="documents-search"
-            type="search"
-            placeholder="Search documents…"
-            value={search}
-            onChange={(event) => onSearchChange(event.target.value)}
-            className={`h-7 w-44 rounded-md border pl-7 pr-2.5 text-[12.5px] transition-colors focus:outline-none focus:ring-1 focus:ring-accent ${
-              search
-                ? 'border-accent bg-accent-tint text-accent-hover placeholder:text-accent-hover/60'
-                : 'border-slate-200 bg-white text-slate-600 placeholder:text-slate-400 hover:border-slate-300'
-            }`}
-          />
-        </div>
+        <SearchInput value={search} onChange={onSearchChange} />
 
         <span className="h-4 w-px bg-slate-200" />
 
