@@ -44,6 +44,18 @@ for (const row of CROSSWALK_ROWS) {
   }
 }
 
+export interface GlobalClause {
+  code: string;
+  label: string;
+}
+
+// The Harmonized Structure's global clause set (§4–10), in document order —
+// the same anchor list the Standards Crosswalk Matrix filters against, rather
+// than the raw per-standard clause/control codes recorded on each evidence row.
+export const GLOBAL_CLAUSES: GlobalClause[] = Object.entries(CLAUSE_LABELS).map(
+  ([code, label]) => ({ code, label }),
+);
+
 export function getClauseDescription(iso: IsoCode, clause: ClauseCode): string {
   const standard = getStandardName(iso);
   return TITLES_BY_STANDARD_AND_CLAUSE[standard]?.[clause] ?? CLAUSE_LABELS[clause] ?? clause;

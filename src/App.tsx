@@ -8,6 +8,7 @@ import { DocumentsTable } from './components/dashboard/DocumentsTable';
 import { fetchEvidencePage, fetchEvidenceStats, type EvidenceStatsResponse } from './services/evidenceApi';
 import { mapEvidenceToDocument } from './utils/evidenceMapper';
 import { ISO_STANDARDS } from './data/isoStandards';
+import { GLOBAL_CLAUSES } from './data/clauses';
 import {
   ALL_CLAUSES,
   ALL_COMPLIANCE_RESULTS,
@@ -121,7 +122,7 @@ function App() {
   }
 
   const locationOptions: LocationFilterValue[] = [ALL_LOCATIONS, ...stats.locationOptions];
-  const clauseOptions = [ALL_CLAUSES, ...stats.clauseOptions] as ClauseFilterValue[];
+  const clauseOptions = [ALL_CLAUSES, ...GLOBAL_CLAUSES.map((clause) => clause.code)] as ClauseFilterValue[];
 
   return (
     <div className="flex min-h-screen bg-slate-50">

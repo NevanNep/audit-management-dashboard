@@ -24,3 +24,11 @@ dist-ssr
 *.sln
 *.sw?
 backend/.env
+
+# Generated volume-test workbooks (regenerate with npm run volume:generate)
+backend/data/volume-test-*.xlsx
+docs/Katalon_E2E_Test_Cases_Audit_Dashboard.docx
+backend/scripts/volume-load-test.js
+backend/scripts/generate-volume-data.js
+backend/data/audit_dashboard_excel_simulation_revised.xlsx
+backend/data/audit_dashboard_excel_simulation_revised.xlsx
