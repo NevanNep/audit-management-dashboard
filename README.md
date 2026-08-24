@@ -97,6 +97,10 @@ npm run dev
 
 Buka `http://localhost:5173` di browser.
 
+### Alternatif: menjalankan dengan Docker
+
+Proyek ini juga bisa dijalankan tanpa install Node/npm secara lokal, menggunakan Docker. Lihat [DOCKER.md](DOCKER.md) untuk detail arsitektur, cara build/run, dan konfigurasi environment-nya.
+
 ## Konfigurasi Environment
 
 | Variabel | Lokasi | Wajib | Default | Keterangan |
