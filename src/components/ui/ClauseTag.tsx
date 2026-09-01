@@ -13,12 +13,12 @@ export function ClauseTag({ iso, clause, expanded = false }: ClauseTagProps) {
   return (
     <span
       title={expanded || !hasDescription ? undefined : description}
-      className={`inline align-middle text-[12px] text-slate-500 ${
-        expanded ? 'whitespace-normal break-words' : 'whitespace-nowrap'
+      className={`min-w-0 align-bottom text-[12px] text-ink-secondary ${
+        expanded ? 'whitespace-normal break-words' : 'inline-block max-w-full truncate'
       }`}
     >
-      <span className="font-mono font-medium text-slate-600">{clause}</span>
-      {expanded && hasDescription && <span className="ml-1">{description}</span>}
+      <span className="font-mono text-[12px] font-medium text-clause-code">{clause}</span>
+      {hasDescription && <span className="ml-1 text-ink-muted">{description}</span>}
     </span>
   );
 }

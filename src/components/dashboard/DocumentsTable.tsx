@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import {
   ArrowDown,
   ArrowUp,
@@ -6,6 +6,7 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Clock,
   ExternalLink,
   RotateCcw,
   Search,
@@ -83,7 +84,7 @@ function SearchInput({ value, onChange }: { value: string; onChange: (value: str
 
   return (
     <div className="relative">
-      <Search className="pointer-events-none absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+      <Search className="pointer-events-none absolute left-2 top-1/2 h-3 w-3 -translate-y-1/2 text-ink-muted" aria-hidden="true" />
       <label htmlFor="documents-search" className="sr-only">
         Search documents
       </label>
@@ -96,7 +97,7 @@ function SearchInput({ value, onChange }: { value: string; onChange: (value: str
         className={`h-7 w-44 rounded-md border pl-7 pr-2.5 text-[12.5px] transition-colors focus:outline-none focus:ring-1 focus:ring-accent ${
           inputValue
             ? 'border-accent bg-accent-tint text-accent-hover placeholder:text-accent-hover/60'
-            : 'border-slate-200 bg-white text-slate-600 placeholder:text-slate-400 hover:border-slate-300'
+            : 'border-border bg-surface text-ink-secondary placeholder:text-ink-muted hover:border-border-strong'
         }`}
       />
     </div>
@@ -105,8 +106,17 @@ function SearchInput({ value, onChange }: { value: string; onChange: (value: str
 
 const selectClass = (active: boolean) =>
   `h-7 rounded-md border px-2 text-[12.5px] transition-colors focus:outline-none focus:ring-1 focus:ring-accent ${
-    active ? 'border-accent bg-accent-tint font-medium text-accent-hover' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+    active ? 'border-accent bg-accent-tint font-medium text-accent-hover' : 'border-border bg-surface text-ink-secondary hover:border-border-strong'
   }`;
+
+function Field({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <label className="flex items-center gap-1.5 text-[11.5px] text-ink-muted">
+      <span className="whitespace-nowrap">{label}</span>
+      {children}
+    </label>
+  );
+}
 
 function FilterToolbar({
   search,
@@ -129,79 +139,87 @@ function FilterToolbar({
   hasActive,
 }: FilterToolbarProps) {
   return (
-    <div className="bg-slate-50/70 px-4 py-3">
-      <div className="flex flex-wrap items-center gap-1.5">
+    <div className="px-4 py-3.5">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
         <SearchInput value={search} onChange={onSearchChange} />
 
-        <span className="h-4 w-px bg-slate-200" />
-
-        <select
-          value={iso}
-          onChange={(event) => onIsoChange(event.target.value as IsoFilterValue)}
-          className={selectClass(iso !== ALL_ISO)}
-        >
-          <option value={ALL_ISO}>All standards</option>
-          {ISO_STANDARDS.map((std) => (
-            <option key={std.code} value={std.code}>
-              {std.standard} · {std.code}
-            </option>
-          ))}
-        </select>
-
-        <select
-          value={clause}
-          onChange={(event) => onClauseChange(event.target.value as ClauseFilterValue)}
-          className={selectClass(clause !== ALL_CLAUSES)}
-        >
-          <option value={ALL_CLAUSES}>All clauses</option>
-          {clauseOptions
-            .filter((option) => option !== ALL_CLAUSES)
-            .map((option) => (
-              <option key={option} value={option}>
-                {CLAUSE_LABELS[option] ? `${option} — ${CLAUSE_LABELS[option]}` : option}
+        <Field label="Standard">
+          <select
+            value={iso}
+            onChange={(event) => onIsoChange(event.target.value as IsoFilterValue)}
+            className={selectClass(iso !== ALL_ISO)}
+          >
+            <option value={ALL_ISO}>All</option>
+            {ISO_STANDARDS.map((std) => (
+              <option key={std.code} value={std.code}>
+                {std.standard} · {std.code}
               </option>
             ))}
-        </select>
+          </select>
+        </Field>
 
-        <select
-          value={location}
-          onChange={(event) => onLocationChange(event.target.value as LocationFilterValue)}
-          className={selectClass(location !== ALL_LOCATIONS)}
-        >
-          {locationOptions.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <Field label="Clause">
+          <select
+            value={clause}
+            onChange={(event) => onClauseChange(event.target.value as ClauseFilterValue)}
+            className={selectClass(clause !== ALL_CLAUSES)}
+          >
+            <option value={ALL_CLAUSES}>All</option>
+            {clauseOptions
+              .filter((option) => option !== ALL_CLAUSES)
+              .map((option) => (
+                <option key={option} value={option}>
+                  {CLAUSE_LABELS[option] ? `${option} — ${CLAUSE_LABELS[option]}` : option}
+                </option>
+              ))}
+          </select>
+        </Field>
 
-        <select
-          value={evidenceStatus}
-          onChange={(event) => onEvidenceStatusChange(event.target.value as EvidenceStatusFilterValue)}
-          className={selectClass(evidenceStatus !== ALL_EVIDENCE_STATUSES)}
-        >
-          {EVIDENCE_STATUS_OPTIONS.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <Field label="Location">
+          <select
+            value={location}
+            onChange={(event) => onLocationChange(event.target.value as LocationFilterValue)}
+            className={selectClass(location !== ALL_LOCATIONS)}
+          >
+            {locationOptions.map((option) => (
+              <option key={option} value={option}>
+                {option === ALL_LOCATIONS ? 'All' : option}
+              </option>
+            ))}
+          </select>
+        </Field>
 
-        <select
-          value={complianceResult}
-          onChange={(event) => onComplianceResultChange(event.target.value as ComplianceResultFilterValue)}
-          className={selectClass(complianceResult !== ALL_COMPLIANCE_RESULTS)}
-        >
-          {COMPLIANCE_RESULT_OPTIONS.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <Field label="Evidence">
+          <select
+            value={evidenceStatus}
+            onChange={(event) => onEvidenceStatusChange(event.target.value as EvidenceStatusFilterValue)}
+            className={selectClass(evidenceStatus !== ALL_EVIDENCE_STATUSES)}
+          >
+            {EVIDENCE_STATUS_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option === ALL_EVIDENCE_STATUSES ? 'All' : option}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        <Field label="Compliance">
+          <select
+            value={complianceResult}
+            onChange={(event) => onComplianceResultChange(event.target.value as ComplianceResultFilterValue)}
+            className={selectClass(complianceResult !== ALL_COMPLIANCE_RESULTS)}
+          >
+            {COMPLIANCE_RESULT_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option === ALL_COMPLIANCE_RESULTS ? 'All' : option}
+              </option>
+            ))}
+          </select>
+        </Field>
 
         <label
           className={`flex h-7 cursor-pointer select-none items-center gap-1.5 rounded-md border px-2 text-[12.5px] transition-colors ${
-            overdueOnly ? 'border-accent bg-accent-tint font-medium text-accent-hover' : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+            overdueOnly ? 'border-accent bg-accent-tint font-medium text-accent-hover' : 'border-border bg-surface text-ink-secondary hover:border-border-strong'
           }`}
         >
           <input
@@ -210,21 +228,18 @@ function FilterToolbar({
             onChange={(event) => onOverdueOnlyChange(event.target.checked)}
             className="h-3 w-3 rounded accent-accent"
           />
-          Overdue
+          Overdue only
         </label>
 
         {hasActive && (
-          <>
-            <span className="h-4 w-px bg-slate-200" />
-            <button
-              type="button"
-              onClick={onReset}
-              className="flex h-7 items-center gap-1 rounded-md border border-slate-200 bg-white px-2.5 text-[12.5px] font-medium text-slate-500 shadow-sm transition-colors hover:border-rose-200 hover:bg-rose-50 hover:text-rose-700 focus:outline-none"
-            >
-              <RotateCcw className="h-2.5 w-2.5" aria-hidden="true" />
-              Reset
-            </button>
-          </>
+          <button
+            type="button"
+            onClick={onReset}
+            className="flex h-7 items-center gap-1 rounded-md border border-border bg-surface px-2.5 text-[12.5px] font-medium text-ink-secondary shadow-sm transition-colors hover:border-noncompliant/30 hover:bg-noncompliant-bg hover:text-noncompliant focus:outline-none"
+          >
+            <RotateCcw className="h-2.5 w-2.5" aria-hidden="true" />
+            Reset
+          </button>
         )}
       </div>
 
@@ -303,7 +318,7 @@ function ActiveChips({
 
   return (
     <div className="mt-2 flex flex-wrap items-center gap-1.5">
-      <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">Filtered by</span>
+      <span className="text-[11px] font-semibold uppercase tracking-wide text-ink-muted">Filtered by</span>
       {search && <Chip label={`"${search}"`} onClear={onClearSearch} />}
       {iso !== ALL_ISO && <Chip label={meta ? `${meta.standard} · ${iso}` : iso} onClear={onClearIso} />}
       {clause !== ALL_CLAUSES && <Chip label={clause} onClear={onClearClause} />}
@@ -362,7 +377,7 @@ const COLUMNS: ColumnDef[] = [
   { key: 'dueDate', label: 'Due date' },
 ];
 
-const TH = 'px-3 py-3 text-left text-[12px] font-semibold uppercase tracking-wide text-slate-400 whitespace-nowrap';
+const TH = 'px-3 py-2 text-left text-[11px] font-semibold text-ink-secondary whitespace-nowrap';
 
 function SortIcon({ active, direction }: { active: boolean; direction: 'asc' | 'desc' }) {
   if (!active) return <ArrowUpDown className="ml-1 h-2.5 w-2.5 opacity-30" aria-hidden="true" />;
@@ -434,7 +449,7 @@ export function DocumentsTable({
   const rangeEnd = Math.min(page * pageSize, totalCount);
 
   return (
-    <div className="overflow-hidden rounded-[10px] border border-slate-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-[10px] border border-border bg-surface shadow-sm">
       <FilterToolbar
         search={search}
         onSearchChange={onSearchChange}
@@ -456,16 +471,16 @@ export function DocumentsTable({
         hasActive={hasActive}
       />
 
-      <div className="flex items-center justify-between border-t border-slate-200 px-4 py-3">
-        <span className="text-[14.5px] font-semibold text-slate-800">
+      <div className="flex items-center justify-between border-t border-border px-4 py-3">
+        <span className="text-[14px] font-semibold text-ink">
           Evidence documents
           {activeIso !== ALL_ISO && (
             <span className="ml-2 rounded-full bg-accent-tint px-2 py-0.5 text-[12px] font-medium text-accent-hover">{activeIso}</span>
           )}
         </span>
         {totalCount > 0 && (
-          <span className="text-[13px] text-slate-400">
-            {rangeStart}–{rangeEnd} of {totalCount}
+          <span className="text-[13px] tabular-nums text-ink-muted">
+            {rangeStart}–{rangeEnd} / {totalCount}
           </span>
         )}
       </div>
@@ -474,10 +489,10 @@ export function DocumentsTable({
         <EmptyState onReset={onResetFilters} />
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[860px] border-collapse text-[13.5px]">
-            <thead className="border-b border-slate-100 bg-slate-50/60">
+          <table className="w-full min-w-[860px] border-collapse text-[12.5px]">
+            <thead className="border-b border-border bg-surface">
               <tr>
-                <th className="w-8 px-2 py-3">
+                <th className="w-8 px-2 py-2">
                   <span className="sr-only">Expand row</span>
                 </th>
                 {COLUMNS.map((column) => (
@@ -485,7 +500,7 @@ export function DocumentsTable({
                     <button
                       type="button"
                       onClick={() => onSort(column.key)}
-                      className="inline-flex items-center hover:text-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      className="inline-flex items-center hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     >
                       {column.label}
                       <SortIcon active={sortState.key === column.key} direction={sortState.direction} />
@@ -493,7 +508,7 @@ export function DocumentsTable({
                   </th>
                 ))}
                 <th scope="col" className={TH}>
-                  Action
+                  Open
                 </th>
               </tr>
             </thead>
@@ -513,24 +528,24 @@ export function DocumentsTable({
       )}
 
       {!isEmpty && totalPages > 1 && (
-        <div className="flex items-center justify-between border-t border-slate-100 px-4 py-3">
+        <div className="flex items-center justify-between border-t border-border px-4 py-3">
           <button
             type="button"
             disabled={page <= 1}
             onClick={() => onPageChange(page - 1)}
-            className="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+            className="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-[13px] font-medium text-ink-secondary hover:bg-subtle disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
           >
             <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
             Previous
           </button>
-          <span className="text-[13px] text-slate-400">
-            Page {page} of {totalPages}
+          <span className="text-[13px] tabular-nums text-ink-muted">
+            page {page} / {totalPages}
           </span>
           <button
             type="button"
             disabled={page >= totalPages}
             onClick={() => onPageChange(page + 1)}
-            className="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-[13px] font-medium text-slate-600 hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+            className="inline-flex items-center gap-1 rounded-md px-3 py-1.5 text-[13px] font-medium text-ink-secondary hover:bg-subtle disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
           >
             Next
             <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -546,20 +561,19 @@ export function DocumentsTable({
 // Rows keep a stable height when browsing: only a capped number of clauses show by
 // default, with the rest tucked behind the row's expand arrow instead of stretching
 // every row to match whichever document has the most clauses.
-const CLAUSE_PREVIEW = 3;
+const CLAUSE_PREVIEW = 2;
 
 interface ClauseEntry {
   iso: IsoCode;
-  abbrev: string | null;
+  abbrev: string;
   clause: ClauseCode;
 }
 
 function buildClauseEntries(standards: EvidenceDocument['standards']): ClauseEntry[] {
-  const multiStandard = standards.length > 1;
   return standards.flatMap((standard) =>
     standard.clauses.map((clauseCode) => ({
       iso: standard.iso,
-      abbrev: multiStandard ? getStandardName(standard.iso) : null,
+      abbrev: getStandardName(standard.iso),
       clause: clauseCode,
     })),
   );
@@ -571,22 +585,45 @@ function ClausesCell({ standards, expanded }: { standards: EvidenceDocument['sta
   const overflow = entries.length - CLAUSE_PREVIEW;
 
   return (
-    <div className={expanded ? 'flex flex-wrap items-baseline gap-x-1 gap-y-1' : 'flex items-baseline gap-x-1 overflow-hidden'}>
+    <div className={`flex flex-col gap-y-0.5 ${expanded ? '' : 'max-w-[280px]'}`}>
       {visible.map((entry, i) => (
-        <span
-          key={`${entry.iso}-${entry.clause}-${i}`}
-          className={`inline-flex items-baseline gap-1 ${expanded ? 'max-w-full flex-wrap whitespace-normal break-words' : 'shrink-0 whitespace-nowrap'}`}
-        >
-          {entry.abbrev && <span className="font-mono text-[10.5px] font-medium text-slate-400">{entry.abbrev}</span>}
+        <span key={`${entry.iso}-${entry.clause}-${i}`} className="flex min-w-0 items-baseline gap-1">
+          <span className="shrink-0 font-mono text-[9.5px] font-semibold uppercase tracking-wide text-ink-muted">
+            {entry.abbrev}
+          </span>
           <ClauseTag iso={entry.iso} clause={entry.clause} expanded={expanded} />
-          {i < visible.length - 1 && <span className="text-slate-300">,</span>}
         </span>
       ))}
       {!expanded && overflow > 0 && (
-        <span className="shrink-0 whitespace-nowrap text-[11.5px] font-medium text-slate-400">+{overflow} more</span>
+        <span className="text-[11.5px] font-medium text-ink-muted">+{overflow} more</span>
       )}
     </div>
   );
+}
+
+// Due date cell — plain mono date, or the overdue treatment (accent date + a
+// small OVERDUE tag stacked below). Overdue is surfaced here only; it no longer
+// echoes under the document name.
+function DueCell({ dueDate, overdue }: { dueDate?: string; overdue: boolean }) {
+  const formatted = formatDueDate(dueDate);
+
+  if (!dueDate) {
+    return <span className="font-mono text-[12px] leading-4 text-ink-muted">{formatted}</span>;
+  }
+
+  if (overdue) {
+    return (
+      <div className="flex flex-col items-start gap-[3px]">
+        <span className="font-mono text-[12px] font-medium leading-4 text-overdue-fg">{formatted}</span>
+        <span className="inline-flex items-center gap-[3px] rounded-[4px] bg-overdue-tag py-0.5 pl-1 pr-[5px] font-mono text-[10px] font-medium uppercase leading-3 tracking-[0.4px] text-overdue-fg">
+          <Clock className="h-2.5 w-2.5" aria-hidden="true" />
+          Overdue
+        </span>
+      </div>
+    );
+  }
+
+  return <span className="font-mono text-[12px] leading-4 text-ink-secondary">{formatted}</span>;
 }
 
 interface TableRowProps {
@@ -601,14 +638,22 @@ function TableRow({ doc, isExpanded, onToggle, activeIso }: TableRowProps) {
   const wrapClass = isExpanded ? 'whitespace-normal break-words' : 'truncate overflow-hidden whitespace-nowrap';
 
   return (
-    <tr className={`border-b border-slate-100 transition-colors ${isExpanded ? 'bg-slate-50/80' : overdue ? 'bg-amber-50/40 hover:bg-amber-50/70' : 'hover:bg-slate-50'}`}>
-      <td className="w-8 px-2 py-3 align-top">
+    <tr
+      className={`border-b border-border transition-colors ${
+        isExpanded
+          ? 'bg-subtle'
+          : overdue
+            ? 'border-l-2 border-l-overdue-accent bg-overdue-row hover:bg-overdue-tag'
+            : 'border-l-2 border-l-transparent hover:bg-subtle'
+      }`}
+    >
+      <td className="w-8 px-2 py-2 align-top">
         <button
           type="button"
           onClick={onToggle}
           aria-expanded={isExpanded}
           aria-label={isExpanded ? `Collapse details for ${doc.name}` : `Expand details for ${doc.name}`}
-          className="flex h-5 w-5 items-center justify-center rounded text-slate-400 transition-colors hover:bg-slate-200 hover:text-slate-600 focus:outline-none"
+          className="flex h-5 w-5 items-center justify-center rounded text-ink-muted transition-colors hover:bg-border hover:text-ink-secondary focus:outline-none"
         >
           <ChevronDown
             className={`h-3 w-3 transition-transform duration-150 ${isExpanded ? '' : '-rotate-90'}`}
@@ -617,16 +662,15 @@ function TableRow({ doc, isExpanded, onToggle, activeIso }: TableRowProps) {
         </button>
       </td>
       <td
-        className={`px-3 py-3 align-top font-mono text-[12.5px] text-slate-500 ${wrapClass}`}
+        className={`px-3 py-2 align-top font-mono text-[12px] text-ink-secondary ${wrapClass}`}
         title={isExpanded ? undefined : doc.documentId}
       >
         {doc.documentId}
       </td>
-      <td className={`px-3 py-3 align-top ${wrapClass}`} title={isExpanded ? undefined : doc.name}>
-        <div className="font-medium text-slate-800">{doc.name}</div>
-        {overdue && <span className="text-[11px] font-semibold text-amber-700">overdue</span>}
+      <td className={`px-3 py-2 align-top ${wrapClass}`} title={isExpanded ? undefined : doc.name}>
+        <div className="font-medium text-ink">{doc.name}</div>
       </td>
-      <td className="px-3 py-3 align-top">
+      <td className="px-3 py-2 align-top">
         <div className="flex flex-wrap gap-1">
           {doc.standards.map((standard) => {
             const isActive = activeIso !== ALL_ISO && standard.iso === activeIso;
@@ -634,8 +678,8 @@ function TableRow({ doc, isExpanded, onToggle, activeIso }: TableRowProps) {
               <span
                 key={standard.iso}
                 title={standard.iso}
-                className={`inline-block rounded px-1.5 py-0.5 text-[11px] font-semibold ${
-                  isActive ? 'bg-accent text-white' : 'bg-accent-tint text-accent-hover'
+                className={`inline-block rounded-md px-1.5 py-0.5 text-[10.5px] font-semibold ${
+                  isActive ? 'bg-accent text-white' : 'bg-standard-bg text-white'
                 }`}
               >
                 {getStandardName(standard.iso)}
@@ -644,29 +688,29 @@ function TableRow({ doc, isExpanded, onToggle, activeIso }: TableRowProps) {
           })}
         </div>
       </td>
-      <td className="px-3 py-3 align-top">
+      <td className="px-3 py-2 align-top">
         <ClausesCell standards={doc.standards} expanded={isExpanded} />
       </td>
-      <td className={`px-3 py-3 align-top text-[13.5px] text-slate-500 ${wrapClass}`} title={isExpanded ? undefined : doc.location}>
+      <td className={`px-3 py-2 align-top text-[12.5px] text-ink-secondary ${wrapClass}`} title={isExpanded ? undefined : doc.location}>
         {doc.location}
       </td>
-      <td className="px-3 py-3 align-top">
+      <td className="px-3 py-2 align-top">
         <EvidenceStatusBadge status={doc.evidenceStatus} />
       </td>
-      <td className="px-3 py-3 align-top">
+      <td className="px-3 py-2 align-top">
         <ComplianceResultBadge result={doc.complianceResult} />
       </td>
-      <td className="whitespace-nowrap px-3 py-3 align-top font-mono text-[12.5px] text-slate-500">
-        {formatDueDate(doc.dueDate)}
+      <td className="whitespace-nowrap px-3 py-2 align-top">
+        <DueCell dueDate={doc.dueDate} overdue={overdue} />
       </td>
-      <td className="whitespace-nowrap px-3 py-3 align-top">
+      <td className="whitespace-nowrap px-3 py-2 align-top">
         {doc.documentUrl ? (
           <a
             href={doc.documentUrl}
             target="_blank"
             rel="noopener noreferrer"
             title="Opens the source document"
-            className="inline-flex items-center gap-1 text-[13px] font-medium text-accent hover:text-accent-hover hover:underline focus:outline-none"
+            className="inline-flex items-center gap-1 text-[13px] font-medium text-link hover:text-accent-hover hover:underline focus:outline-none"
             onClick={(event) => event.stopPropagation()}
           >
             Open
@@ -674,7 +718,7 @@ function TableRow({ doc, isExpanded, onToggle, activeIso }: TableRowProps) {
             <span className="sr-only">Opens the source document in SharePoint</span>
           </a>
         ) : (
-          <span className="text-[13px] text-slate-300" title="No source document uploaded yet">
+          <span className="text-[13px] text-ink-muted" title="No source document uploaded yet">
             Not available
           </span>
         )}

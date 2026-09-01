@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { Info } from 'lucide-react';
 import { complianceIconColor } from '../../utils/statusColors';
 import { ISO_STANDARDS } from '../../data/isoStandards';
 import type { StandardCardStats } from '../../services/evidenceApi';
@@ -50,11 +51,11 @@ function riskScore(segments: StandardCardStats['segments'], total: number): numb
   return risky / total;
 }
 
-// Small bold text on light backgrounds needs the darker -700 shades to clear WCAG AA (4.5:1).
+// Small bold text on light backgrounds — the status tokens are tuned to clear WCAG AA (4.5:1).
 function riskTextClass(riskPct: number): string {
-  if (riskPct >= 40) return 'text-rose-700';
-  if (riskPct >= 20) return 'text-amber-700';
-  return 'text-slate-400';
+  if (riskPct >= 40) return 'text-noncompliant';
+  if (riskPct >= 20) return 'text-partial';
+  return 'text-ink-muted';
 }
 
 export function IsoStandardCards({ byStandard, selectedIso, onSelectIso, compact = false }: IsoStandardCardsProps) {
@@ -83,21 +84,29 @@ export function IsoStandardCards({ byStandard, selectedIso, onSelectIso, compact
 
   if (compact) {
     return (
-      <div className="rounded-[10px] border border-slate-200 bg-slate-50 p-3">
+      <div>
         <div className="mb-2 flex items-center justify-between">
-          <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">Standards</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[11px] font-semibold uppercase tracking-wide text-ink-muted">Standards</span>
+            <Info className="h-3 w-3 shrink-0 cursor-default text-ink-muted hover:text-ink-secondary" aria-hidden="true">
+              <title>
+                Bar shows each standard's compliance mix. ⚠ is its count of overdue documents; "Sort risk" reorders by
+                share of non-compliant or partial documents and shows that percentage.
+              </title>
+            </Info>
+          </div>
           <button
             type="button"
             onClick={() => setSortByRisk((v) => !v)}
             className={`text-[11px] font-medium transition-colors focus:outline-none ${
-              sortByRisk ? 'text-rose-700' : 'text-slate-400 hover:text-slate-600'
+              sortByRisk ? 'text-noncompliant' : 'text-ink-muted hover:text-ink-secondary'
             }`}
           >
-            {sortByRisk ? '↑ By risk' : 'Sort by risk'}
+            {sortByRisk ? '↑ By risk' : 'Sort risk'}
           </button>
         </div>
 
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {cards.map((card) => {
             const isSelected = selectedIso === card.filterValue;
             const riskPct = Math.round(card.riskScore * 100);
@@ -108,18 +117,18 @@ export function IsoStandardCards({ byStandard, selectedIso, onSelectIso, compact
                 onClick={() => onSelectIso(isSelected ? 'All ISO' : card.filterValue)}
                 aria-pressed={isSelected}
                 title={`${card.standard} — ${card.shortName}`}
-                className={`flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-                  isSelected ? 'bg-accent-tint' : 'hover:bg-white'
+                className={`flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                  isSelected ? 'bg-accent-tint' : 'hover:bg-subtle'
                 }`}
               >
                 <div className="min-w-0 flex-1">
                   <div className="flex items-baseline gap-1.5">
-                    <span className={`text-[13px] font-bold ${isSelected ? 'text-accent-hover' : 'text-slate-800'}`}>
+                    <span className={`text-[13px] font-bold ${isSelected ? 'text-accent-hover' : 'text-ink'}`}>
                       {card.code}
                     </span>
-                    <span className="truncate text-[11px] text-slate-400">{card.shortName}</span>
+                    <span className="truncate text-[11px] text-ink-muted">{card.shortName}</span>
                   </div>
-                  <div className="mt-1 flex h-[4px] overflow-hidden rounded-full bg-slate-200">
+                  <div className="mt-1 flex h-[5px] overflow-hidden rounded-full bg-subtle">
                     {card.segments.length > 0 ? (
                       card.segments.map((segment) => (
                         <div
@@ -136,13 +145,13 @@ export function IsoStandardCards({ byStandard, selectedIso, onSelectIso, compact
                 </div>
 
                 <div className="shrink-0 text-right">
-                  <div className={`text-[14px] font-bold ${isSelected ? 'text-accent-hover' : 'text-slate-700'}`}>
+                  <div className={`text-[14px] font-bold ${isSelected ? 'text-accent-hover' : 'text-ink-secondary'}`}>
                     {card.total}
                   </div>
                   {sortByRisk && riskPct > 0 ? (
                     <div className={`text-[10.5px] font-semibold ${riskTextClass(riskPct)}`}>{riskPct}%</div>
                   ) : card.overdueCount > 0 ? (
-                    <div className="text-[10.5px] font-semibold text-amber-700">{card.overdueCount}⚠</div>
+                    <div className="text-[10.5px] font-semibold text-overdue-fg">{card.overdueCount}⚠</div>
                   ) : null}
                 </div>
               </button>
@@ -156,14 +165,14 @@ export function IsoStandardCards({ byStandard, selectedIso, onSelectIso, compact
   return (
     <div className="mb-6">
       <div className="mb-2 flex items-center justify-between">
-        <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">
+        <span className="text-[11px] font-semibold uppercase tracking-wide text-ink-muted">
           Standards — click to filter
         </span>
         <button
           type="button"
           onClick={() => setSortByRisk((v) => !v)}
           className={`flex items-center gap-1 rounded-md border px-2.5 py-1 text-[11px] font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
-            sortByRisk ? 'border-rose-200 bg-rose-50 text-rose-700' : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'
+            sortByRisk ? 'border-noncompliant/30 bg-noncompliant-bg text-noncompliant' : 'border-border bg-surface text-ink-secondary hover:border-border-strong'
           }`}
         >
           {sortByRisk ? 'Sorted: highest risk first' : 'Sort by risk'}
@@ -182,18 +191,18 @@ export function IsoStandardCards({ byStandard, selectedIso, onSelectIso, compact
               aria-pressed={isSelected}
               title={`${card.standard} — ${card.shortName}`}
               className={`rounded-[10px] border p-3.5 text-left shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 ${
-                isSelected ? 'border-[1.5px] border-accent bg-accent-tint' : 'border-slate-200 bg-white hover:border-slate-300'
+                isSelected ? 'border-[1.5px] border-accent bg-accent-tint' : 'border-border bg-surface hover:border-border-strong'
               }`}
             >
               <div className="mb-0.5 flex items-baseline justify-between gap-1">
-                <span className={`text-[14px] font-bold ${isSelected ? 'text-accent-hover' : 'text-slate-900'}`}>
+                <span className={`text-[14px] font-bold ${isSelected ? 'text-accent-hover' : 'text-ink'}`}>
                   {card.code}
                 </span>
-                <span className="text-[16px] font-bold text-slate-900">{card.total}</span>
+                <span className="text-[16px] font-bold text-ink">{card.total}</span>
               </div>
-              <div className="mb-0.5 truncate text-[11.5px] font-medium text-slate-500">{card.standard}</div>
-              <div className="mb-2.5 truncate text-[11px] text-slate-400">{card.shortName}</div>
-              <div className="mb-1 flex h-[5px] overflow-hidden rounded-full bg-slate-100">
+              <div className="mb-0.5 truncate text-[11.5px] font-medium text-ink-secondary">{card.standard}</div>
+              <div className="mb-2.5 truncate text-[11px] text-ink-muted">{card.shortName}</div>
+              <div className="mb-1 flex h-[5px] overflow-hidden rounded-full bg-subtle">
                 {card.segments.length > 0 ? (
                   card.segments.map((segment) => (
                     <div
@@ -204,11 +213,11 @@ export function IsoStandardCards({ byStandard, selectedIso, onSelectIso, compact
                     />
                   ))
                 ) : (
-                  <div className="h-full w-full bg-slate-100" />
+                  <div className="h-full w-full bg-subtle" />
                 )}
               </div>
               <div className="flex items-center justify-between">
-                <div className="h-[14px] text-[11px] font-semibold text-amber-700">
+                <div className="h-[14px] text-[11px] font-semibold text-overdue-fg">
                   {card.overdueCount > 0 ? `${card.overdueCount} overdue` : ''}
                 </div>
                 {sortByRisk && riskPct > 0 && (

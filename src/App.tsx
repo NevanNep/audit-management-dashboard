@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, LayoutGrid } from 'lucide-react';
+import { ChevronRight, LayoutGrid } from 'lucide-react';
 import { DashboardHeader } from './components/dashboard/DashboardHeader';
 import { AllStandardsCard } from './components/dashboard/AllStandardsCard';
 import { IsoStandardCards } from './components/dashboard/IsoStandardCards';
@@ -116,8 +116,10 @@ function App() {
     setPage(1);
   }
 
+  // Sidebar standard picker: switch the standard and reveal the expanded sidebar.
+  // Clause stays put — the clause list is global, so it's valid under any standard.
   function selectIso(iso: EvidenceFilterState['iso']) {
-    updateFilters({ iso, clause: ALL_CLAUSES });
+    updateFilters({ iso });
     setSidebarCollapsed(false);
   }
 
@@ -125,13 +127,13 @@ function App() {
   const clauseOptions = [ALL_CLAUSES, ...GLOBAL_CLAUSES.map((clause) => clause.code)] as ClauseFilterValue[];
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex min-h-screen bg-canvas">
       {/* ── Left sidebar: flows with the page (browser-scrolling it moves the sidebar too), but its
              own content is capped to one viewport tall with its own scroll — scrolling while hovered
              over it moves only the panel, and overscroll-contain stops that from spilling into the
              page scroll once it hits the top/bottom. ── */}
       <aside
-        className={`relative flex shrink-0 self-start flex-col border-r border-slate-200 bg-white transition-[width] duration-200 ${
+        className={`relative flex shrink-0 self-start flex-col border-r border-border bg-surface transition-[width] duration-200 ${
           sidebarCollapsed ? 'w-12' : 'w-[272px]'
         }`}
       >
@@ -141,22 +143,22 @@ function App() {
               type="button"
               onClick={() => setSidebarCollapsed(false)}
               title="Expand sidebar"
-              className="flex h-8 w-8 items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 focus:outline-none"
+              className="flex h-8 w-8 items-center justify-center rounded-md text-ink-muted transition-colors hover:bg-subtle hover:text-ink-secondary focus:outline-none"
             >
               <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
             </button>
-            <div className="mx-auto h-px w-6 bg-slate-200" />
+            <div className="mx-auto h-px w-6 bg-border" />
             <button
               type="button"
               onClick={() => selectIso(ALL_ISO)}
               title={`All standards — ${stats.overall.total} docs`}
               className={`flex h-8 w-8 items-center justify-center rounded-md transition-colors focus:outline-none ${
-                filters.iso === ALL_ISO ? 'bg-accent text-white' : 'text-slate-500 hover:bg-slate-100'
+                filters.iso === ALL_ISO ? 'bg-accent text-white' : 'text-ink-secondary hover:bg-subtle'
               }`}
             >
               <LayoutGrid className="h-3.5 w-3.5" aria-hidden="true" />
             </button>
-            <div className="mx-auto h-px w-6 bg-slate-200" />
+            <div className="mx-auto h-px w-6 bg-border" />
             {ISO_STANDARDS.map((std) => {
               const stdStats = stats.byStandard.find((entry) => entry.standard === std.standard);
               const isActive = filters.iso === std.code;
@@ -170,31 +172,23 @@ function App() {
                   onClick={() => selectIso(std.code as IsoCode)}
                   title={`${std.standard} (${std.code}) — ${stdStats?.total ?? 0} docs`}
                   className={`relative flex h-8 w-8 items-center justify-center rounded-md text-[10px] font-bold transition-colors focus:outline-none ${
-                    isActive ? 'bg-accent text-white' : 'text-slate-500 hover:bg-slate-100'
+                    isActive ? 'bg-accent text-white' : 'text-ink-secondary hover:bg-subtle'
                   }`}
                 >
                   {std.standard.slice(0, 2)}
                   {hasRisk && !isActive && (
-                    <span aria-hidden="true" className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-amber-400" />
+                    <span aria-hidden="true" className="absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-amber-500" />
                   )}
                 </button>
               );
             })}
           </div>
         ) : (
-          <>
-            <button
-              type="button"
-              onClick={() => setSidebarCollapsed(true)}
-              title="Collapse sidebar"
-              className="absolute right-2 top-3 z-10 flex h-7 w-7 items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-600 focus:outline-none"
-            >
-              <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
-            </button>
-            <div className="flex max-h-screen flex-col gap-3 overflow-y-auto overscroll-contain px-4 py-5 pr-10">
+          <div className="flex max-h-screen flex-col overflow-y-auto overscroll-contain">
+            <DashboardHeader onCollapse={() => setSidebarCollapsed(true)} />
+            <div className="flex flex-col gap-5 px-4 py-5">
               <AllStandardsCard
                 overall={stats.overall}
-                evidenceStatusCounts={stats.evidenceStatusCounts}
                 isSelected={filters.iso === ALL_ISO}
                 onSelect={() => selectIso(ALL_ISO)}
               />
@@ -205,23 +199,19 @@ function App() {
               />
               <IsoStandardCards byStandard={stats.byStandard} selectedIso={filters.iso} onSelectIso={selectIso} compact />
             </div>
-          </>
+          </div>
         )}
       </aside>
 
       {/* ── Main pane (flows normally; the browser scrolls the whole page) ── */}
       <main className="flex min-w-0 flex-1 flex-col">
-        <div className="flex items-center border-b border-slate-200 bg-white px-6 py-3.5">
-          <DashboardHeader />
-        </div>
-
         <div className="flex-1 px-6 py-4">
           {error ? (
-            <div className="rounded-[10px] border border-rose-200 bg-rose-50 p-4 text-sm text-rose-700">
+            <div className="rounded-[10px] border border-noncompliant/30 bg-noncompliant-bg p-4 text-sm text-noncompliant">
               Couldn't load evidence from the server: {error}
             </div>
           ) : isLoading ? (
-            <div className="rounded-[10px] border border-slate-200 bg-white p-8 text-center text-sm text-slate-500 shadow-sm">
+            <div className="rounded-[10px] border border-border bg-surface p-8 text-center text-sm text-ink-secondary shadow-sm">
               Loading evidence...
             </div>
           ) : (
@@ -239,7 +229,7 @@ function App() {
                 search={filters.search}
                 onSearchChange={(search) => updateFilters({ search })}
                 iso={filters.iso}
-                onIsoChange={selectIso}
+                onIsoChange={(iso) => updateFilters({ iso })}
                 clause={filters.clause}
                 onClauseChange={(clause) => updateFilters({ clause })}
                 clauseOptions={clauseOptions}
@@ -253,8 +243,8 @@ function App() {
                 overdueOnly={filters.overdueOnly}
                 onOverdueOnlyChange={(overdueOnly) => updateFilters({ overdueOnly })}
               />
-              <p className="mt-2 text-xs text-slate-400">
-                Read-only index — documents live in SharePoint. Rows past their due date are tinted.
+              <p className="mt-2 text-[11.5px] text-ink-muted">
+                Read-only index — documents live in SharePoint. Rows past their due date are tinted amber.
               </p>
             </>
           )}

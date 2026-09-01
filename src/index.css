@@ -1,13 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
 
-  --color-accent: #3d6fd6;
-  --color-accent-tint: #eef3fc;
-  --color-accent-hover: #325bb0;
+  /* ── Surfaces ── */
+  --color-canvas: #f6f7f9;
+  --color-surface: #ffffff;
+  --color-subtle: #eef0f4;
+  --color-border: #e2e5ea;
+  --color-border-strong: #cfd4de;
+
+
+  /* ── Text ── */
+  --color-ink: #12161f;
+  --color-ink-secondary: #5b6474;
+  --color-ink-muted: #8a92a1;
+  --color-inverse: #ffffff;
+  --color-link: #2e49b0;
+  --color-sidebar-muted: #98a2b6;
+  --color-sidebar-strong: #d7dce6;
+
+  /* ── Primary accent ── */
+  --color-accent: #3a5bd9;
+  --color-accent-tint: #eef1fc;
+  --color-accent-hover: #2e49b0;
+
+  /* ── Evidence status ──
+     -pending / -missing darkened from #a96e12 / #8a92a1 to clear WCAG AA 4.5:1
+     as text on white and on the subtle/tint surfaces. */
+  --color-ev-accepted: #1f7a54;
+  --color-ev-pending: #935e0e;
+  --color-ev-rejected: #b4271f;
+  --color-ev-missing: #646b7a;
+
+  /* ── Compliance ──
+     -partial / -neutral darkened from #a96e12 / #79808f for the same WCAG AA reason. */
+  --color-compliant: #1f7a54;
+  --color-compliant-bg: #e7f3ec;
+  --color-partial: #935e0e;
+  --color-partial-bg: #faf2e1;
+  --color-noncompliant: #b4271f;
+  --color-noncompliant-bg: #fbeae8;
+  --color-neutral: #646b7a;
+  --color-neutral-bg: #eef0f3;
+
+  /* ── Overdue ── */
+  --color-overdue-fg: #8e1b2e;
+  --color-overdue-accent: #b4271f;
+  --color-overdue-tag: #f7e9ec;
+  --color-overdue-row: #fcf4f5;
+
+  /* ── Standard tag ── */
+  --color-standard-bg: #26304a;
+
+  /* ── Clause ── */
+  --color-clause-rule: #c7ceda;
+  --color-clause-code: #3b4557;
 }
 
 html, body {
@@ -16,8 +66,10 @@ html, body {
 
 body {
   margin: 0;
-  background: var(--color-slate-50);
+  background: var(--color-canvas);
+  color: var(--color-ink);
   font-family: var(--font-sans);
+  font-size: 13px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -33,9 +85,9 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-slate-300);
+  background: var(--color-border-strong);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-slate-400);
+  background: var(--color-ink-muted);
 }

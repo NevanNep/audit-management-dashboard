@@ -28,7 +28,7 @@ const COMPLIANCE_ORDER: ComplianceResult[] = [
 const COMPLIANCE_LABELS: Record<ComplianceResult, string> = {
   Compliant: 'Compliant',
   'Partially compliant': 'Partial',
-  'Non-compliant': 'Non-comp.',
+  'Non-compliant': 'Non-compliant',
   'Not assessed': 'Not assessed',
   'Not applicable': 'N/A',
 };
@@ -45,17 +45,17 @@ function BarRow({
   colorClass: string;
 }) {
   return (
-    <div className="flex items-center gap-2 px-2 py-[5px]">
+    <div className="flex items-center gap-2 py-[3px]">
       <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${colorClass}`} />
-      <div className="w-[60px] shrink-0 truncate text-[12px] text-slate-500">{label}</div>
-      <div className="relative h-[10px] flex-1 overflow-hidden rounded-full border border-slate-200 bg-white shadow-[inset_0_1px_2px_0_rgb(0,0,0,0.04)]">
+      <div className="w-[84px] shrink-0 whitespace-nowrap text-[11px] text-ink-secondary">{label}</div>
+      <div className="relative h-[6px] flex-1 overflow-hidden rounded-full bg-subtle">
         <div
-          className={`h-full rounded-full opacity-80 transition-all duration-300 ${colorClass}`}
+          className={`h-full rounded-full transition-all duration-300 ${colorClass}`}
           style={{ width: `${widthPercent}%` }}
         />
       </div>
       <div className="w-6 shrink-0 text-right">
-        <span className="text-[11.5px] font-semibold tabular-nums text-slate-700">{count}</span>
+        <span className="text-[11.5px] font-semibold tabular-nums text-ink-secondary">{count}</span>
       </div>
     </div>
   );
@@ -63,14 +63,14 @@ function BarRow({
 
 function SectionCard({ title, tooltip, rows }: { title: string; tooltip: string; rows: React.ReactNode }) {
   return (
-    <div className="rounded-lg border border-slate-200 bg-white shadow-[0_1px_3px_0_rgb(0,0,0,0.04)]">
-      <div className="flex items-center gap-1.5 border-b border-slate-100 px-3 py-2">
-        <span className="text-[11.5px] font-semibold uppercase tracking-wide text-slate-500">{title}</span>
-        <Info className="h-3 w-3 shrink-0 cursor-default text-slate-300 hover:text-slate-400" aria-hidden="true">
+    <div>
+      <div className="mb-1 flex items-center gap-1.5">
+        <span className="text-[12px] font-semibold text-ink-secondary">{title}</span>
+        <Info className="h-3 w-3 shrink-0 cursor-default text-ink-muted hover:text-ink-secondary" aria-hidden="true">
           <title>{tooltip}</title>
         </Info>
       </div>
-      <div className="px-1 py-1.5">{rows}</div>
+      <div>{rows}</div>
     </div>
   );
 }
@@ -94,7 +94,7 @@ export function ChartsPanel({ evidenceStatusCounts, complianceResultCounts, stac
 
   const evidenceSection = (
     <SectionCard
-      title="Evidence"
+      title="Evidence review"
       tooltip="Was the supporting evidence uploaded and reviewed by an auditor?"
       rows={evidenceRows.map((row) => (
         <BarRow
@@ -125,19 +125,16 @@ export function ChartsPanel({ evidenceStatusCounts, complianceResultCounts, stac
   );
 
   return (
-    <div className="rounded-[10px] border border-slate-200 bg-slate-50 p-3">
-      <div className="mb-0.5 text-[12.5px] font-semibold text-slate-700">Document health</div>
-      <p className="mb-3 text-[11.5px] leading-snug text-slate-400">Evidence reviewed · compliance satisfied</p>
-
+    <div>
       {isEmpty ? (
-        <p className="text-[12.5px] text-slate-400">No documents match current filters.</p>
+        <p className="text-[12.5px] text-ink-muted">No documents match current filters.</p>
       ) : stacked ? (
-        <div className="space-y-2.5">
+        <div className="space-y-4">
           {evidenceSection}
           {complianceSection}
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-x-3">
+        <div className="grid grid-cols-2 gap-x-4">
           {evidenceSection}
           {complianceSection}
         </div>
