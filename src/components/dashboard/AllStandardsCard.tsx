@@ -32,19 +32,21 @@ export function AllStandardsCard({ overall, isSelected, onSelect }: AllStandards
       type="button"
       onClick={onSelect}
       aria-pressed={isSelected}
-      className={`w-full rounded-[10px] border p-4 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 ${
-        isSelected ? 'border-[1.5px] border-accent bg-accent-tint' : 'border-border bg-subtle hover:border-border-strong'
+      className={`w-full rounded-[14px] border p-[18px] text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-1 ${
+        isSelected
+          ? 'border-[1.5px] border-accent bg-accent-tint'
+          : 'border border-border bg-subtle hover:border-border-strong'
       }`}
     >
-      <div className="mb-2 flex items-center justify-between">
-        <span className={`text-[12.5px] font-semibold ${isSelected ? 'text-accent-hover' : 'text-ink-secondary'}`}>
+      <div className="mb-2.5 flex items-center justify-between">
+        <span className={`text-[13px] font-semibold ${isSelected ? 'text-accent-hover' : 'text-ink-secondary'}`}>
           All standards
         </span>
-        {isSelected && <span className="text-[11px] font-medium text-accent-hover">active</span>}
+        {isSelected && <span className="text-[12px] font-medium text-accent-hover">active</span>}
       </div>
 
-      <div className="mb-2 flex items-baseline gap-1.5">
-        <span className="text-[32px] font-bold leading-none text-ink">{overall.total}</span>
+      <div className="mb-3 flex items-baseline gap-2">
+        <span className="text-[38px] font-bold leading-none tracking-tight text-ink">{overall.total}</span>
         <span className="text-[13px] text-ink-secondary">documents</span>
       </div>
 
@@ -63,7 +65,7 @@ export function AllStandardsCard({ overall, isSelected, onSelect }: AllStandards
         )}
       </div>
       {overall.overdueCount > 0 && (
-        <div className="mt-2.5 text-[12px] font-semibold text-overdue-fg">{overall.overdueCount} overdue</div>
+        <div className="mt-3 text-[12px] font-semibold text-overdue-fg">{overall.overdueCount} overdue</div>
       )}
     </button>
   );
