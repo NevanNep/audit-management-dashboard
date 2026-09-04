@@ -186,7 +186,7 @@ function App() {
         ) : (
           <div className="flex max-h-screen flex-col overflow-y-auto overscroll-contain">
             <DashboardHeader onCollapse={() => setSidebarCollapsed(true)} />
-            <div className="flex flex-col gap-5 px-4 py-5">
+            <div className="flex flex-col gap-5 px-5 py-5">
               <AllStandardsCard
                 overall={stats.overall}
                 isSelected={filters.iso === ALL_ISO}
@@ -195,9 +195,8 @@ function App() {
               <ChartsPanel
                 evidenceStatusCounts={stats.evidenceStatusCounts}
                 complianceResultCounts={stats.complianceResultCounts}
-                stacked
               />
-              <IsoStandardCards byStandard={stats.byStandard} selectedIso={filters.iso} onSelectIso={selectIso} compact />
+              <IsoStandardCards byStandard={stats.byStandard} selectedIso={filters.iso} onSelectIso={selectIso} />
             </div>
           </div>
         )}
@@ -243,9 +242,6 @@ function App() {
                 overdueOnly={filters.overdueOnly}
                 onOverdueOnlyChange={(overdueOnly) => updateFilters({ overdueOnly })}
               />
-              <p className="mt-2 text-[11.5px] text-ink-muted">
-                Read-only index — documents live in SharePoint. Rows past their due date are tinted amber.
-              </p>
             </>
           )}
         </div>

@@ -377,7 +377,8 @@ const COLUMNS: ColumnDef[] = [
   { key: 'dueDate', label: 'Due date' },
 ];
 
-const TH = 'px-3 py-2 text-left text-[11px] font-semibold text-ink-secondary whitespace-nowrap';
+const TH =
+  'px-3 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide whitespace-nowrap transition-colors';
 
 function SortIcon({ active, direction }: { active: boolean; direction: 'asc' | 'desc' }) {
   if (!active) return <ArrowUpDown className="ml-1 h-2.5 w-2.5 opacity-30" aria-hidden="true" />;
@@ -490,24 +491,32 @@ export function DocumentsTable({
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full min-w-[860px] border-collapse text-[12.5px]">
-            <thead className="border-b border-border bg-surface">
+            <thead className="border-y border-border-strong bg-subtle">
               <tr>
-                <th className="w-8 px-2 py-2">
+                <th className="w-8 bg-subtle px-2 py-2.5">
                   <span className="sr-only">Expand row</span>
                 </th>
-                {COLUMNS.map((column) => (
-                  <th key={column.key} scope="col" aria-sort={ariaSortFor(sortState, column.key)} className={TH}>
-                    <button
-                      type="button"
-                      onClick={() => onSort(column.key)}
-                      className="inline-flex items-center hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                {COLUMNS.map((column) => {
+                  const isSorted = sortState.key === column.key;
+                  return (
+                    <th
+                      key={column.key}
+                      scope="col"
+                      aria-sort={ariaSortFor(sortState, column.key)}
+                      className={`${TH} ${isSorted ? 'bg-accent-tint text-accent-hover' : 'text-ink-secondary'}`}
                     >
-                      {column.label}
-                      <SortIcon active={sortState.key === column.key} direction={sortState.direction} />
-                    </button>
-                  </th>
-                ))}
-                <th scope="col" className={TH}>
+                      <button
+                        type="button"
+                        onClick={() => onSort(column.key)}
+                        className="inline-flex items-center hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      >
+                        {column.label}
+                        <SortIcon active={isSorted} direction={sortState.direction} />
+                      </button>
+                    </th>
+                  );
+                })}
+                <th scope="col" className={`${TH} text-ink-secondary`}>
                   Open
                 </th>
               </tr>
