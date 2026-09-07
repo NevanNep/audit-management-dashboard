@@ -61,6 +61,14 @@ function parseEnum<T extends string>(
   return value as T;
 }
 
+export function parseClauseCoverageQuery(raw: RawEvidenceQuery): {
+  standard?: Standard;
+} {
+  return {
+    standard: parseEnum<Standard>(raw.standard, STANDARDS_VALUES, 'standard'),
+  };
+}
+
 export function parseFilterParams(raw: RawEvidenceQuery): EvidenceFilterParams {
   return {
     search: raw.search?.trim() || undefined,

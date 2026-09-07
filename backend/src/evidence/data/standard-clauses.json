@@ -1,0 +1,1676 @@
+{
+  "ISMS": [
+    {
+      "code": "4",
+      "title": "Context of the organization"
+    },
+    {
+      "code": "4.1",
+      "title": "Understanding the organization and its context"
+    },
+    {
+      "code": "4.2",
+      "title": "Understanding the needs and expectations of interested parties"
+    },
+    {
+      "code": "4.3",
+      "title": "Determining the scope of the information security management system"
+    },
+    {
+      "code": "4.4",
+      "title": "Information security management system"
+    },
+    {
+      "code": "5",
+      "title": "Leadership"
+    },
+    {
+      "code": "5.1",
+      "title": "Leadership and commitment"
+    },
+    {
+      "code": "5.2",
+      "title": "Policy"
+    },
+    {
+      "code": "5.3",
+      "title": "Organizational roles, responsibilities and authorities"
+    },
+    {
+      "code": "6",
+      "title": "Planning"
+    },
+    {
+      "code": "6.1",
+      "title": "Actions to address risks and opportunities"
+    },
+    {
+      "code": "6.1.1",
+      "title": "General"
+    },
+    {
+      "code": "6.1.2",
+      "title": "Information security risk assessment"
+    },
+    {
+      "code": "6.1.3",
+      "title": "Information security risk treatment"
+    },
+    {
+      "code": "6.2",
+      "title": "Information security objectives and planning to achieve them"
+    },
+    {
+      "code": "6.3",
+      "title": "Planning of changes"
+    },
+    {
+      "code": "7",
+      "title": "Support"
+    },
+    {
+      "code": "7.1",
+      "title": "Resources"
+    },
+    {
+      "code": "7.2",
+      "title": "Competence"
+    },
+    {
+      "code": "7.3",
+      "title": "Awareness"
+    },
+    {
+      "code": "7.4",
+      "title": "Communication"
+    },
+    {
+      "code": "7.5",
+      "title": "Documented information"
+    },
+    {
+      "code": "7.5.1",
+      "title": "General"
+    },
+    {
+      "code": "7.5.2",
+      "title": "Creating and updating"
+    },
+    {
+      "code": "7.5.3",
+      "title": "Control of documented information"
+    },
+    {
+      "code": "8",
+      "title": "Operation"
+    },
+    {
+      "code": "8.1",
+      "title": "Operational planning and control"
+    },
+    {
+      "code": "8.2",
+      "title": "Information security risk assessment"
+    },
+    {
+      "code": "8.3",
+      "title": "Information security risk treatment"
+    },
+    {
+      "code": "9",
+      "title": "Performance evaluation"
+    },
+    {
+      "code": "9.1",
+      "title": "Monitoring, measurement, analysis and evaluation"
+    },
+    {
+      "code": "9.2",
+      "title": "Internal audit"
+    },
+    {
+      "code": "9.2.1",
+      "title": "General"
+    },
+    {
+      "code": "9.2.2",
+      "title": "Internal audit programme"
+    },
+    {
+      "code": "9.3",
+      "title": "Management review"
+    },
+    {
+      "code": "9.3.1",
+      "title": "General"
+    },
+    {
+      "code": "9.3.2",
+      "title": "Management review inputs"
+    },
+    {
+      "code": "9.3.3",
+      "title": "Management review results"
+    },
+    {
+      "code": "10",
+      "title": "Improvement"
+    },
+    {
+      "code": "10.1",
+      "title": "Continual improvement"
+    },
+    {
+      "code": "10.2",
+      "title": "Nonconformity and corrective action"
+    }
+  ],
+  "PIMS": [
+    {
+      "code": "5",
+      "title": "PIMS-specific requirements related to ISO/IEC 27001"
+    },
+    {
+      "code": "5.1",
+      "title": "General"
+    },
+    {
+      "code": "5.2",
+      "title": "Context of the organization"
+    },
+    {
+      "code": "5.2.1",
+      "title": "Understanding the organization and its context"
+    },
+    {
+      "code": "5.2.2",
+      "title": "Understanding the needs and expectations of interested parties"
+    },
+    {
+      "code": "5.2.3",
+      "title": "Determining the scope of the PIMS"
+    },
+    {
+      "code": "5.2.4",
+      "title": "Privacy information management system"
+    },
+    {
+      "code": "5.3",
+      "title": "Leadership"
+    },
+    {
+      "code": "5.3.1",
+      "title": "Leadership and commitment"
+    },
+    {
+      "code": "5.3.2",
+      "title": "Policy"
+    },
+    {
+      "code": "5.3.3",
+      "title": "Organizational roles, responsibilities and authorities"
+    },
+    {
+      "code": "5.4",
+      "title": "Planning"
+    },
+    {
+      "code": "5.4.1",
+      "title": "Actions to address risks and opportunities"
+    },
+    {
+      "code": "5.4.2",
+      "title": "Privacy information management objectives and planning to achieve them"
+    },
+    {
+      "code": "5.5",
+      "title": "Support"
+    },
+    {
+      "code": "5.5.1",
+      "title": "Resources"
+    },
+    {
+      "code": "5.5.2",
+      "title": "Competence"
+    },
+    {
+      "code": "5.5.3",
+      "title": "Awareness"
+    },
+    {
+      "code": "5.5.4",
+      "title": "Communication"
+    },
+    {
+      "code": "5.5.5",
+      "title": "Documented information"
+    },
+    {
+      "code": "5.6",
+      "title": "Operation"
+    },
+    {
+      "code": "5.6.1",
+      "title": "Operational planning and control"
+    },
+    {
+      "code": "5.6.2",
+      "title": "Privacy risk assessment"
+    },
+    {
+      "code": "5.6.3",
+      "title": "Privacy risk treatment"
+    },
+    {
+      "code": "5.7",
+      "title": "Performance evaluation"
+    },
+    {
+      "code": "5.7.1",
+      "title": "Monitoring, measurement, analysis and evaluation"
+    },
+    {
+      "code": "5.7.2",
+      "title": "Internal audit"
+    },
+    {
+      "code": "5.7.3",
+      "title": "Management review"
+    },
+    {
+      "code": "5.8",
+      "title": "Improvement"
+    },
+    {
+      "code": "5.8.1",
+      "title": "Nonconformity and corrective action"
+    },
+    {
+      "code": "5.8.2",
+      "title": "Continual improvement"
+    },
+    {
+      "code": "6",
+      "title": "PIMS-specific guidance related to ISO/IEC 27002"
+    },
+    {
+      "code": "6.1",
+      "title": "General"
+    },
+    {
+      "code": "6.2",
+      "title": "Information security policies"
+    },
+    {
+      "code": "6.2.1.1",
+      "title": "Policies for information security (PII extension)"
+    },
+    {
+      "code": "6.3",
+      "title": "Organization of information security"
+    },
+    {
+      "code": "6.4",
+      "title": "Human resource security"
+    },
+    {
+      "code": "6.5",
+      "title": "Asset management"
+    },
+    {
+      "code": "6.6",
+      "title": "Access control"
+    },
+    {
+      "code": "6.7",
+      "title": "Cryptography"
+    },
+    {
+      "code": "6.8",
+      "title": "Physical and environmental security"
+    },
+    {
+      "code": "6.9",
+      "title": "Operations security"
+    },
+    {
+      "code": "6.10",
+      "title": "Communications security"
+    },
+    {
+      "code": "6.11",
+      "title": "System acquisition, development and maintenance"
+    },
+    {
+      "code": "6.12",
+      "title": "Supplier relationships"
+    },
+    {
+      "code": "6.13",
+      "title": "Information security incident management"
+    },
+    {
+      "code": "6.14",
+      "title": "Information security aspects of business continuity"
+    },
+    {
+      "code": "6.15",
+      "title": "Compliance"
+    },
+    {
+      "code": "7",
+      "title": "Additional guidance for PII controllers"
+    },
+    {
+      "code": "7.1",
+      "title": "General"
+    },
+    {
+      "code": "7.2",
+      "title": "Conditions for collection and processing"
+    },
+    {
+      "code": "7.2.1",
+      "title": "Identify and document purpose"
+    },
+    {
+      "code": "7.2.2",
+      "title": "Identify lawful basis"
+    },
+    {
+      "code": "7.2.3",
+      "title": "Determine when and how consent is to be obtained"
+    },
+    {
+      "code": "7.2.4",
+      "title": "Obtain and record consent"
+    },
+    {
+      "code": "7.2.5",
+      "title": "Privacy impact assessment"
+    },
+    {
+      "code": "7.2.6",
+      "title": "Contracts with PII processors"
+    },
+    {
+      "code": "7.2.7",
+      "title": "Joint PII controller"
+    },
+    {
+      "code": "7.2.8",
+      "title": "Records related to processing PII"
+    },
+    {
+      "code": "7.3",
+      "title": "Obligations to PII principals"
+    },
+    {
+      "code": "7.3.1",
+      "title": "Determining and fulfilling obligations to PII principals"
+    },
+    {
+      "code": "7.3.2",
+      "title": "Determining information for PII principals"
+    },
+    {
+      "code": "7.3.3",
+      "title": "Providing information to PII principals"
+    },
+    {
+      "code": "7.3.4",
+      "title": "Providing mechanism to modify or withdraw consent"
+    },
+    {
+      "code": "7.3.5",
+      "title": "Providing mechanism to object to PII processing"
+    },
+    {
+      "code": "7.3.6",
+      "title": "Access, correction and/or erasure"
+    },
+    {
+      "code": "7.3.7",
+      "title": "PII controllers' obligations to inform third parties"
+    },
+    {
+      "code": "7.3.8",
+      "title": "Providing copy of PII processed"
+    },
+    {
+      "code": "7.3.9",
+      "title": "Handling requests"
+    },
+    {
+      "code": "7.3.10",
+      "title": "Automated decision making"
+    },
+    {
+      "code": "7.4",
+      "title": "Privacy by design and privacy by default"
+    },
+    {
+      "code": "7.4.1",
+      "title": "Limit collection"
+    },
+    {
+      "code": "7.4.2",
+      "title": "Limit processing"
+    },
+    {
+      "code": "7.4.3",
+      "title": "Accuracy and quality"
+    },
+    {
+      "code": "7.4.4",
+      "title": "PII minimization objectives"
+    },
+    {
+      "code": "7.4.5",
+      "title": "PII de-identification and deletion at the end of processing"
+    },
+    {
+      "code": "7.4.6",
+      "title": "Temporary files"
+    },
+    {
+      "code": "7.4.7",
+      "title": "Retention"
+    },
+    {
+      "code": "7.4.8",
+      "title": "Disposal"
+    },
+    {
+      "code": "7.4.9",
+      "title": "PII transmission controls"
+    },
+    {
+      "code": "7.5",
+      "title": "PII sharing, transfer and disclosure"
+    },
+    {
+      "code": "7.5.1",
+      "title": "Identify basis for PII transfer between jurisdictions"
+    },
+    {
+      "code": "7.5.2",
+      "title": "Countries and international organizations to which PII can be transferred"
+    },
+    {
+      "code": "7.5.3",
+      "title": "Records of PII transfers"
+    },
+    {
+      "code": "7.5.4",
+      "title": "Records of PII disclosure to third parties"
+    },
+    {
+      "code": "8",
+      "title": "Additional guidance for PII processors"
+    },
+    {
+      "code": "8.1",
+      "title": "General"
+    },
+    {
+      "code": "8.2",
+      "title": "Conditions for collection and processing"
+    },
+    {
+      "code": "8.2.1",
+      "title": "Customer agreement"
+    },
+    {
+      "code": "8.2.2",
+      "title": "Organization's purposes"
+    },
+    {
+      "code": "8.2.3",
+      "title": "Marketing and advertising use"
+    },
+    {
+      "code": "8.2.4",
+      "title": "Infringing instruction"
+    },
+    {
+      "code": "8.2.5",
+      "title": "Customer obligations"
+    },
+    {
+      "code": "8.2.6",
+      "title": "Records related to processing PII"
+    },
+    {
+      "code": "8.3",
+      "title": "Obligations to PII principals"
+    },
+    {
+      "code": "8.3.1",
+      "title": "Obligations to PII principals"
+    },
+    {
+      "code": "8.3.2",
+      "title": "Sub-contracted processing"
+    },
+    {
+      "code": "8.4",
+      "title": "Privacy by design and privacy by default"
+    },
+    {
+      "code": "8.4.1",
+      "title": "Temporary files"
+    },
+    {
+      "code": "8.4.2",
+      "title": "Return, transfer or disposal of PII"
+    },
+    {
+      "code": "8.4.3",
+      "title": "PII transmission controls"
+    },
+    {
+      "code": "8.5",
+      "title": "PII sharing, transfer and disclosure"
+    },
+    {
+      "code": "8.5.1",
+      "title": "Basis for PII transfer between jurisdictions"
+    },
+    {
+      "code": "8.5.2",
+      "title": "Countries and international organizations to which PII can be transferred"
+    },
+    {
+      "code": "8.5.3",
+      "title": "Records of PII transfers"
+    },
+    {
+      "code": "8.5.4",
+      "title": "Records of PII disclosure to third parties"
+    },
+    {
+      "code": "8.5.5",
+      "title": "Notification of PII disclosure requests"
+    },
+    {
+      "code": "8.5.6",
+      "title": "Legally binding PII disclosures"
+    },
+    {
+      "code": "8.5.7",
+      "title": "Disclosure of sub-contractors used to process PII"
+    },
+    {
+      "code": "8.5.8",
+      "title": "Change of sub-contractor to process PII"
+    }
+  ],
+  "ITSMS": [
+    {
+      "code": "4",
+      "title": "Context of the organization"
+    },
+    {
+      "code": "4.1",
+      "title": "Understanding the organization and its context"
+    },
+    {
+      "code": "4.2",
+      "title": "Understanding the needs and expectations of interested parties"
+    },
+    {
+      "code": "4.3",
+      "title": "Determining the scope of the service management system"
+    },
+    {
+      "code": "4.4",
+      "title": "Service management system"
+    },
+    {
+      "code": "5",
+      "title": "Leadership"
+    },
+    {
+      "code": "5.1",
+      "title": "Leadership and commitment"
+    },
+    {
+      "code": "5.2",
+      "title": "Policy"
+    },
+    {
+      "code": "5.2.1",
+      "title": "Establishing the service management policy"
+    },
+    {
+      "code": "5.2.2",
+      "title": "Communicating the service management policy"
+    },
+    {
+      "code": "5.3",
+      "title": "Organizational roles, responsibilities and authorities"
+    },
+    {
+      "code": "6",
+      "title": "Planning the service management system"
+    },
+    {
+      "code": "6.1",
+      "title": "Actions to address risks and opportunities"
+    },
+    {
+      "code": "6.2",
+      "title": "Service management objectives and planning to achieve them"
+    },
+    {
+      "code": "6.2.1",
+      "title": "Define service management objectives"
+    },
+    {
+      "code": "6.2.2",
+      "title": "Plan to achieve service management objectives"
+    },
+    {
+      "code": "6.3",
+      "title": "Plan the service management system"
+    },
+    {
+      "code": "7",
+      "title": "Support of the service management system"
+    },
+    {
+      "code": "7.1",
+      "title": "Resources"
+    },
+    {
+      "code": "7.2",
+      "title": "Competence"
+    },
+    {
+      "code": "7.3",
+      "title": "Awareness"
+    },
+    {
+      "code": "7.4",
+      "title": "Communication"
+    },
+    {
+      "code": "7.5",
+      "title": "Documented information"
+    },
+    {
+      "code": "7.5.1",
+      "title": "General"
+    },
+    {
+      "code": "7.5.2",
+      "title": "Creating and updating"
+    },
+    {
+      "code": "7.5.3",
+      "title": "Control of documented information"
+    },
+    {
+      "code": "7.5.4",
+      "title": "Service management system documented information"
+    },
+    {
+      "code": "7.6",
+      "title": "Knowledge"
+    },
+    {
+      "code": "8",
+      "title": "Operation of the service management system"
+    },
+    {
+      "code": "8.1",
+      "title": "Operational planning and control"
+    },
+    {
+      "code": "8.2",
+      "title": "Service portfolio"
+    },
+    {
+      "code": "8.2.1",
+      "title": "Service delivery"
+    },
+    {
+      "code": "8.2.2",
+      "title": "Plan services"
+    },
+    {
+      "code": "8.2.3",
+      "title": "Control of parties involved in the service lifecycle"
+    },
+    {
+      "code": "8.2.4",
+      "title": "Service catalogue management"
+    },
+    {
+      "code": "8.2.5",
+      "title": "Asset management"
+    },
+    {
+      "code": "8.2.6",
+      "title": "Configuration management"
+    },
+    {
+      "code": "8.3",
+      "title": "Relationship and agreement"
+    },
+    {
+      "code": "8.3.1",
+      "title": "General"
+    },
+    {
+      "code": "8.3.2",
+      "title": "Business relationship management"
+    },
+    {
+      "code": "8.3.3",
+      "title": "Service level management"
+    },
+    {
+      "code": "8.3.4",
+      "title": "Supplier management"
+    },
+    {
+      "code": "8.4",
+      "title": "Supply and demand"
+    },
+    {
+      "code": "8.4.1",
+      "title": "Budgeting and accounting for services"
+    },
+    {
+      "code": "8.4.2",
+      "title": "Demand management"
+    },
+    {
+      "code": "8.4.3",
+      "title": "Capacity management"
+    },
+    {
+      "code": "8.5",
+      "title": "Service design, build and transition"
+    },
+    {
+      "code": "8.5.1",
+      "title": "Change management"
+    },
+    {
+      "code": "8.5.2",
+      "title": "Service design and transition"
+    },
+    {
+      "code": "8.5.3",
+      "title": "Release and deployment management"
+    },
+    {
+      "code": "8.6",
+      "title": "Resolution and fulfilment"
+    },
+    {
+      "code": "8.6.1",
+      "title": "Incident management"
+    },
+    {
+      "code": "8.6.2",
+      "title": "Service request management"
+    },
+    {
+      "code": "8.6.3",
+      "title": "Problem management"
+    },
+    {
+      "code": "8.7",
+      "title": "Service assurance"
+    },
+    {
+      "code": "8.7.1",
+      "title": "Service availability management"
+    },
+    {
+      "code": "8.7.2",
+      "title": "Service continuity management"
+    },
+    {
+      "code": "8.7.3",
+      "title": "Information security management"
+    },
+    {
+      "code": "9",
+      "title": "Performance evaluation"
+    },
+    {
+      "code": "9.1",
+      "title": "Monitoring, measurement, analysis and evaluation"
+    },
+    {
+      "code": "9.2",
+      "title": "Internal audit"
+    },
+    {
+      "code": "9.3",
+      "title": "Management review"
+    },
+    {
+      "code": "9.4",
+      "title": "Service reporting"
+    },
+    {
+      "code": "10",
+      "title": "Improvement"
+    },
+    {
+      "code": "10.1",
+      "title": "Nonconformity and corrective action"
+    },
+    {
+      "code": "10.2",
+      "title": "Continual improvement"
+    }
+  ],
+  "BCMS": [
+    {
+      "code": "4",
+      "title": "Context of the organization"
+    },
+    {
+      "code": "4.1",
+      "title": "Understanding the organization and its context"
+    },
+    {
+      "code": "4.2",
+      "title": "Understanding the needs and expectations of interested parties"
+    },
+    {
+      "code": "4.2.1",
+      "title": "General"
+    },
+    {
+      "code": "4.2.2",
+      "title": "Legal and regulatory requirements"
+    },
+    {
+      "code": "4.3",
+      "title": "Determining the scope of the BCMS"
+    },
+    {
+      "code": "4.3.1",
+      "title": "General"
+    },
+    {
+      "code": "4.3.2",
+      "title": "Scope of the BCMS"
+    },
+    {
+      "code": "4.4",
+      "title": "Business continuity management system"
+    },
+    {
+      "code": "5",
+      "title": "Leadership"
+    },
+    {
+      "code": "5.1",
+      "title": "Leadership and commitment"
+    },
+    {
+      "code": "5.2",
+      "title": "Policy"
+    },
+    {
+      "code": "5.2.1",
+      "title": "Establishing the business continuity policy"
+    },
+    {
+      "code": "5.2.2",
+      "title": "Communicating the business continuity policy"
+    },
+    {
+      "code": "5.3",
+      "title": "Organizational roles, responsibilities and authorities"
+    },
+    {
+      "code": "6",
+      "title": "Planning"
+    },
+    {
+      "code": "6.1",
+      "title": "Actions to address risks and opportunities"
+    },
+    {
+      "code": "6.2",
+      "title": "Business continuity objectives and plans to achieve them"
+    },
+    {
+      "code": "6.3",
+      "title": "Planning changes to the BCMS"
+    },
+    {
+      "code": "7",
+      "title": "Support"
+    },
+    {
+      "code": "7.1",
+      "title": "Resources"
+    },
+    {
+      "code": "7.2",
+      "title": "Competence"
+    },
+    {
+      "code": "7.3",
+      "title": "Awareness"
+    },
+    {
+      "code": "7.4",
+      "title": "Communication"
+    },
+    {
+      "code": "7.5",
+      "title": "Documented information"
+    },
+    {
+      "code": "7.5.1",
+      "title": "General"
+    },
+    {
+      "code": "7.5.2",
+      "title": "Creating and updating"
+    },
+    {
+      "code": "7.5.3",
+      "title": "Control of documented information"
+    },
+    {
+      "code": "8",
+      "title": "Operation"
+    },
+    {
+      "code": "8.1",
+      "title": "Operational planning and control"
+    },
+    {
+      "code": "8.2",
+      "title": "Business impact analysis and risk assessment"
+    },
+    {
+      "code": "8.2.1",
+      "title": "General"
+    },
+    {
+      "code": "8.2.2",
+      "title": "Business impact analysis"
+    },
+    {
+      "code": "8.2.3",
+      "title": "Risk assessment"
+    },
+    {
+      "code": "8.3",
+      "title": "Business continuity strategies and solutions"
+    },
+    {
+      "code": "8.3.1",
+      "title": "General"
+    },
+    {
+      "code": "8.3.2",
+      "title": "Identification of strategies and solutions"
+    },
+    {
+      "code": "8.3.3",
+      "title": "Resource requirements"
+    },
+    {
+      "code": "8.3.4",
+      "title": "Selection of strategies and solutions"
+    },
+    {
+      "code": "8.3.5",
+      "title": "Implementation of selected solutions"
+    },
+    {
+      "code": "8.4",
+      "title": "Business continuity plans and procedures"
+    },
+    {
+      "code": "8.4.1",
+      "title": "General"
+    },
+    {
+      "code": "8.4.2",
+      "title": "Structure of response"
+    },
+    {
+      "code": "8.4.3",
+      "title": "Warning and communication"
+    },
+    {
+      "code": "8.4.4",
+      "title": "Business continuity plans"
+    },
+    {
+      "code": "8.4.5",
+      "title": "Recovery"
+    },
+    {
+      "code": "8.5",
+      "title": "Exercise programme"
+    },
+    {
+      "code": "8.6",
+      "title": "Evaluation of business continuity documentation and capabilities"
+    },
+    {
+      "code": "9",
+      "title": "Performance evaluation"
+    },
+    {
+      "code": "9.1",
+      "title": "Monitoring, measurement, analysis and evaluation"
+    },
+    {
+      "code": "9.2",
+      "title": "Internal audit"
+    },
+    {
+      "code": "9.3",
+      "title": "Management review"
+    },
+    {
+      "code": "10",
+      "title": "Improvement"
+    },
+    {
+      "code": "10.1",
+      "title": "Nonconformity and corrective action"
+    },
+    {
+      "code": "10.2",
+      "title": "Continual improvement"
+    }
+  ],
+  "OHSMS": [
+    {
+      "code": "4",
+      "title": "Context of the organization"
+    },
+    {
+      "code": "4.1",
+      "title": "Understanding the organization and its context"
+    },
+    {
+      "code": "4.2",
+      "title": "Understanding the needs and expectations of workers and other interested parties"
+    },
+    {
+      "code": "4.3",
+      "title": "Determining the scope of the OH&S management system"
+    },
+    {
+      "code": "4.4",
+      "title": "OH&S management system"
+    },
+    {
+      "code": "5",
+      "title": "Leadership and worker participation"
+    },
+    {
+      "code": "5.1",
+      "title": "Leadership and commitment"
+    },
+    {
+      "code": "5.2",
+      "title": "OH&S policy"
+    },
+    {
+      "code": "5.3",
+      "title": "Organizational roles, responsibilities and authorities"
+    },
+    {
+      "code": "5.4",
+      "title": "Consultation and participation of workers"
+    },
+    {
+      "code": "6",
+      "title": "Planning"
+    },
+    {
+      "code": "6.1",
+      "title": "Actions to address risks and opportunities"
+    },
+    {
+      "code": "6.1.1",
+      "title": "General"
+    },
+    {
+      "code": "6.1.2",
+      "title": "Hazard identification and assessment of risks and opportunities"
+    },
+    {
+      "code": "6.1.2.1",
+      "title": "Hazard identification"
+    },
+    {
+      "code": "6.1.2.2",
+      "title": "Assessment of OH&S risks and other risks to the OH&S management system"
+    },
+    {
+      "code": "6.1.2.3",
+      "title": "Assessment of OH&S opportunities and other opportunities"
+    },
+    {
+      "code": "6.1.3",
+      "title": "Determination of legal requirements and other requirements"
+    },
+    {
+      "code": "6.1.4",
+      "title": "Planning action"
+    },
+    {
+      "code": "6.2",
+      "title": "OH&S objectives and planning to achieve them"
+    },
+    {
+      "code": "6.2.1",
+      "title": "OH&S objectives"
+    },
+    {
+      "code": "6.2.2",
+      "title": "Planning to achieve OH&S objectives"
+    },
+    {
+      "code": "7",
+      "title": "Support"
+    },
+    {
+      "code": "7.1",
+      "title": "Resources"
+    },
+    {
+      "code": "7.2",
+      "title": "Competence"
+    },
+    {
+      "code": "7.3",
+      "title": "Awareness"
+    },
+    {
+      "code": "7.4",
+      "title": "Communication"
+    },
+    {
+      "code": "7.4.1",
+      "title": "General"
+    },
+    {
+      "code": "7.4.2",
+      "title": "Internal communication"
+    },
+    {
+      "code": "7.4.3",
+      "title": "External communication"
+    },
+    {
+      "code": "7.5",
+      "title": "Documented information"
+    },
+    {
+      "code": "7.5.1",
+      "title": "General"
+    },
+    {
+      "code": "7.5.2",
+      "title": "Creating and updating"
+    },
+    {
+      "code": "7.5.3",
+      "title": "Control of documented information"
+    },
+    {
+      "code": "8",
+      "title": "Operation"
+    },
+    {
+      "code": "8.1",
+      "title": "Operational planning and control"
+    },
+    {
+      "code": "8.1.1",
+      "title": "General"
+    },
+    {
+      "code": "8.1.2",
+      "title": "Eliminating hazards and reducing OH&S risks"
+    },
+    {
+      "code": "8.1.3",
+      "title": "Management of change"
+    },
+    {
+      "code": "8.1.4",
+      "title": "Procurement"
+    },
+    {
+      "code": "8.1.4.1",
+      "title": "General"
+    },
+    {
+      "code": "8.1.4.2",
+      "title": "Contractors"
+    },
+    {
+      "code": "8.1.4.3",
+      "title": "Outsourcing"
+    },
+    {
+      "code": "8.2",
+      "title": "Emergency preparedness and response"
+    },
+    {
+      "code": "9",
+      "title": "Performance evaluation"
+    },
+    {
+      "code": "9.1",
+      "title": "Monitoring, measurement, analysis and performance evaluation"
+    },
+    {
+      "code": "9.1.1",
+      "title": "General"
+    },
+    {
+      "code": "9.1.2",
+      "title": "Evaluation of compliance"
+    },
+    {
+      "code": "9.2",
+      "title": "Internal audit"
+    },
+    {
+      "code": "9.2.1",
+      "title": "General"
+    },
+    {
+      "code": "9.2.2",
+      "title": "Internal audit programme"
+    },
+    {
+      "code": "9.3",
+      "title": "Management review"
+    },
+    {
+      "code": "10",
+      "title": "Improvement"
+    },
+    {
+      "code": "10.1",
+      "title": "General"
+    },
+    {
+      "code": "10.2",
+      "title": "Incident, nonconformity and corrective action"
+    },
+    {
+      "code": "10.3",
+      "title": "Continual improvement"
+    }
+  ],
+  "ABMS": [
+    {
+      "code": "4",
+      "title": "Context of the organization"
+    },
+    {
+      "code": "4.1",
+      "title": "Understanding the organization and its context"
+    },
+    {
+      "code": "4.2",
+      "title": "Understanding the needs and expectations of interested parties"
+    },
+    {
+      "code": "4.3",
+      "title": "Determining the scope of the anti-bribery management system"
+    },
+    {
+      "code": "4.4",
+      "title": "Anti-bribery management system"
+    },
+    {
+      "code": "4.5",
+      "title": "Bribery risk assessment"
+    },
+    {
+      "code": "5",
+      "title": "Leadership"
+    },
+    {
+      "code": "5.1",
+      "title": "Leadership and commitment"
+    },
+    {
+      "code": "5.1.1",
+      "title": "General"
+    },
+    {
+      "code": "5.1.2",
+      "title": "Governing body"
+    },
+    {
+      "code": "5.1.3",
+      "title": "Anti-bribery culture"
+    },
+    {
+      "code": "5.2",
+      "title": "Anti-bribery policy"
+    },
+    {
+      "code": "5.3",
+      "title": "Organizational roles, responsibilities and authorities"
+    },
+    {
+      "code": "5.3.1",
+      "title": "General"
+    },
+    {
+      "code": "5.3.2",
+      "title": "Top management"
+    },
+    {
+      "code": "5.3.3",
+      "title": "Anti-bribery function"
+    },
+    {
+      "code": "6",
+      "title": "Planning"
+    },
+    {
+      "code": "6.1",
+      "title": "Actions to address risks and opportunities"
+    },
+    {
+      "code": "6.2",
+      "title": "Anti-bribery objectives and planning to achieve them"
+    },
+    {
+      "code": "6.3",
+      "title": "Planning of changes"
+    },
+    {
+      "code": "7",
+      "title": "Support"
+    },
+    {
+      "code": "7.1",
+      "title": "Resources"
+    },
+    {
+      "code": "7.2",
+      "title": "Competence"
+    },
+    {
+      "code": "7.3",
+      "title": "Awareness and training"
+    },
+    {
+      "code": "7.4",
+      "title": "Communication"
+    },
+    {
+      "code": "7.5",
+      "title": "Documented information"
+    },
+    {
+      "code": "8",
+      "title": "Operation"
+    },
+    {
+      "code": "8.1",
+      "title": "Operational planning and control"
+    },
+    {
+      "code": "8.2",
+      "title": "Due diligence"
+    },
+    {
+      "code": "8.3",
+      "title": "Financial controls"
+    },
+    {
+      "code": "8.4",
+      "title": "Non-financial controls"
+    },
+    {
+      "code": "8.5",
+      "title": "Implementation of anti-bribery controls by controlled organizations and business associates"
+    },
+    {
+      "code": "8.6",
+      "title": "Anti-bribery commitments"
+    },
+    {
+      "code": "8.7",
+      "title": "Conflicts of interest"
+    },
+    {
+      "code": "8.8",
+      "title": "Gifts, hospitality, donations and similar benefits"
+    },
+    {
+      "code": "8.9",
+      "title": "Managing inadequacy of anti-bribery controls"
+    },
+    {
+      "code": "8.10",
+      "title": "Raising concerns"
+    },
+    {
+      "code": "8.11",
+      "title": "Investigating and dealing with bribery"
+    },
+    {
+      "code": "9",
+      "title": "Performance evaluation"
+    },
+    {
+      "code": "9.1",
+      "title": "Monitoring, measurement, analysis and evaluation"
+    },
+    {
+      "code": "9.2",
+      "title": "Internal audit"
+    },
+    {
+      "code": "9.3",
+      "title": "Management review"
+    },
+    {
+      "code": "9.4",
+      "title": "Review by anti-bribery function"
+    },
+    {
+      "code": "9.5",
+      "title": "Review by governing body"
+    },
+    {
+      "code": "10",
+      "title": "Improvement"
+    },
+    {
+      "code": "10.1",
+      "title": "Continual improvement"
+    },
+    {
+      "code": "10.2",
+      "title": "Nonconformity and corrective action"
+    }
+  ],
+  "EnMS": [
+    {
+      "code": "4",
+      "title": "Context of the organization"
+    },
+    {
+      "code": "4.1",
+      "title": "Understanding the organization and its context"
+    },
+    {
+      "code": "4.2",
+      "title": "Understanding the needs and expectations of interested parties"
+    },
+    {
+      "code": "4.3",
+      "title": "Determining the scope of the energy management system"
+    },
+    {
+      "code": "4.4",
+      "title": "Energy management system"
+    },
+    {
+      "code": "5",
+      "title": "Leadership"
+    },
+    {
+      "code": "5.1",
+      "title": "Leadership and commitment"
+    },
+    {
+      "code": "5.2",
+      "title": "Energy policy"
+    },
+    {
+      "code": "5.3",
+      "title": "Organizational roles, responsibilities and authorities"
+    },
+    {
+      "code": "6",
+      "title": "Planning"
+    },
+    {
+      "code": "6.1",
+      "title": "Actions to address risks and opportunities"
+    },
+    {
+      "code": "6.2",
+      "title": "Objectives, energy targets and planning to achieve them"
+    },
+    {
+      "code": "6.3",
+      "title": "Energy review"
+    },
+    {
+      "code": "6.4",
+      "title": "Energy performance indicators (EnPIs)"
+    },
+    {
+      "code": "6.5",
+      "title": "Energy baseline (EnB)"
+    },
+    {
+      "code": "6.6",
+      "title": "Planning for collection of energy data"
+    },
+    {
+      "code": "7",
+      "title": "Support"
+    },
+    {
+      "code": "7.1",
+      "title": "Resources"
+    },
+    {
+      "code": "7.2",
+      "title": "Competence"
+    },
+    {
+      "code": "7.3",
+      "title": "Awareness"
+    },
+    {
+      "code": "7.4",
+      "title": "Communication"
+    },
+    {
+      "code": "7.5",
+      "title": "Documented information"
+    },
+    {
+      "code": "7.5.1",
+      "title": "General"
+    },
+    {
+      "code": "7.5.2",
+      "title": "Creating and updating"
+    },
+    {
+      "code": "7.5.3",
+      "title": "Control of documented information"
+    },
+    {
+      "code": "8",
+      "title": "Operation"
+    },
+    {
+      "code": "8.1",
+      "title": "Operational planning and control"
+    },
+    {
+      "code": "8.2",
+      "title": "Design"
+    },
+    {
+      "code": "8.3",
+      "title": "Procurement"
+    },
+    {
+      "code": "9",
+      "title": "Performance evaluation"
+    },
+    {
+      "code": "9.1",
+      "title": "Monitoring, measurement, analysis and evaluation of energy performance and the EnMS"
+    },
+    {
+      "code": "9.1.1",
+      "title": "General"
+    },
+    {
+      "code": "9.1.2",
+      "title": "Evaluation of compliance with legal and other requirements"
+    },
+    {
+      "code": "9.2",
+      "title": "Internal audit"
+    },
+    {
+      "code": "9.2.1",
+      "title": "General"
+    },
+    {
+      "code": "9.2.2",
+      "title": "Internal audit programme"
+    },
+    {
+      "code": "9.3",
+      "title": "Management review"
+    },
+    {
+      "code": "10",
+      "title": "Improvement"
+    },
+    {
+      "code": "10.1",
+      "title": "Nonconformity and corrective action"
+    },
+    {
+      "code": "10.2",
+      "title": "Continual improvement"
+    }
+  ]
+}
