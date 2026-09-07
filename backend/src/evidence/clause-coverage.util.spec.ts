@@ -206,3 +206,174 @@ describe('buildClauseCoverage', () => {
     expect(response.scope.note).toMatch(/placeholder/i);
   });
 });
+
+// ─── Annex A controls (ISO/IEC 27001:2022) ─────────────────────────────────
+
+describe('buildClauseCoverage — Annex A', () => {
+  const annexA = (all: Evidence[]) => buildClauseCoverage(all).annexA;
+
+  const control = (code: string, all: Evidence[]) => {
+    const found = annexA(all)
+      .themes.flatMap((theme) => theme.controls)
+      .find((entry) => entry.code === code);
+    if (!found) throw new Error(`Annex A control ${code} not found`);
+    return found;
+  };
+
+  it('exposes the full 2022 catalogue grouped into four themes', () => {
+    const section = annexA([]);
+    expect(section.isoCode).toBe('ISO 27001');
+    expect(section.edition).toBe('2022');
+    expect(section.controlCount).toBe(93);
+    expect(section.themes.map((t) => t.theme)).toEqual([
+      'Organizational',
+      'People',
+      'Physical',
+      'Technological',
+    ]);
+    expect(section.themes.reduce((sum, t) => sum + t.controlCount, 0)).toBe(93);
+  });
+
+  it('marks a control Covered from an A-prefixed exact-code document', () => {
+    const result = control('A.5.15', [
+      on('ISMS', ['A.5.15'], { evidenceId: 'EVD-AC' }),
+    ]);
+    expect(result.state).toBe('Covered');
+    expect(result.evidence.map((e) => e.evidenceId)).toEqual(['EVD-AC']);
+    expect(result.evidence[0].mappedVia).toBe('exact');
+  });
+
+  it('rolls a whole-theme mapping down onto its child controls as "parent"', () => {
+    const result = control('A.5.15', [
+      on('ISMS', ['A.5'], { evidenceId: 'EVD-THEME' }),
+    ]);
+    expect(result.state).toBe('Covered');
+    expect(result.evidence[0].mappedVia).toBe('parent');
+    expect(result.evidence[0].mappedClause).toBe('A.5');
+  });
+
+  it('does not count a Missing document', () => {
+    expect(
+      control('A.5.15', [on('ISMS', ['A.5.15'], { evidenceStatus: 'Missing' })])
+        .state,
+    ).toBe('Gap');
+  });
+
+  // ─── collision-zone: dual listing (clause ↔ Annex A control) ────────────
+
+  describe('collision-zone dual listing', () => {
+    // "8.1" is BOTH ISMS clause 8.1 and Annex A control number A.8.1.
+    const bare = [on('ISMS', ['8.1'], { evidenceId: 'EVD-BARE' })];
+
+    it('lists a bare collision code on the management clause, flagged ambiguous', () => {
+      const c = clause('ISMS', '8.1', bare);
+      expect(c.state).toBe('Covered');
+      expect(c.ambiguous).toBe(true);
+      expect(c.evidence[0].ambiguous).toBe(true);
+      expect(c.evidence[0].counterpart).toEqual({
+        code: 'A.8.1',
+        title: 'User endpoint devices',
+      });
+    });
+
+    it('mirrors the same document onto the Annex A control, flagged ambiguous', () => {
+      const ctrl = control('A.8.1', bare);
+      expect(ctrl.state).toBe('Covered');
+      expect(ctrl.ambiguous).toBe(true);
+      expect(ctrl.evidence.map((e) => e.evidenceId)).toEqual(['EVD-BARE']);
+      expect(ctrl.evidence[0].ambiguous).toBe(true);
+      expect(ctrl.evidence[0].counterpart).toEqual({
+        code: '8.1',
+        title: 'Operational planning and control',
+      });
+    });
+
+    it('mirrors a parent-clause collision mapping down to both sides', () => {
+      // 6.1 is a non-leaf ISMS clause and Annex A control A.6.1.
+      const all = [on('ISMS', ['6.1'], { evidenceId: 'EVD-P' })];
+      const child = clause('ISMS', '6.1.2', all);
+      expect(child.ambiguous).toBe(true);
+      expect(child.evidence[0].mappedVia).toBe('parent');
+      expect(control('A.6.1', all).ambiguous).toBe(true);
+    });
+
+    it('does not cross a bare code into Annex A for non-ISMS standards', () => {
+      const pims = [on('PIMS', ['8.1'], { evidenceId: 'EVD-PIMS' })];
+      expect(control('A.8.1', pims).state).toBe('Gap');
+      expect(control('A.8.1', pims).ambiguous).toBe(false);
+    });
+
+    it('leaves an explicit A-prefixed mapping unflagged', () => {
+      const ctrl = control('A.8.1', [
+        on('ISMS', ['A.8.1'], { evidenceId: 'EVD-AX' }),
+      ]);
+      expect(ctrl.ambiguous).toBe(false);
+      expect(ctrl.evidence[0].ambiguous).toBeUndefined();
+    });
+
+    it('prefers the explicit mapping when a document carries both forms', () => {
+      const ctrl = control('A.8.1', [
+        on('ISMS', ['A.8.1', '8.1'], { evidenceId: 'EVD-DUP' }),
+      ]);
+      expect(ctrl.evidence).toHaveLength(1);
+      expect(ctrl.evidence[0].ambiguous).toBeUndefined();
+    });
+
+    it('counts ambiguous rows in the rollups', () => {
+      const isms = buildClauseCoverage(bare).groups.find(
+        (g) => g.standard === 'ISMS',
+      )!;
+      expect(isms.ambiguousCount).toBeGreaterThanOrEqual(1);
+      expect(buildClauseCoverage(bare).annexA.ambiguousCount).toBe(1);
+      expect(buildClauseCoverage(bare).totals.ambiguous).toBe(
+        isms.ambiguousCount,
+      );
+    });
+
+    it('does not flag a Missing bare-code document', () => {
+      const all = [
+        on('ISMS', ['8.1'], { evidenceId: 'EVD-M', evidenceStatus: 'Missing' }),
+      ];
+      expect(control('A.8.1', all).state).toBe('Gap');
+      expect(control('A.8.1', all).ambiguous).toBe(false);
+    });
+  });
+
+  it('marks a Statement-of-Applicability exclusion Not Applicable with its justification', () => {
+    // A.7.4 is an exclusion in annex-a-soa.json.
+    const result = control('A.7.4', [
+      on('ISMS', ['A.7.4'], { evidenceId: 'EVD-NA' }),
+    ]);
+    expect(result.state).toBe('Not Applicable');
+    expect(result.applicable).toBe(false);
+    expect(result.justification).toEqual(expect.any(String));
+    expect(result.evidence).toEqual([]);
+  });
+
+  it('rolls theme and section counts up consistently', () => {
+    const section = annexA([on('ISMS', ['A.5.15'], { evidenceId: 'EVD-1' })]);
+
+    expect(section.applicableCount).toBe(
+      section.controlCount - section.notApplicableCount,
+    );
+    expect(section.coveredCount).toBe(1);
+    expect(section.coveragePercent).toBe(
+      Math.round((section.coveredCount / section.applicableCount) * 100),
+    );
+    for (const key of [
+      'coveredCount',
+      'gapCount',
+      'notApplicableCount',
+    ] as const) {
+      expect(section[key]).toBe(
+        section.themes.reduce((sum, theme) => sum + theme[key], 0),
+      );
+    }
+  });
+
+  it('flags the Statement of Applicability as unvalidated placeholder data', () => {
+    const { soa } = annexA([]);
+    expect(soa.validated).toBe(false);
+    expect(soa.note).toMatch(/placeholder/i);
+  });
+});
