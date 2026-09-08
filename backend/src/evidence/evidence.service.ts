@@ -10,6 +10,11 @@ import {
   EvidenceQuery,
   EvidenceStats,
 } from './evidence-query.util';
+import {
+  buildClauseCoverage,
+  ClauseCoverageParams,
+  ClauseCoverageResponse,
+} from './clause-coverage.util';
 
 const CACHE_TTL_MS = 30_000;
 
@@ -34,6 +39,13 @@ export class EvidenceService {
   async getStats(filters: EvidenceFilterParams): Promise<EvidenceStats> {
     const all = await this.getAll();
     return buildEvidenceStats(all, filters);
+  }
+
+  async getClauseCoverage(
+    params: ClauseCoverageParams,
+  ): Promise<ClauseCoverageResponse> {
+    const all = await this.getAll();
+    return buildClauseCoverage(all, params);
   }
 
   /** Reused by both the paginated list and the stats endpoint so a single

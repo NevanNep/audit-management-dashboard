@@ -1,0 +1,13 @@
+{
+  "validated": false,
+  "note": "Statement of Applicability is placeholder data pending validation against the organisation's approved SoA.",
+  "exclusions": ["A.5.7", "A.7.4", "A.7.9", "A.8.11", "A.8.30", "A.8.34"],
+  "justifications": {
+    "A.5.7": "No dedicated threat intelligence function or feed in the current audit scope.",
+    "A.7.4": "No organisation-controlled physical premises within the audit scope (fully remote operating model).",
+    "A.7.9": "No assets are taken or used off-premises under the current asset policy.",
+    "A.8.11": "No production data sets are exposed to non-production users; data masking is not deployed.",
+    "A.8.30": "All software development is performed in-house; there is no outsourced development.",
+    "A.8.34": "No audit tooling requires access to operational information systems during testing."
+  }
+}

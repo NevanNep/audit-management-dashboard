@@ -1,0 +1,8 @@
+{
+  "program": ["ISMS", "PIMS", "ITSMS", "BCMS", "OHSMS", "ABMS", "EnMS"],
+  "exclusions": {
+    "PIMS": ["8"],
+    "ABMS": ["8.5"],
+    "OHSMS": ["8.1.4.3"]
+  }
+}
