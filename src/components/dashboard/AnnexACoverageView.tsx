@@ -16,7 +16,7 @@ import {
   type MappingFilterValue,
 } from '../../types/clauseCoverage';
 import { pctLabel, selectClass, type CoverageRowItem } from './clauseCoverageShared';
-import { ColumnHeader, CoverageRow } from './clauseCoverageRows';
+import { CoverageRowList } from './clauseCoverageRows';
 
 interface AnnexACoverageViewProps {
   section: AnnexACoverageSection;
@@ -287,12 +287,12 @@ function ThemeGroup({
       </button>
 
       {open && (
-        <div>
-          <ColumnHeader label="Control" />
-          {controls.map((control) => (
-            <CoverageRow key={control.code} item={controlToRow(control)} />
-          ))}
-        </div>
+        <CoverageRowList
+          label="Control"
+          items={controls.map(controlToRow)}
+          leaves={group.controls}
+          unit="controls"
+        />
       )}
     </div>
   );

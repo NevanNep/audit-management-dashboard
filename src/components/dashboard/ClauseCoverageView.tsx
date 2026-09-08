@@ -13,8 +13,13 @@ import {
   type CoverageStateFilterValue,
   type MappingFilterValue,
 } from '../../types/clauseCoverage';
-import { pctLabel, selectClass, type CoverageRowItem } from './clauseCoverageShared';
-import { ColumnHeader, CoverageRow } from './clauseCoverageRows';
+import {
+  pctLabel,
+  selectClass,
+  type BreadthLeaf,
+  type CoverageRowItem,
+} from './clauseCoverageShared';
+import { CoverageRowList } from './clauseCoverageRows';
 import { AnnexACoverageView } from './AnnexACoverageView';
 
 interface ClauseCoverageViewProps {
@@ -33,6 +38,10 @@ const clauseToRow = (clause: ClauseCoverageClause): CoverageRowItem => ({
   notApplicableText: 'Outside audit scope',
   ambiguous: clause.ambiguous,
 });
+
+// The group's full, pre-filter clause list — the stable breadth denominator.
+const clauseLeaves = (clauses: ClauseCoverageClause[]): BreadthLeaf[] =>
+  clauses.map((clause) => ({ code: clause.clauseCode, evidence: clause.evidence }));
 
 export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps) {
   const [data, setData] = useState<ClauseCoverageResponse | null>(null);
@@ -315,14 +324,14 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
                   <CoverageGroup key={entry.group.isoCode} group={entry.group} clauses={entry.clauses} />
                 ))}
               </div>
-            ) : (
-              <div>
-                <ColumnHeader label="Clause" />
-                {visibleGroups[0]?.clauses.map((clause) => (
-                  <CoverageRow key={clause.clauseCode} item={clauseToRow(clause)} />
-                ))}
-              </div>
-            )}
+            ) : visibleGroups[0] ? (
+              <CoverageRowList
+                label="Clause"
+                items={visibleGroups[0].clauses.map(clauseToRow)}
+                leaves={clauseLeaves(visibleGroups[0].group.clauses)}
+                unit="clauses"
+              />
+            ) : null}
 
             {/* ── Footer: secondary detail ── */}
             {data && visibleGroups.length > 0 && (
@@ -467,12 +476,12 @@ function CoverageGroup({
       </button>
 
       {open && (
-        <div>
-          <ColumnHeader label="Clause" />
-          {clauses.map((clause) => (
-            <CoverageRow key={clause.clauseCode} item={clauseToRow(clause)} />
-          ))}
-        </div>
+        <CoverageRowList
+          label="Clause"
+          items={clauses.map(clauseToRow)}
+          leaves={clauseLeaves(group.clauses)}
+          unit="clauses"
+        />
       )}
     </div>
   );
