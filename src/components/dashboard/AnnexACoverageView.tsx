@@ -69,9 +69,12 @@ export function AnnexACoverageView({ section }: AnnexACoverageViewProps) {
 
   const inView = useMemo(() => {
     const controls = visibleThemes.flatMap((entry) => entry.controls);
+    const isCovered = (c: AnnexAControl) =>
+      c.state === 'Covered' || c.state === 'Covered (needs work)';
     return {
       controls: controls.length,
-      covered: controls.filter((c) => c.state === 'Covered').length,
+      covered: controls.filter(isCovered).length,
+      needsWork: controls.filter((c) => c.state === 'Covered (needs work)').length,
       gaps: controls.filter((c) => c.state === 'Gap').length,
       notApplicable: controls.filter((c) => c.state === 'Not Applicable').length,
     };
@@ -122,6 +125,7 @@ export function AnnexACoverageView({ section }: AnnexACoverageViewProps) {
             >
               <option value={ALL_COVERAGE_STATES}>All</option>
               <option value="Covered">Covered</option>
+              <option value="Covered (needs work)">Covered · needs work</option>
               <option value="Gap">Gap</option>
               <option value="Not Applicable">Not applicable</option>
             </select>
@@ -169,6 +173,9 @@ export function AnnexACoverageView({ section }: AnnexACoverageViewProps) {
               {section.coveredCount}/{section.applicableCount}
             </span>{' '}
             applicable
+            {section.needsWorkCount > 0 && (
+              <span className="ml-1.5 text-needs-work">· {section.needsWorkCount} need work</span>
+            )}
           </span>
         </div>
 
@@ -196,17 +203,21 @@ export function AnnexACoverageView({ section }: AnnexACoverageViewProps) {
         {/* ── Footer: secondary detail ── */}
         {visibleThemes.length > 0 && (
           <div className="border-t border-border px-4 py-3 text-[12px] text-ink-muted">
-            {inView.controls} controls in view · {inView.covered} covered · {inView.gaps} gaps
+            {inView.controls} controls in view · {inView.covered} covered
+            {inView.needsWork > 0 ? ` (${inView.needsWork} need work)` : ''} · {inView.gaps} gaps
             {inView.notApplicable > 0 ? ` · ${inView.notApplicable} not applicable` : ''}
           </div>
         )}
       </div>
 
       <p className="mt-3 text-[12px] leading-5 text-ink-muted">
-        Annex A control coverage is calculated by the backend, independent of evidence review and
-        compliance outcome. A control is <span className="font-medium text-compliant">Covered</span> when
-        it is applicable and has at least one mapped actual document (Accepted, Pending Review or
-        Rejected), a <span className="font-medium text-partial">Gap</span> when it is applicable with no
+        Annex A control coverage is calculated by the backend, independent of compliance outcome. A
+        control is <span className="font-medium text-compliant">Covered</span> when it is applicable and
+        has at least one mapped <span className="font-medium">Accepted</span> or{' '}
+        <span className="font-medium">Pending Review</span> document,{' '}
+        <span className="font-medium text-needs-work">Covered · needs work</span> when its evidence is
+        entirely <span className="font-medium">Rejected</span> (still counted towards the coverage %, but
+        flagged), a <span className="font-medium text-partial">Gap</span> when it is applicable with no
         actual evidence, and <span className="font-medium text-neutral">Not Applicable</span> when the
         Statement of Applicability excludes it. Only evidence whose clause code is written in the{' '}
         <span className="font-mono">A.x.y</span> form (or a whole theme, <span className="font-mono">A.5</span>)
@@ -256,6 +267,11 @@ function ThemeGroup({
         {group.gapCount > 0 && (
           <span className="rounded-[4px] bg-partial-bg px-1.5 py-0.5 text-[11px] font-semibold text-partial">
             {group.gapCount} {group.gapCount === 1 ? 'gap' : 'gaps'}
+          </span>
+        )}
+        {group.needsWorkCount > 0 && (
+          <span className="rounded-[4px] bg-needs-work-bg px-1.5 py-0.5 text-[11px] font-semibold text-needs-work">
+            {group.needsWorkCount} need work
           </span>
         )}
 

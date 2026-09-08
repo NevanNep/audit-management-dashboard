@@ -11,13 +11,25 @@ import annexAControls from './data/annex-a-controls.json';
 import annexASoa from './data/annex-a-soa.json';
 
 /**
- * Coverage is deliberately independent of Evidence Status and Compliance Result:
+ * Coverage is deliberately independent of Compliance Result, and only lightly
+ * sensitive to Evidence Status (Rejected-only evidence is called out — see below):
  *
- *  - Covered        — clause is in the audit scope and has at least one mapped
- *                     *actual* evidence document.
- *  - Gap            — clause is in the audit scope and has no actual mapped evidence.
- *  - Not Applicable — clause is outside the audit scope (standard not in the audit
- *                     programme, or the clause is an explicit scope exclusion).
+ *  - Covered              — in the audit scope with at least one mapped *actual*
+ *                           document that is Accepted or Pending Review.
+ *  - Covered (needs work) — in the audit scope, has mapped actual evidence, but
+ *                           every mapped document was Rejected by the auditor.
+ *                           Evidence work has genuinely happened, so this counts
+ *                           as covered in every rollup (coveredCount,
+ *                           coveragePercent, per-theme/standard totals); it is
+ *                           reported separately via `needsWorkCount` so it is
+ *                           never silently indistinguishable from solid coverage.
+ *  - Gap                  — in the audit scope with no actual mapped evidence.
+ *  - Not Applicable       — outside the audit scope (standard not in the audit
+ *                           programme, or the clause is an explicit scope exclusion).
+ *
+ * A clause with one Accepted and one Rejected document is plain Covered — the
+ * affirmative document wins. "Needs work" only fires when Rejected is the *only*
+ * kind of evidence present.
  *
  * "Actual evidence" = a mapped document whose Evidence Status is Accepted,
  * Pending Review or Rejected. A `Missing` status means no document actually
@@ -32,13 +44,29 @@ import annexASoa from './data/annex-a-soa.json';
  * sibling (`9.20`). Evidence mapped directly to the specific child is still
  * honoured.
  */
-export type CoverageState = 'Covered' | 'Gap' | 'Not Applicable';
+export type CoverageState =
+  'Covered' | 'Covered (needs work)' | 'Gap' | 'Not Applicable';
 
 export const ACTUAL_EVIDENCE_STATUSES: readonly EvidenceStatusValue[] = [
   'Accepted',
   'Pending Review',
   'Rejected',
 ];
+
+/**
+ * Evidence statuses that affirmatively support a requirement. Rejected evidence
+ * is still "actual" (a reviewed document exists) but the auditor turned it down,
+ * so on its own it only earns 'Covered (needs work)'.
+ */
+export const AFFIRMATIVE_EVIDENCE_STATUSES: readonly EvidenceStatusValue[] = [
+  'Accepted',
+  'Pending Review',
+];
+
+/** Coverage states that count towards coveredCount / coveragePercent. */
+export function isCoveredState(state: CoverageState): boolean {
+  return state === 'Covered' || state === 'Covered (needs work)';
+}
 
 export const STANDARD_ISO_CODES: Record<Standard, string> = {
   ISMS: 'ISO 27001',
@@ -192,7 +220,11 @@ export interface ClauseCoverageStandardGroup {
   clauseCount: number;
   /** Clauses in the audit scope (clauseCount minus Not Applicable). */
   applicableCount: number;
+  /** Covered + Covered (needs work) — everything that counts towards coverage. */
   coveredCount: number;
+  /** Subset of coveredCount whose evidence is entirely Rejected. Informational —
+   *  it is NOT subtracted from coveredCount or coveragePercent. */
+  needsWorkCount: number;
   gapCount: number;
   notApplicableCount: number;
   /** Clauses with at least one collision-zone (dual-meaning) mapping. */
@@ -208,6 +240,8 @@ export interface ClauseCoverageResponse {
     clauses: number;
     applicable: number;
     covered: number;
+    /** Subset of `covered` whose evidence is entirely Rejected. */
+    needsWork: number;
     gap: number;
     notApplicable: number;
     /** Management clauses with a collision-zone (dual-meaning) mapping. */
@@ -244,6 +278,24 @@ function isActualEvidence(evidence: Evidence): boolean {
   return ACTUAL_EVIDENCE_STATUSES.includes(
     evidence.evidenceStatus as EvidenceStatusValue,
   );
+}
+
+/**
+ * Coverage state for an *in-scope* clause/control, from its mapped actual
+ * evidence set:
+ *   - ≥1 Accepted / Pending Review document → 'Covered'
+ *   - has evidence, but all of it Rejected  → 'Covered (needs work)'
+ *   - no actual evidence                    → 'Gap'
+ * Out-of-scope requirements are 'Not Applicable' and never reach this.
+ */
+function deriveCoverageState(
+  evidence: readonly ClauseCoverageEvidenceRef[],
+): CoverageState {
+  if (evidence.length === 0) return 'Gap';
+  const hasAffirmative = evidence.some((ref) =>
+    AFFIRMATIVE_EVIDENCE_STATUSES.includes(ref.evidenceStatus),
+  );
+  return hasAffirmative ? 'Covered' : 'Covered (needs work)';
 }
 
 function coveragePercent(covered: number, applicable: number): number | null {
@@ -335,14 +387,9 @@ function buildStandardGroup(
       ? evidenceForLeaf(actualEvidence, standard, leaf.code, hierarchy)
       : [];
 
-    let state: CoverageState;
-    if (!inScope) {
-      state = 'Not Applicable';
-    } else if (evidence.length > 0) {
-      state = 'Covered';
-    } else {
-      state = 'Gap';
-    }
+    const state: CoverageState = !inScope
+      ? 'Not Applicable'
+      : deriveCoverageState(evidence);
 
     return {
       clauseCode: leaf.code,
@@ -355,7 +402,10 @@ function buildStandardGroup(
   });
 
   const clauseCount = clauses.length;
-  const coveredCount = clauses.filter((c) => c.state === 'Covered').length;
+  const coveredCount = clauses.filter((c) => isCoveredState(c.state)).length;
+  const needsWorkCount = clauses.filter(
+    (c) => c.state === 'Covered (needs work)',
+  ).length;
   const gapCount = clauses.filter((c) => c.state === 'Gap').length;
   const notApplicableCount = clauses.filter(
     (c) => c.state === 'Not Applicable',
@@ -370,6 +420,7 @@ function buildStandardGroup(
     clauseCount,
     applicableCount,
     coveredCount,
+    needsWorkCount,
     gapCount,
     notApplicableCount,
     ambiguousCount,
@@ -527,7 +578,11 @@ export interface AnnexAControlCoverage {
 interface AnnexARollup {
   controlCount: number;
   applicableCount: number;
+  /** Covered + Covered (needs work). */
   coveredCount: number;
+  /** Subset of coveredCount whose evidence is entirely Rejected. Informational —
+   *  NOT subtracted from coveredCount or coveragePercent. */
+  needsWorkCount: number;
   gapCount: number;
   notApplicableCount: number;
   /** Controls with at least one collision-zone (dual-meaning) mapping. */
@@ -560,7 +615,10 @@ function isExcludedControl(code: string): boolean {
 
 function annexARollup(controls: AnnexAControlCoverage[]): AnnexARollup {
   const controlCount = controls.length;
-  const coveredCount = controls.filter((c) => c.state === 'Covered').length;
+  const coveredCount = controls.filter((c) => isCoveredState(c.state)).length;
+  const needsWorkCount = controls.filter(
+    (c) => c.state === 'Covered (needs work)',
+  ).length;
   const gapCount = controls.filter((c) => c.state === 'Gap').length;
   const notApplicableCount = controls.filter(
     (c) => c.state === 'Not Applicable',
@@ -572,6 +630,7 @@ function annexARollup(controls: AnnexAControlCoverage[]): AnnexARollup {
     controlCount,
     applicableCount,
     coveredCount,
+    needsWorkCount,
     gapCount,
     notApplicableCount,
     ambiguousCount,
@@ -598,14 +657,9 @@ function buildAnnexAControl(
       )
     : [];
 
-  let state: CoverageState;
-  if (!applicable) {
-    state = 'Not Applicable';
-  } else if (evidence.length > 0) {
-    state = 'Covered';
-  } else {
-    state = 'Gap';
-  }
+  const state: CoverageState = !applicable
+    ? 'Not Applicable'
+    : deriveCoverageState(evidence);
 
   return {
     code: control.code,
@@ -670,6 +724,7 @@ export function buildClauseCoverage(
       clauses: groups.reduce((sum, group) => sum + group.clauseCount, 0),
       applicable,
       covered,
+      needsWork: groups.reduce((sum, group) => sum + group.needsWorkCount, 0),
       gap: groups.reduce((sum, group) => sum + group.gapCount, 0),
       notApplicable: groups.reduce(
         (sum, group) => sum + group.notApplicableCount,

@@ -46,6 +46,13 @@
   --color-neutral: #646b7a;
   --color-neutral-bg: #eef0f3;
 
+  /* ── Coverage: "Covered (needs work)" ──
+     Rejected-only evidence. A deep teal — deliberately not green (Covered),
+     amber (Gap / Pending), or rose (Rejected / Non-compliant). 5.8:1 on white,
+     always paired with a warning icon + text so colour is never the only cue. */
+  --color-needs-work: #0f6f6b;
+  --color-needs-work-bg: #e4f0ef;
+
   /* ── Overdue ── */
   --color-overdue-fg: #8e1b2e;
   --color-overdue-accent: #b4271f;

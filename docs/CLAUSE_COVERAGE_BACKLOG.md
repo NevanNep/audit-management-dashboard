@@ -22,6 +22,31 @@ cycle*", evidence going stale, and comparing cycle-over-cycle.
 Open questions: what defines a cycle, when does evidence expire, do we keep
 historical coverage snapshots?
 
+## Implemented — "Covered (needs work)" (Rejected-only evidence)
+
+A clause/control whose mapped evidence is **entirely Rejected** is reported as
+`Covered (needs work)` rather than plain `Covered`. State derivation order
+(`deriveCoverageState` in `clause-coverage.util.ts`):
+
+1. out of scope → `Not Applicable`
+2. ≥1 Accepted / Pending Review document → `Covered`
+3. has evidence, all of it Rejected → `Covered (needs work)`
+4. no actual evidence → `Gap`
+
+**It counts as covered in every rollup** — `coveredCount`, `coveragePercent`,
+per-theme and per-standard totals — by deliberate product decision: the number
+should reflect that evidence work has genuinely happened, not understate it. It
+is reported separately via `needsWorkCount` (on each group / theme / section
+rollup and `totals.needsWork`) and is independently filterable in the UI
+(Coverage → "Covered · needs work" on both the Clauses 4–10 and Annex A pages),
+so it is never silently indistinguishable from fully-accepted coverage. The
+underlying evidence refs keep their real `Rejected` status — the new state is a
+computed rollup property only.
+
+If `audit-scope.json` / `annex-a-soa.json` validation ever revisits how coverage
+should be reported to auditors, decide whether "needs work" should still be
+inside the headline % or split out — this is the obvious lever.
+
 ## Related known limitations (see clause-coverage.util.ts)
 - `audit-scope.json` is placeholder data; Not Applicable is provisional until a
   real Statement of Applicability feeds it. The same applies to

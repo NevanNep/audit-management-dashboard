@@ -1,15 +1,25 @@
 import type { ComplianceResult, EvidenceStatus } from './evidence';
 
 // Coverage is computed server-side (GET /api/evidence/clause-coverage) and is
-// deliberately independent of Evidence Status and Compliance Result:
-//   Covered        — in-scope clause with ≥1 mapped actual evidence document
-//   Gap            — in-scope clause with no actual mapped evidence
-//   Not Applicable — clause outside the audit scope
+// independent of Compliance Result, and only lightly sensitive to Evidence
+// Status:
+//   Covered              — in-scope clause with ≥1 mapped Accepted / Pending
+//                          Review document
+//   Covered (needs work) — in-scope clause with mapped evidence that is entirely
+//                          Rejected. Still counts as covered in every rollup
+//                          (coveragePercent, coveredCount); surfaced separately
+//                          via needsWorkCount so it stays visible.
+//   Gap                  — in-scope clause with no actual mapped evidence
+//   Not Applicable       — clause outside the audit scope
 // "Actual evidence" = a mapped document whose status is Accepted, Pending
 // Review or Rejected. Missing is not an actual document. Compliance Result
 // never affects the state. Clause matching is hierarchy-aware: a document mapped
 // to a parent clause counts towards its descendant requirement clauses.
-export type CoverageState = 'Covered' | 'Gap' | 'Not Applicable';
+export type CoverageState =
+  | 'Covered'
+  | 'Covered (needs work)'
+  | 'Gap'
+  | 'Not Applicable';
 
 export const ALL_COVERAGE_STATES = 'All coverage';
 export type CoverageStateFilterValue = typeof ALL_COVERAGE_STATES | CoverageState;
@@ -66,7 +76,11 @@ export interface ClauseCoverageStandardGroup {
   clauseCount: number;
   /** Clauses in the audit scope (clauseCount minus Not Applicable). */
   applicableCount: number;
+  /** Covered + Covered (needs work). */
   coveredCount: number;
+  /** Subset of coveredCount whose evidence is entirely Rejected — informational,
+   *  not subtracted from coveredCount / coveragePercent. */
+  needsWorkCount: number;
   gapCount: number;
   notApplicableCount: number;
   /** Clauses with at least one collision-zone (dual-meaning) mapping. */
@@ -82,6 +96,8 @@ export interface ClauseCoverageResponse {
     clauses: number;
     applicable: number;
     covered: number;
+    /** Subset of `covered` whose evidence is entirely Rejected. */
+    needsWork: number;
     gap: number;
     notApplicable: number;
     ambiguous: number;
@@ -137,7 +153,11 @@ export interface AnnexAControl {
 interface AnnexARollup {
   controlCount: number;
   applicableCount: number;
+  /** Covered + Covered (needs work). */
   coveredCount: number;
+  /** Subset of coveredCount whose evidence is entirely Rejected — informational,
+   *  not subtracted from coveredCount / coveragePercent. */
+  needsWorkCount: number;
   gapCount: number;
   notApplicableCount: number;
   /** Controls with at least one collision-zone (dual-meaning) mapping. */

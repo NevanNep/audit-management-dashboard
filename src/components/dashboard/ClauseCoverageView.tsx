@@ -72,11 +72,13 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
 
   const headline = useMemo(() => {
     const covered = scopeGroups.reduce((sum, g) => sum + g.coveredCount, 0);
+    const needsWork = scopeGroups.reduce((sum, g) => sum + g.needsWorkCount, 0);
     const applicable = scopeGroups.reduce((sum, g) => sum + g.applicableCount, 0);
     const gaps = scopeGroups.reduce((sum, g) => sum + g.gapCount, 0);
     const notApplicable = scopeGroups.reduce((sum, g) => sum + g.notApplicableCount, 0);
     return {
       covered,
+      needsWork,
       applicable,
       gaps,
       notApplicable,
@@ -107,9 +109,14 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
 
   const inView = useMemo(() => {
     const clauses = visibleGroups.flatMap((entry) => entry.clauses);
+    // "needs work" counts as covered (it is in coveredCount server-side); it is
+    // also tallied on its own so the footer can surface it.
+    const isCovered = (c: ClauseCoverageClause) =>
+      c.state === 'Covered' || c.state === 'Covered (needs work)';
     return {
       clauses: clauses.length,
-      covered: clauses.filter((c) => c.state === 'Covered').length,
+      covered: clauses.filter(isCovered).length,
+      needsWork: clauses.filter((c) => c.state === 'Covered (needs work)').length,
       gaps: clauses.filter((c) => c.state === 'Gap').length,
       notApplicable: clauses.filter((c) => c.state === 'Not Applicable').length,
     };
@@ -141,9 +148,13 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
           <h2 className="text-[16px] font-semibold text-ink">Clause coverage</h2>
           {section === 'clauses' ? (
             <p className="mt-0.5 text-[12.5px] text-ink-secondary">
-              {activeStandard
-                ? `${activeStandard.code} · ${activeStandard.shortName} — ${pctLabel(headline.percent)} covered · ${headline.covered}/${headline.applicable} applicable clauses · ${headline.gaps} gaps`
-                : `All standards · ${headline.standards} management systems — ${pctLabel(headline.percent)} covered · ${headline.covered}/${headline.applicable} applicable clauses · ${headline.gaps} gaps`}
+              {`${
+                activeStandard
+                  ? `${activeStandard.code} · ${activeStandard.shortName}`
+                  : `All standards · ${headline.standards} management systems`
+              } — ${pctLabel(headline.percent)} covered · ${headline.covered}/${headline.applicable} applicable clauses · ${headline.gaps} gaps${
+                headline.needsWork > 0 ? ` · ${headline.needsWork} need work` : ''
+              }`}
             </p>
           ) : (
             data && (
@@ -151,6 +162,7 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
                 ISO 27001:2022 · Information Security — {pctLabel(data.annexA.coveragePercent)} covered ·{' '}
                 {data.annexA.coveredCount}/{data.annexA.applicableCount} applicable controls ·{' '}
                 {data.annexA.gapCount} gaps
+                {data.annexA.needsWorkCount > 0 && ` · ${data.annexA.needsWorkCount} need work`}
               </p>
             )
           )}
@@ -227,6 +239,7 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
                 >
                   <option value={ALL_COVERAGE_STATES}>All</option>
                   <option value="Covered">Covered</option>
+                  <option value="Covered (needs work)">Covered · needs work</option>
                   <option value="Gap">Gap</option>
                   <option value="Not Applicable">Not applicable</option>
                 </select>
@@ -272,6 +285,9 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
                   <span className="font-semibold text-ink-secondary">{pctLabel(headline.percent)}</span> covered
                   <span className="mx-1.5 text-border-strong">·</span>
                   <span className="font-mono">{headline.covered}/{headline.applicable}</span> applicable
+                  {headline.needsWork > 0 && (
+                    <span className="ml-1.5 text-needs-work">· {headline.needsWork} need work</span>
+                  )}
                 </span>
               )}
             </div>
@@ -311,19 +327,24 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
             {/* ── Footer: secondary detail ── */}
             {data && visibleGroups.length > 0 && (
               <div className="border-t border-border px-4 py-3 text-[12px] text-ink-muted">
-                {inView.clauses} clauses in view · {inView.covered} covered · {inView.gaps} gaps
+                {inView.clauses} clauses in view · {inView.covered} covered
+                {inView.needsWork > 0 ? ` (${inView.needsWork} need work)` : ''} · {inView.gaps} gaps
                 {inView.notApplicable > 0 ? ` · ${inView.notApplicable} not applicable` : ''}
               </div>
             )}
           </div>
 
           <p className="mt-3 text-[12px] leading-5 text-ink-muted">
-            Coverage is calculated by the backend and is independent of evidence review and compliance
-            outcome. A clause is <span className="font-medium text-compliant">Covered</span> when it is in
-            scope and has at least one mapped actual document (Accepted, Pending Review or Rejected — a{' '}
-            <span className="font-medium">Missing</span> record does not count), a{' '}
-            <span className="font-medium text-partial">Gap</span> when it is in scope with no actual
-            evidence, and <span className="font-medium text-neutral">Not Applicable</span> when it sits
+            Coverage is calculated by the backend and is independent of compliance outcome. A clause is{' '}
+            <span className="font-medium text-compliant">Covered</span> when it is in scope and has at
+            least one mapped <span className="font-medium">Accepted</span> or{' '}
+            <span className="font-medium">Pending Review</span> document,{' '}
+            <span className="font-medium text-needs-work">Covered · needs work</span> when it has mapped
+            evidence but every document was <span className="font-medium">Rejected</span> (this still
+            counts towards the coverage % — evidence work has happened — but is flagged so it is not
+            mistaken for solid proof), a <span className="font-medium text-partial">Gap</span> when it is
+            in scope with no actual evidence (a <span className="font-medium">Missing</span> record does
+            not count), and <span className="font-medium text-neutral">Not Applicable</span> when it sits
             outside the audit scope. Evidence mapped to a parent clause counts towards its child clauses.
           </p>
 
@@ -425,6 +446,11 @@ function CoverageGroup({
         {group.gapCount > 0 && (
           <span className="rounded-[4px] bg-partial-bg px-1.5 py-0.5 text-[11px] font-semibold text-partial">
             {group.gapCount} {group.gapCount === 1 ? 'gap' : 'gaps'}
+          </span>
+        )}
+        {group.needsWorkCount > 0 && (
+          <span className="rounded-[4px] bg-needs-work-bg px-1.5 py-0.5 text-[11px] font-semibold text-needs-work">
+            {group.needsWorkCount} need work
           </span>
         )}
 

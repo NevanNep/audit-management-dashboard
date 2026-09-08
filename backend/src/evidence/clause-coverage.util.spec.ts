@@ -118,17 +118,20 @@ describe('buildClauseCoverage', () => {
     expect(result.state).toBe('Gap');
   });
 
-  it('counts Pending Review and Rejected as actual evidence', () => {
+  it('counts Pending Review as affirmative evidence — clause is Covered', () => {
     expect(
       clause('ISMS', '5.2', [
         on('ISMS', ['5.2'], { evidenceStatus: 'Pending Review' }),
       ]).state,
     ).toBe('Covered');
+  });
+
+  it('treats Rejected-only evidence as Covered (needs work), not plain Covered', () => {
     expect(
       clause('ISMS', '5.2', [
         on('ISMS', ['5.2'], { evidenceStatus: 'Rejected' }),
       ]).state,
-    ).toBe('Covered');
+    ).toBe('Covered (needs work)');
   });
 
   it('marks an in-scope clause with no actual evidence as Gap', () => {
@@ -362,6 +365,7 @@ describe('buildClauseCoverage — Annex A', () => {
     );
     for (const key of [
       'coveredCount',
+      'needsWorkCount',
       'gapCount',
       'notApplicableCount',
     ] as const) {
@@ -375,5 +379,118 @@ describe('buildClauseCoverage — Annex A', () => {
     const { soa } = annexA([]);
     expect(soa.validated).toBe(false);
     expect(soa.note).toMatch(/placeholder/i);
+  });
+});
+
+// ─── Covered (needs work) — evidence exists but is entirely Rejected ────────
+
+describe('buildClauseCoverage — Covered (needs work)', () => {
+  const rejected = (over: Partial<Evidence> = {}): Partial<Evidence> => ({
+    evidenceStatus: 'Rejected',
+    ...over,
+  });
+
+  const control = (code: string, all: Evidence[]) => {
+    const found = buildClauseCoverage(all)
+      .annexA.themes.flatMap((theme) => theme.controls)
+      .find((entry) => entry.code === code);
+    if (!found) throw new Error(`Annex A control ${code} not found`);
+    return found;
+  };
+
+  it('marks a clause whose only evidence was Rejected as Covered (needs work)', () => {
+    const result = clause('ISMS', '5.2', [
+      on('ISMS', ['5.2'], rejected({ evidenceId: 'EVD-R' })),
+    ]);
+    expect(result.state).toBe('Covered (needs work)');
+    // the underlying evidence ref keeps its real status untouched
+    expect(result.evidence.map((e) => e.evidenceId)).toEqual(['EVD-R']);
+    expect(result.evidence[0].evidenceStatus).toBe('Rejected');
+  });
+
+  it('counts a needs-work clause towards coveredCount and coveragePercent', () => {
+    const group = buildClauseCoverage(
+      [on('ISMS', ['5.2'], rejected({ evidenceId: 'EVD-R' }))],
+      { standard: 'ISMS' },
+    ).groups[0];
+
+    expect(group.needsWorkCount).toBe(1);
+    expect(group.coveredCount).toBe(1);
+    expect(group.coveragePercent).toBe(
+      Math.round((group.coveredCount / group.applicableCount) * 100),
+    );
+  });
+
+  it('is plain Covered when a Rejected doc is joined by an Accepted one (rule #2 wins)', () => {
+    const result = clause('ISMS', '5.2', [
+      on('ISMS', ['5.2'], rejected({ evidenceId: 'EVD-R' })),
+      on('ISMS', ['5.2'], { evidenceId: 'EVD-A', evidenceStatus: 'Accepted' }),
+    ]);
+    expect(result.state).toBe('Covered');
+  });
+
+  it('is plain Covered when a Rejected doc is joined by a Pending Review one', () => {
+    const result = clause('ISMS', '5.2', [
+      on('ISMS', ['5.2'], rejected({ evidenceId: 'EVD-R' })),
+      on('ISMS', ['5.2'], {
+        evidenceId: 'EVD-P',
+        evidenceStatus: 'Pending Review',
+      }),
+    ]);
+    expect(result.state).toBe('Covered');
+  });
+
+  it('is still a Gap when the clause has no actual evidence at all', () => {
+    expect(clause('ISMS', '5.2', []).state).toBe('Gap');
+  });
+
+  it('rolls a Rejected-only parent mapping down to its children as needs-work', () => {
+    const all = [on('ISMS', ['9.2'], rejected({ evidenceId: 'EVD-IA' }))];
+
+    for (const code of ['9.2.1', '9.2.2']) {
+      const child = clause('ISMS', code, all);
+      expect(child.state).toBe('Covered (needs work)');
+      expect(child.evidence[0].mappedVia).toBe('parent');
+      expect(child.evidence[0].mappedClause).toBe('9.2');
+    }
+  });
+
+  it('composes with a collision-zone mapping — both needs-work AND ambiguous', () => {
+    // "8.1" is BOTH ISMS clause 8.1 and Annex A control A.8.1.
+    const bare = [on('ISMS', ['8.1'], rejected({ evidenceId: 'EVD-BARE' }))];
+
+    const mgmtClause = clause('ISMS', '8.1', bare);
+    expect(mgmtClause.state).toBe('Covered (needs work)');
+    expect(mgmtClause.ambiguous).toBe(true);
+    expect(mgmtClause.evidence[0].ambiguous).toBe(true);
+
+    const ctrl = control('A.8.1', bare);
+    expect(ctrl.state).toBe('Covered (needs work)');
+    expect(ctrl.ambiguous).toBe(true);
+    expect(ctrl.evidence[0].ambiguous).toBe(true);
+  });
+
+  it('reports needsWorkCount at group, Annex A section and totals level', () => {
+    // 9.2.1 is a plain leaf (not a collision-zone code, so it does not mirror
+    // onto Annex A); A.5.15 is an explicit Annex A control.
+    const response = buildClauseCoverage([
+      on('ISMS', ['9.2.1'], rejected({ evidenceId: 'EVD-R1' })),
+      on('ISMS', ['A.5.15'], rejected({ evidenceId: 'EVD-R2' })),
+    ]);
+
+    const isms = response.groups.find((g) => g.standard === 'ISMS')!;
+    expect(isms.needsWorkCount).toBe(1);
+    expect(isms.coveredCount).toBeGreaterThanOrEqual(isms.needsWorkCount);
+
+    expect(response.annexA.needsWorkCount).toBe(1);
+    expect(response.annexA.coveredCount).toBeGreaterThanOrEqual(1);
+
+    // totals.needsWork sums the management-clause groups (Annex A is separate)
+    expect(response.totals.needsWork).toBe(
+      response.groups.reduce((sum, g) => sum + g.needsWorkCount, 0),
+    );
+    expect(response.totals.covered).toBe(
+      response.groups.reduce((sum, g) => sum + g.coveredCount, 0),
+    );
   });
 });
