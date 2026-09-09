@@ -15,6 +15,10 @@ import {
   ClauseCoverageParams,
   ClauseCoverageResponse,
 } from './clause-coverage.util';
+import {
+  buildNeedsAttention,
+  NeedsAttentionResponse,
+} from './needs-attention.util';
 
 const CACHE_TTL_MS = 30_000;
 
@@ -46,6 +50,13 @@ export class EvidenceService {
   ): Promise<ClauseCoverageResponse> {
     const all = await this.getAll();
     return buildClauseCoverage(all, params);
+  }
+
+  /** Read-only aggregation of the overdue / rejected / needs-work signals that
+   *  are already computed by the evidence and clause-coverage helpers. */
+  async getNeedsAttention(): Promise<NeedsAttentionResponse> {
+    const all = await this.getAll();
+    return buildNeedsAttention(all);
   }
 
   /** Reused by both the paginated list and the stats endpoint so a single

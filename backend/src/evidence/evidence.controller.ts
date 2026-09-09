@@ -2,6 +2,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { EvidenceService } from './evidence.service';
 import type { EvidencePage, EvidenceStats } from './evidence-query.util';
 import type { ClauseCoverageResponse } from './clause-coverage.util';
+import type { NeedsAttentionResponse } from './needs-attention.util';
 import {
   parseClauseCoverageQuery,
   parseEvidenceQuery,
@@ -30,5 +31,10 @@ export class EvidenceController {
     return this.evidenceService.getClauseCoverage(
       parseClauseCoverageQuery(raw),
     );
+  }
+
+  @Get('needs-attention')
+  needsAttention(): Promise<NeedsAttentionResponse> {
+    return this.evidenceService.getNeedsAttention();
   }
 }
