@@ -6,7 +6,10 @@ import { IsoStandardCards } from './components/dashboard/IsoStandardCards';
 import { ChartsPanel } from './components/dashboard/ChartsPanel';
 import { DocumentsTable } from './components/dashboard/DocumentsTable';
 import { ClauseCoverageView } from './components/dashboard/ClauseCoverageView';
+import { NeedsAttentionView } from './components/dashboard/NeedsAttentionView';
 import { fetchEvidencePage, fetchEvidenceStats, type EvidenceStatsResponse } from './services/evidenceApi';
+import { fetchNeedsAttention } from './services/needsAttentionApi';
+import type { NeedsAttentionResponse } from './types/needsAttention';
 import { mapEvidenceToDocument } from './utils/evidenceMapper';
 import { ISO_STANDARDS } from './data/isoStandards';
 import { GLOBAL_CLAUSES } from './data/clauses';
@@ -57,7 +60,9 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [loadedRequestKey, setLoadedRequestKey] = useState<string | null>(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(() => window.innerWidth < 1366);
-  const [view, setView] = useState<'evidence' | 'clauses'>('evidence');
+  const [view, setView] = useState<'evidence' | 'clauses' | 'attention'>('evidence');
+  const [attention, setAttention] = useState<NeedsAttentionResponse | null>(null);
+  const [attentionError, setAttentionError] = useState<string | null>(null);
 
   const requestKey = JSON.stringify([filters, page, sortState]);
   const isLoading = loadedRequestKey !== requestKey;
@@ -99,6 +104,26 @@ function App() {
       cancelled = true;
     };
   }, [filters]);
+
+  // The Needs Attention queue is a standalone read-only aggregation — fetched
+  // once so its total can badge the nav tab from any view.
+  useEffect(() => {
+    let cancelled = false;
+
+    fetchNeedsAttention()
+      .then((res) => {
+        if (!cancelled) setAttention(res);
+      })
+      .catch((err: unknown) => {
+        if (!cancelled) {
+          setAttentionError(err instanceof Error ? err.message : 'Failed to load the attention queue.');
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   function updateFilters(patch: Partial<EvidenceFilterState>) {
     setFilters((f) => ({ ...f, ...patch }));
@@ -207,9 +232,11 @@ function App() {
       {/* ── Main pane (flows normally; the browser scrolls the whole page) ── */}
       <main className="flex min-w-0 flex-1 flex-col">
         <div className="flex-1 px-6 py-4">
-          <ViewTabs view={view} onChange={setView} />
+          <ViewTabs view={view} onChange={setView} attentionCount={attention?.totals.total ?? null} />
 
-          {view === 'clauses' ? (
+          {view === 'attention' ? (
+            <NeedsAttentionView data={attention} error={attentionError} />
+          ) : view === 'clauses' ? (
             <ClauseCoverageView iso={filters.iso} onIsoChange={(iso) => updateFilters({ iso })} />
           ) : error ? (
             <div className="rounded-[10px] border border-noncompliant/30 bg-noncompliant-bg p-4 text-sm text-noncompliant">
@@ -257,33 +284,45 @@ function App() {
 }
 
 interface ViewTabsProps {
-  view: 'evidence' | 'clauses';
-  onChange: (view: 'evidence' | 'clauses') => void;
+  view: 'evidence' | 'clauses' | 'attention';
+  onChange: (view: 'evidence' | 'clauses' | 'attention') => void;
+  attentionCount: number | null;
 }
 
 const TABS: { id: ViewTabsProps['view']; label: string }[] = [
   { id: 'evidence', label: 'Evidence Documents' },
   { id: 'clauses', label: 'Clause Coverage' },
+  { id: 'attention', label: 'Needs Attention' },
 ];
 
-function ViewTabs({ view, onChange }: ViewTabsProps) {
+function ViewTabs({ view, onChange, attentionCount }: ViewTabsProps) {
   return (
     <div className="mb-4 flex gap-6 border-b border-border">
       {TABS.map((tab) => {
         const active = view === tab.id;
+        const badge = tab.id === 'attention' && attentionCount ? attentionCount : null;
         return (
           <button
             key={tab.id}
             type="button"
             onClick={() => onChange(tab.id)}
             aria-current={active ? 'page' : undefined}
-            className={`-mb-px border-b-2 pb-2 pt-0.5 text-[13px] transition-colors focus:outline-none ${
+            className={`-mb-px flex items-center gap-1.5 border-b-2 pb-2 pt-0.5 text-[13px] transition-colors focus:outline-none ${
               active
                 ? 'border-accent font-semibold text-ink'
                 : 'border-transparent font-medium text-ink-muted hover:text-ink-secondary'
             }`}
           >
             {tab.label}
+            {badge !== null && (
+              <span
+                className={`rounded-full px-1.5 py-0.5 text-[10.5px] font-semibold leading-none ${
+                  active ? 'bg-accent text-white' : 'bg-subtle text-ink-secondary'
+                }`}
+              >
+                {badge}
+              </span>
+            )}
           </button>
         );
       })}
