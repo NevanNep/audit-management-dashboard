@@ -235,7 +235,12 @@ function App() {
           <ViewTabs view={view} onChange={setView} attentionCount={attention?.totals.total ?? null} />
 
           {view === 'attention' ? (
-            <NeedsAttentionView data={attention} error={attentionError} />
+            <NeedsAttentionView
+              data={attention}
+              error={attentionError}
+              iso={filters.iso}
+              onIsoChange={(iso) => updateFilters({ iso })}
+            />
           ) : view === 'clauses' ? (
             <ClauseCoverageView iso={filters.iso} onIsoChange={(iso) => updateFilters({ iso })} />
           ) : error ? (

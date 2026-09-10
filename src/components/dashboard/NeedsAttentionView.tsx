@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react';
 import { AlertTriangle, Clock, ExternalLink, RotateCcw, Search, XCircle } from 'lucide-react';
 import { formatDueDate } from '../../utils/evidenceFormatting';
 import { selectClass } from './clauseCoverageShared';
+import { ISO_STANDARDS, getStandardName } from '../../data/isoStandards';
+import { ALL_ISO, type IsoFilterValue } from '../../types/evidence';
 import {
   ALL_REASONS,
   REASON_LABEL,
@@ -14,9 +16,10 @@ import {
 interface NeedsAttentionViewProps {
   data: NeedsAttentionResponse | null;
   error: string | null;
+  /** Shared sidebar standard picker — the single source of truth for the standard scope. */
+  iso: IsoFilterValue;
+  onIsoChange: (value: IsoFilterValue) => void;
 }
-
-const ALL_STANDARDS = 'All standards';
 
 // Fixed queue order — overdue is the most time-critical, then rejected, then
 // clauses that are technically covered but resting on rejected evidence.
@@ -99,16 +102,20 @@ function matchesSearch(item: NeedsAttentionItem, query: string): boolean {
   return haystack.includes(query);
 }
 
-export function NeedsAttentionView({ data, error }: NeedsAttentionViewProps) {
+export function NeedsAttentionView({ data, error, iso, onIsoChange }: NeedsAttentionViewProps) {
   const [search, setSearch] = useState('');
   const [reason, setReason] = useState<ReasonFilterValue>(ALL_REASONS);
-  const [standard, setStandard] = useState<string>(ALL_STANDARDS);
 
+  // Item standards come through as management-system names ("ISMS", "PIMS", …);
+  // the sidebar picker speaks ISO codes ("ISO 27001"). Map once for the filter.
+  const selectedStandardName = iso === ALL_ISO ? null : getStandardName(iso);
+
+  // Only offer standards that actually have an open item in the queue.
   const standardOptions = useMemo(() => {
     if (!data) return [];
-    const seen = new Set<string>();
-    data.items.forEach((item) => item.standards.forEach((s) => seen.add(s)));
-    return [...seen].sort();
+    const present = new Set<string>();
+    data.items.forEach((item) => item.standards.forEach((s) => present.add(s)));
+    return ISO_STANDARDS.filter((std) => present.has(std.standard));
   }, [data]);
 
   const query = search.trim().toLowerCase();
@@ -118,10 +125,10 @@ export function NeedsAttentionView({ data, error }: NeedsAttentionViewProps) {
     return data.items.filter(
       (item) =>
         (reason === ALL_REASONS || item.reason === reason) &&
-        (standard === ALL_STANDARDS || item.standards.includes(standard)) &&
+        (selectedStandardName === null || item.standards.includes(selectedStandardName)) &&
         matchesSearch(item, query),
     );
-  }, [data, reason, standard, query]);
+  }, [data, reason, selectedStandardName, query]);
 
   // Backend already sorts within and across categories; grouping keeps that order.
   const groups = useMemo(
@@ -134,12 +141,12 @@ export function NeedsAttentionView({ data, error }: NeedsAttentionViewProps) {
   );
 
   const hasFilters =
-    reason !== ALL_REASONS || standard !== ALL_STANDARDS || query.length > 0;
+    reason !== ALL_REASONS || iso !== ALL_ISO || query.length > 0;
 
   function resetFilters() {
     setSearch('');
     setReason(ALL_REASONS);
-    setStandard(ALL_STANDARDS);
+    onIsoChange(ALL_ISO);
   }
 
   const viewCounts = {
@@ -217,14 +224,14 @@ export function NeedsAttentionView({ data, error }: NeedsAttentionViewProps) {
           <label className="flex items-center gap-1.5 text-[11.5px] text-ink-muted">
             <span>Standard</span>
             <select
-              value={standard}
-              onChange={(event) => setStandard(event.target.value)}
-              className={selectClass(standard !== ALL_STANDARDS)}
+              value={iso}
+              onChange={(event) => onIsoChange(event.target.value as IsoFilterValue)}
+              className={selectClass(iso !== ALL_ISO)}
             >
-              <option value={ALL_STANDARDS}>All</option>
-              {standardOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
+              <option value={ALL_ISO}>All</option>
+              {standardOptions.map((std) => (
+                <option key={std.code} value={std.code}>
+                  {std.code} · {std.shortName}
                 </option>
               ))}
             </select>
