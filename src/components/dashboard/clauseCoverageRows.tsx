@@ -107,7 +107,9 @@ export function CoverageRow({
 }) {
   const [open, setOpen] = useState(false);
   const style = STATE_STYLE[item.state];
-  const expandable = item.evidence.length > 1;
+  // Any clause with mapped evidence gets the same collapsed summary + expandable
+  // detail table — the evidence count only changes how many rows that table has.
+  const hasEvidence = item.evidence.length > 0;
   const label = COVERAGE_STATE_LABEL[item.state];
   const needsWork = item.state === 'Covered (needs work)';
 
@@ -115,7 +117,7 @@ export function CoverageRow({
     <div className={`border-b border-border last:border-b-0 ${style.row}`}>
       <div className="flex items-start py-2.5">
         <div className={`${COL_CHEVRON} flex items-center justify-center pt-0.5`}>
-          {expandable && (
+          {hasEvidence && (
             <button
               type="button"
               onClick={() => setOpen((value) => !value)}
@@ -159,16 +161,14 @@ export function CoverageRow({
         <div className={COL_EVIDENCE}>
           {item.state === 'Not Applicable' ? (
             <span className="text-[12px] italic text-neutral">{item.notApplicableText}</span>
-          ) : item.evidence.length === 0 ? (
+          ) : !hasEvidence ? (
             <span className="text-[12px] italic text-neutral">No evidence mapped</span>
-          ) : !expandable ? (
-            <EvidenceLine ev={item.evidence[0]} rowCode={item.code} breadthOf={breadthOf} />
           ) : (
             <span className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-ink-muted">
               <span className="rounded-full bg-subtle px-2 py-0.5 font-mono text-[10.5px] font-medium text-ink-secondary">
                 {item.evidence.length}
               </span>
-              documents mapped
+              {item.evidence.length === 1 ? 'document mapped' : 'documents mapped'}
               <span className="text-border-strong" aria-hidden="true">·</span>
               <EvidenceMix evidence={item.evidence} />
             </span>
@@ -176,7 +176,7 @@ export function CoverageRow({
         </div>
       </div>
 
-      {expandable && open && (
+      {hasEvidence && open && (
         <div className="pb-3 pl-7 pr-3">
           <EvidenceTable evidence={item.evidence} rowCode={item.code} breadthOf={breadthOf} />
         </div>
@@ -199,73 +199,8 @@ export function BroadMappingBadge() {
   );
 }
 
-// Inherited-mapping badge: which ancestor the evidence came from, and how wide
-// that ancestor is as a ratio of the siblings it stands in for. The numbers are
-// the only emphasised part — typography only, no colour, no icon, no threshold.
-export function BreadthBadge({ info, rowCode }: { info: BreadthInfo; rowCode: string }) {
-  return (
-    <span
-      className="inline-flex items-center gap-1 rounded-[4px] bg-subtle px-1.5 py-0.5 text-[10px] text-ink-muted"
-      title={`Mapped to ${info.via}, inherited by ${rowCode}. This one mapping stands in for ${info.covered} of ${info.total} ${info.unit} under ${info.via}.`}
-    >
-      <span className="font-mono">via {info.via}</span>
-      <span className="text-border-strong" aria-hidden="true">·</span>
-      <span className="font-mono font-semibold text-ink-secondary">
-        {info.covered}/{info.total}
-      </span>
-      <span>{info.unit}</span>
-    </span>
-  );
-}
-
-// Compact one-liner shown in the Mapped evidence column when a row has a single
-// mapped document (no chevron / table).
-function EvidenceLine({
-  ev,
-  rowCode,
-  breadthOf,
-}: {
-  ev: CoverageEvidenceRef;
-  rowCode: string;
-  breadthOf: (ref: CoverageEvidenceRef) => BreadthInfo | null;
-}) {
-  const breadth = breadthOf(ev);
-  return (
-    <div className="flex flex-wrap items-center gap-2">
-      <span className="rounded-[4px] bg-subtle px-1.5 py-0.5 font-mono text-[10.5px] font-medium text-ink-secondary">
-        {ev.evidenceId}
-      </span>
-      <span className="text-[12px] text-ink-muted">{ev.name}</span>
-      {breadth ? (
-        <BreadthBadge info={breadth} rowCode={rowCode} />
-      ) : (
-        ev.mappedVia === 'parent' && (
-          <span
-            className="rounded-[4px] bg-subtle px-1.5 py-0.5 font-mono text-[10px] text-ink-muted"
-            title={`Mapped to ${ev.mappedClause}, inherited by ${rowCode}`}
-          >
-            via {ev.mappedClause}
-          </span>
-        )
-      )}
-      {breadth?.broad && <BroadMappingBadge />}
-      {ev.ambiguous && ev.counterpart && (
-        <span
-          className="inline-flex items-center gap-1 rounded-[4px] border border-accent/40 bg-accent-tint px-1.5 py-0.5 text-[10px] font-medium text-accent-hover"
-          title={`Token "${ev.mappedClause}" could also mean ${ev.counterpart.code}${
-            ev.counterpart.title ? ` ${ev.counterpart.title}` : ''
-          }. This document is also listed there — confirm which was intended.`}
-        >
-          <ArrowLeftRight className="h-2.5 w-2.5" aria-hidden="true" />
-          also <span className="font-mono">{ev.counterpart.code}</span>
-        </span>
-      )}
-    </div>
-  );
-}
-
-// Accepted / pending / rejected split for a clause with several mapped
-// documents, so the mix is visible without expanding the row. Same dot palette
+// Accepted / pending / rejected split for a clause with mapped evidence, so the
+// mix is visible without expanding the row. Same dot palette
 // as EvidenceStatusBadge; buckets are shown in review order, empty ones omitted.
 const EVIDENCE_MIX_ORDER: EvidenceStatus[] = [
   'Accepted',

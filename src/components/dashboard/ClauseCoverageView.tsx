@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ChevronDown, Download, Info, RotateCcw, Search } from 'lucide-react';
+import { ChevronDown, Info, RotateCcw, Search } from 'lucide-react';
 import { ISO_STANDARDS } from '../../data/isoStandards';
 import { fetchClauseCoverage } from '../../services/clauseCoverageApi';
 import { ALL_ISO, type IsoFilterValue } from '../../types/evidence';
@@ -152,37 +152,28 @@ export function ClauseCoverageView({ iso, onIsoChange }: ClauseCoverageViewProps
 
   return (
     <div>
-      <div className="mb-3 flex items-start justify-between gap-4">
-        <div>
-          <h2 className="text-[16px] font-semibold text-ink">Clause coverage</h2>
-          {section === 'clauses' ? (
+      <div className="mb-3">
+        <h2 className="text-[16px] font-semibold text-ink">Clause coverage</h2>
+        {section === 'clauses' ? (
+          <p className="mt-0.5 text-[12.5px] text-ink-secondary">
+            {`${
+              activeStandard
+                ? `${activeStandard.code} · ${activeStandard.shortName}`
+                : `All standards · ${headline.standards} management systems`
+            } — ${pctLabel(headline.percent)} covered · ${headline.covered}/${headline.applicable} applicable clauses · ${headline.gaps} gaps${
+              headline.needsWork > 0 ? ` · ${headline.needsWork} need work` : ''
+            }`}
+          </p>
+        ) : (
+          data && (
             <p className="mt-0.5 text-[12.5px] text-ink-secondary">
-              {`${
-                activeStandard
-                  ? `${activeStandard.code} · ${activeStandard.shortName}`
-                  : `All standards · ${headline.standards} management systems`
-              } — ${pctLabel(headline.percent)} covered · ${headline.covered}/${headline.applicable} applicable clauses · ${headline.gaps} gaps${
-                headline.needsWork > 0 ? ` · ${headline.needsWork} need work` : ''
-              }`}
+              ISO 27001:2022 · Information Security — {pctLabel(data.annexA.coveragePercent)} covered ·{' '}
+              {data.annexA.coveredCount}/{data.annexA.applicableCount} applicable controls ·{' '}
+              {data.annexA.gapCount} gaps
+              {data.annexA.needsWorkCount > 0 && ` · ${data.annexA.needsWorkCount} need work`}
             </p>
-          ) : (
-            data && (
-              <p className="mt-0.5 text-[12.5px] text-ink-secondary">
-                ISO 27001:2022 · Information Security — {pctLabel(data.annexA.coveragePercent)} covered ·{' '}
-                {data.annexA.coveredCount}/{data.annexA.applicableCount} applicable controls ·{' '}
-                {data.annexA.gapCount} gaps
-                {data.annexA.needsWorkCount > 0 && ` · ${data.annexA.needsWorkCount} need work`}
-              </p>
-            )
-          )}
-        </div>
-        <button
-          type="button"
-          className="inline-flex h-8 shrink-0 items-center gap-1.5 rounded-md border border-border bg-surface px-2.5 text-[12.5px] font-medium text-ink-secondary shadow-sm transition-colors hover:border-border-strong hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-        >
-          <Download className="h-3 w-3" aria-hidden="true" />
-          Export
-        </button>
+          )
+        )}
       </div>
 
       <SectionToggle section={section} onChange={setSection} />
